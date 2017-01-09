@@ -6,7 +6,7 @@ const <%= name %>Component = {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller,
 };
 
 export default <%= name %>Component;

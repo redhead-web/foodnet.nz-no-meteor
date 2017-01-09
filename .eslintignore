@@ -1,0 +1,11 @@
+spec.bundle.js
+karma.conf.js
+.DS_Store
+.tmp
+.git
+node_modules
+.settings
+*.log
+dist/
+*.config.js
+generator/component

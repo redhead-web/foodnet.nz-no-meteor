@@ -1,19 +1,19 @@
 /* global inject, expect */
-import <%= upCaseName %>Module from './<%= name %>';
-import <%= upCaseName %>Controller from './<%= name %>.controller';
-import <%= upCaseName %>Component from './<%= name %>.component';
-import <%= upCaseName %>Template from './<%= name %>.html';
+import LoginButtonModule from './loginButton';
+import LoginButtonController from './loginButton.controller';
+import LoginButtonComponent from './loginButton.component';
+import LoginButtonTemplate from './loginButton.html';
 
-describe('<%= upCaseName %>', () => {
+describe('LoginButton', () => {
   let $rootScope;
   let makeController;
 
-  beforeEach(window.module(<%= upCaseName %>Module));
+  beforeEach(window.module(LoginButtonModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      expect($rootScope).to.exist;
-      return new <%= upCaseName %>Controller();
+      expect($rootScope).to.exist();
+      return new LoginButtonController();
     };
   }));
 
@@ -33,20 +33,20 @@ describe('<%= upCaseName %>', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(<%= upCaseName %>Template).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(LoginButtonTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
     // component/directive specs
-    const component = <%= upCaseName %>Component;
+    const component = LoginButtonComponent;
 
     it('includes the intended template', () => {
-      expect(component.template).to.equal(<%= upCaseName %>Template);
+      expect(component.template).to.equal(LoginButtonTemplate);
     });
 
     it('invokes the right controller', () => {
-      expect(component.controller).to.equal(<%= upCaseName %>Controller);
+      expect(component.controller).to.equal(LoginButtonController);
     });
   });
 });

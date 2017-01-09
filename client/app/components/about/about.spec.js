@@ -1,7 +1,12 @@
-import AboutModule from './about'
+/* global inject, expect */
+import AboutModule from './about';
 
 describe('About', () => {
-  let $rootScope, $state, $location, $componentController, $compile;
+  let $rootScope;
+  let $state;
+  let $location;
+  let $componentController;
+  let $compile;
 
   beforeEach(window.module(AboutModule));
 
@@ -27,7 +32,7 @@ describe('About', () => {
     let controller;
     beforeEach(() => {
       controller = $componentController('about', {
-        $scope: $rootScope.$new()
+        $scope: $rootScope.$new(),
       });
     });
 
@@ -38,7 +43,8 @@ describe('About', () => {
 
   describe('View', () => {
     // view layer specs.
-    let scope, template;
+    let scope;
+    let template;
 
     beforeEach(() => {
       scope = $rootScope.$new();
@@ -49,6 +55,5 @@ describe('About', () => {
     it('has name in template', () => {
       expect(template.find('h1').html()).to.eq('about');
     });
-
   });
 });
