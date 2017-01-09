@@ -1,0 +1,143 @@
+// User Profile
+- name
+- login credentials
+- home address
+- mobile number
+- email [array]
+- linkedIn profile
+- facebook profile
+- instagram profile
+- youtube channel
+- summary
+
+// user profile relationships
+
+- staff relationship with a business
+- scaled relationship with skills
+- relationship with images
+
+
+// organisation
+- legal type e.g. charity, sole trader, partnership, ic, llc, llc co-op,
+- name
+- phone [array]
+- email
+- business address
+- business hours
+- description
+- website
+- facebook
+- twitter
+- instagram
+- youtube
+- snapchat // others
+- gst number
+- charities number
+- company number
+
+// organisations relations
+
+- staff relationship
+- organisation relationship
+- resource relationship (I/O)
+- endorsement relationship
+- img logo, header, location, building, casual
+
+// skill
+- name
+- NZQA code
+- training institute
+
+// skill relationship
+- scaled relationship with user
+- images representing skills
+
+// resources
+- name
+- description
+- img [array] (relationship?)
+
+// resource relationships
+
+- skills needed for resource creation
+- skills needed for resource consumption
+- organisation that consumes/creates resource
+- img associated with resource
+
+// img
+- file path
+- image id
+- tags [array]
+- alt description
+- geotag
+- camera data
+- original url
+
+// img relationships
+- user uploader relationship
+- resource image
+- business images e.g. logo, header, etc.
+- user profile image, header
+- skill image
+
+// video later
+
+// searchterms (later?)
+- term (string)
+- timesUsed (integer)
+- lastUsed (date)
+
+// searchterms relationships
+- 'used for' relationship with organisation
+- 'used for' relationship with profiles
+
+
+Sample queries in the app that must be fast
+
+find all organisations using carrots/searchterm as an input or output
+	—non-reactively —most important!
+samples:
+	db.organisations.find({‘resources.name’: {$regex: /^searchterm/, options: ‘i’}}) // index on resource.name required
+	var resources = db.resources.find({‘name’: {$regex: /^searchterm/, options: ‘i’}}).fetch()
+	return db.organisations.find({_id: $in: _.flatten(_.pluck(resources, ‘organisationId’))
+	// two queries. this is a problem
+
+	MATCH (org:ORGANISATION)-[:INPUT:OUTPUT]->(io:RESOURCE) WHERE io.name =~ searchstring RETURN io
+
+find/count all resources/staff of a particular organisation (possibly reactively)
+samples:
+	db.organisations.find(organisationId, {fields: {‘resources.name’: 1, inputCount: 1, outputCount: 1}});
+
+	db.resources.find({‘organisations’: organisationId})
+
+	MATCH (io:RESOURCE)<-[:INPUT:OUTPUT]-(org) RETURN count(io)
+
+find the photos of an organisation/staff member/resource
+	db.COLLECTION.find(docId, {fields: {‘img.name’: 1}});
+
+	MATCH (img:IMAGE)-[:LOGO]->(org:ORGANISATION) RETURN img
+	or
+	MATCH (org:ORGANISATION) WHERE org.imgId = {imgId} RETURN org.imgId
+
+
+find skills of a user
+	Metero.users.findOne(userId).profile.skills
+
+find/count other users with that skill
+	Meteor.users.find(‘profile.skills.name’: skill)
+
+	MATCH (user:PERSON)-[:JUNIOR|:INTERMEDIATE|:SENIOR]->(skill:SKILL)
+	WHERE skill = {skill}
+	RETURN user.name
+
+find organisations that a user is a member of
+	db.organisations.find({ ‘members.userId’: userId });
+
+	MATCH (org:ORGANISATION)<-[:MEMBER]-(user:PERSON) RETURN org
+
+suggest a name for a resource already in existence
+	Meteor.call(‘getResourceList’, search string) — non-reactive
+
+	db.resources.find({search})
+
+	MATCH (io:RESOURCE) WHERE io.name =~ searchstring RETURN DISTINCT io.name

@@ -3,7 +3,14 @@
   "version": "0.0.1",
   "description": "See and make connections in our local food sector",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node server"
+    "build": "gulp webpack",
+    "component": "gulp component",
+    "lint:staged": "lint-staged",
+    "serve": "gulp serve",
+    "start": "gulp serve",
+    "test": "karma start",
+    "watch": "gulp serve",
+    "webpack": "gulp webpack"
   },
   "dllPlugin": {
     "path": "node_modules/react-boilerplate-dlls",
@@ -35,6 +42,7 @@
   "devDependencies": {
     "angular-mocks": "^1.5.0",
     "babel-core": "^6.7.7",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.7.5",
     "babel-polyfill": "^6.7.4",
@@ -47,6 +55,14 @@
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.19.0",
     "del": "^2.2.0",
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-import-resolver-webpack": "^0.8.0",
+    "eslint-plugin-angular": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
     "fs-walk": "0.0.1",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
@@ -76,15 +92,10 @@
     "webpack-hot-middleware": "^2.6.0",
     "yargs": "^3.9.0"
   },
-  "scripts": {
-    "build": "gulp webpack",
-    "component": "gulp component",
-    "serve": "gulp serve",
-    "start": "gulp serve",
-    "test": "karma start",
-    "watch": "gulp serve",
-    "webpack": "gulp webpack"
+  "lint-staged": {
+    "*.js": "lint:eslint"
   },
+  "pre-commit": "lint:staged",
   "keywords": [
     "angular",
     "webpack",
@@ -104,5 +115,86 @@
       "es2015",
       "stage-0"
     ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+      "browser": true,
+      "node": true,
+      "mocha": true,
+      "es6": true
+    },
+    "plugins": [
+      "angular"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "angular/controller-as-vm": 0,
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "arrow-body-style": [
+        2,
+        "as-needed"
+      ],
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ],
+      "import/imports-first": 0,
+      "import/newline-after-import": 0,
+      "import/no-dynamic-require": 0,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-named-as-default": 0,
+      "import/no-unresolved": 2,
+      "import/prefer-default-export": 0,
+      "indent": [
+        2,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "jsx-a11y/aria-props": 2,
+      "jsx-a11y/heading-has-content": 0,
+      "jsx-a11y/href-no-hash": 2,
+      "jsx-a11y/label-has-for": 2,
+      "jsx-a11y/mouse-events-have-key-events": 2,
+      "jsx-a11y/role-has-required-aria-props": 2,
+      "jsx-a11y/role-supports-aria-props": 2,
+      "max-len": 0,
+      "newline-per-chained-call": 0,
+      "no-console": 1,
+      "no-use-before-define": 0,
+      "prefer-template": 2,
+      "class-methods-use-this": 0,
+      "react/forbid-prop-types": 0,
+      "react/jsx-first-prop-new-line": [
+        2,
+        "multiline"
+      ],
+      "react/jsx-filename-extension": 0,
+      "react/jsx-no-target-blank": 0,
+      "react/require-extension": 0,
+      "react/self-closing-comp": 0,
+      "redux-saga/no-yield-in-race": 2,
+      "redux-saga/yield-effects": 2,
+      "require-yield": 0
+    },
+    "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "./webpack.test.babel.js"
+        }
+      }
+    }
   }
 }
