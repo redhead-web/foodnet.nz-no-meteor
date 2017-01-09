@@ -6,12 +6,17 @@
     "build": "gulp webpack",
     "component": "gulp component",
     "lint:staged": "lint-staged",
+    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "serve": "gulp serve",
     "start": "gulp serve",
     "test": "karma start",
     "watch": "gulp serve",
     "webpack": "gulp webpack"
   },
+  "lint-staged": {
+    "*.js": "lint:eslint"
+  },
+  "pre-commit": "lint:staged",
   "dllPlugin": {
     "path": "node_modules/react-boilerplate-dlls",
     "exclude": [
@@ -76,12 +81,14 @@
     "karma-mocha-reporter": "^1.0.2",
     "karma-sourcemap-loader": "^0.3.4",
     "karma-webpack": "^1.5.1",
+    "lint-staged": "^3.2.6",
     "lodash": "^4.11.1",
     "mocha": "^2.3.0",
     "ng-annotate-loader": "0.0.10",
     "ngrok": "^2.2.4",
     "node-libs-browser": "^0.5.0",
     "node-sass": "^3.13.0",
+    "pre-commit": "^1.2.2",
     "raw-loader": "^0.5.1",
     "run-sequence": "^1.1.0",
     "sass-loader": "^4.0.2",
@@ -92,10 +99,6 @@
     "webpack-hot-middleware": "^2.6.0",
     "yargs": "^3.9.0"
   },
-  "lint-staged": {
-    "*.js": "lint:eslint"
-  },
-  "pre-commit": "lint:staged",
   "keywords": [
     "angular",
     "webpack",
