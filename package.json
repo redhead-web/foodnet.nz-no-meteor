@@ -2,7 +2,9 @@
   "name": "FoodNet.nz",
   "version": "0.0.1",
   "description": "See and make connections in our local food sector",
-  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node server"
+  },
   "dllPlugin": {
     "path": "node_modules/react-boilerplate-dlls",
     "exclude": [

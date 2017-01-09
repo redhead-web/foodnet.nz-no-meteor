@@ -16,6 +16,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
+import { spawn } from 'child_process'
 
 let root = 'client';
 
@@ -76,23 +77,26 @@ gulp.task('serve', () => {
 
   var compiler = webpack(config);
 
-  serve({
-    port: process.env.PORT || 3000,
-    open: false,
-    server: {baseDir: root},
-    middleware: [
-      historyApiFallback(),
-      webpackDevMiddleware(compiler, {
-        stats: {
-          colors: colorsSupported,
-          chunks: false,
-          modules: false
-        },
-        publicPath: config.output.publicPath
-      }),
-      webpackHotMiddleware(compiler)
-    ]
-  });
+  // serve({
+  //   port: process.env.PORT || 3000,
+  //   open: false,
+  //   server: {baseDir: root},
+  //   middleware: [
+  //     historyApiFallback(),
+  //     webpackDevMiddleware(compiler, {
+  //       stats: {
+  //         colors: colorsSupported,
+  //         chunks: false,
+  //         modules: false
+  //       },
+  //       publicPath: config.output.publicPath
+  //     }),
+  //     webpackHotMiddleware(compiler)
+  //   ]
+  // });
+
+  spawn('node', ['server'], { stdio: 'inherit' });
+
 });
 
 gulp.task('watch', ['serve']);
