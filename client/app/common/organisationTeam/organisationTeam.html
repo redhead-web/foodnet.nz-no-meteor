@@ -1,0 +1,12 @@
+<md-card flex layout="column" align="left">
+  <md-list flex>
+    <md-subheader class="md-no-sticky">inputs</md-subheader>
+    <md-list-item class="md-2-line" ng-repeat="person in $ctrl.team">
+      <user-avatar class="md-avatar" size="40"></user-avatar>
+      <div class="md-list-item-text" layout="column">
+        <h3>{{person.name}}</h3>
+        <p>{{person.roles[0]}}</p>
+      </div>
+    </md-list-item>
+  </md-list>
+</md-card>

@@ -8,8 +8,16 @@
 </navbar>
 <main layout="column" flex style="min-height:100vh;" align="center">
   <md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Home">
+      <organisation-dashboard-home
+        organisation="$ctrl.organisation">
+      </organisation-dashboard-home>
+    </md-tab>
     <md-tab label="Info">
-      <organisation-dashboard-info organisation="$ctrl.organisation"></organisation-dashboard-info>
+      <organisation-dashboard-info
+        organisation="$ctrl.organisation"
+        team="$ctrl.organisationTeam">
+      </organisation-dashboard-info>
     </md-tab>
     <md-tab label="I/O">
       <organisation-dashboard-i-o

@@ -1,0 +1,19 @@
+<md-card flex layout="column" align="left">
+  <md-card-content flex layout="column">
+    {{$ctrl.organisation.type}}<br/>
+    {{$ctrl.organisation.registration}}<br/><br/>
+    <span ng-if="$ctrl.organisation.gstReg">
+      GST Registered<br/>
+      {{$ctrl.organisation.gstNum}}
+    </span>
+    <span ng-if="!$ctrl.organisation.gstReg">
+      Not GST Registered<br/>
+    </span>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+      <md-button>Website</md-button>
+      <md-button>Contact</md-button>
+      <md-button>Facebook</md-button>
+      <md-button>Twitter</md-button>
+  </md-card-actions>
+</md-card>

@@ -1,0 +1,33 @@
+<md-card flex layout="column" align="left">
+  <md-list flex>
+    <md-list-item class="md-2-line">
+      <organisation-avatar class="md-avatar" width="40"></organisation-avatar>
+      <div class="md-list-item-text" layout="column">
+        <h3>{{$ctrl.organisation.name}}</h3>
+        <p>{{$ctrl.organisation.tagLine}}</p>
+      </div>
+    </md-list-item>
+  </md-list>
+
+  <organisation-splash flex layout="column" organisation="$ctrl.organisation"></organisation-splash>
+
+  <md-card-content flex layout="row">
+    <p>{{$ctrl.organisation.description.short}}</p>
+  </md-card-content>
+  
+  <md-card-actions layout="row" layout-align="end center">
+      <md-button>Website</md-button>
+      <md-button>Contact</md-button>
+      <md-button>Facebook</md-button>
+      <md-button>Twitter</md-button>
+  </md-card-actions>
+</md-card>
+
+<organisation-location organisation="$ctrl.organisation"></organisation-location>
+
+<md-card flex layout="column" align="left">
+  <md-card-content flex layout="column">
+    <h3>Description</h3>
+    {{$ctrl.organisation.description.long}}
+  </md-card-content>
+</md-card>

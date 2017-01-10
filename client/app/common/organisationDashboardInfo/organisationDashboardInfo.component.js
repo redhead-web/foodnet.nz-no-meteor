@@ -6,6 +6,7 @@ const organisationDashboardInfoComponent = {
   restrict: 'E',
   bindings: {
     organisation: '<',
+    team: '<',
   },
   template,
   controller,

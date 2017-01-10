@@ -6,6 +6,10 @@ import SearchCommon from './searchCommon/searchCommon';
 import OrganisationList from './organisationList/organisationList';
 import OrganisationSplash from './organisationSplash/organisationSplash';
 import OrganisationSummary from './organisationSummary/organisationSummary';
+import OrganisationLocation from './organisationLocation/organisationLocation';
+import OrganisationTeam from './organisationTeam/organisationTeam';
+import OrganisationInfo from './organisationInfo/organisationInfo';
+import OrganisationDashboardHome from './organisationDashboardHome/organisationDashboardHome';
 import OrganisationDashboardInfo from './organisationDashboardInfo/organisationDashboardInfo';
 import OrganisationDashboardIO from './organisationDashboardIO/organisationDashboardIO';
 import OrganisationAvatar from './organisationAvatar/organisationAvatar';
@@ -29,6 +33,10 @@ const commonModule = angular.module('app.common', [
   OrganisationList,
   OrganisationSplash,
   OrganisationSummary,
+  OrganisationLocation,
+  OrganisationTeam,
+  OrganisationInfo,
+  OrganisationDashboardHome,
   OrganisationDashboardInfo,
   OrganisationDashboardIO,
   OrganisationAvatar,
