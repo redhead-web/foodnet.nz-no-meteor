@@ -1,10 +1,12 @@
 import angular from 'angular';
 import Home from './home/home';
-import About from './about/about';
+import Profile from './profile/profile';
+import Organisation from './organisation/organisation';
 
 const componentModule = angular.module('app.components', [
   Home,
-  About,
+  Profile,
+  Organisation,
 ])
 
 .name;

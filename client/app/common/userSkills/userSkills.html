@@ -1,0 +1,11 @@
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-card-content>
+    <h4>Skills</h4>
+    <!-- no idea why this is not working-->
+    {{$ctrl.skillsSummary.seniorSkills}} Senior Skills<br/>
+    {{$ctrl.skillsSummary.intermediateSkills}} Intermediate Skills <br/>
+    {{$ctrl.skillsSummary.juniorSkills}} Junior Skills <br/>
+    {{$ctrl.skillsSummary.qualifications}} Qualifications <br/>
+  </md-card-content>
+  <skill-list user="$ctrl.user" skills="$ctrl.skills"></skill-list>
+</md-card>

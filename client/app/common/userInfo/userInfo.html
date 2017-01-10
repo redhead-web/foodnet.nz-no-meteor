@@ -1,0 +1,20 @@
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-list flex>
+    <md-list-item class="md-2-line">
+      <user-avatar class="md-avatar" size="40"></user-avatar>
+      <div class="md-list-item-text" layout="column">
+        <h3>{{$ctrl.user.profile.name}}</h3>
+        <p>{{$ctrl.user.profile.description.short}}</p>
+      </div>
+    </md-list-item>
+    <md-list-item class="md-1-line">
+      <span><md-icon>phone</md-icon> {{$ctrl.user.profile.phone}}</span>
+    </md-list-item>
+    <md-list-item class="md-1-line">
+      <span><md-icon>email</md-icon> {{$ctrl.user.profile.email}}</span>
+    </md-list-item>
+    <md-list-item class="md-1-line">
+      <span><md-icon>location_on</md-icon> {{$ctrl.user.profile.address.vacinity}}</span>
+    </md-list-item>
+  </md-list>
+</md-card>

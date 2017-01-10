@@ -1,0 +1,22 @@
+<navbar
+  user="$ctrl.user"
+  user-active="$ctrl.userActive"
+  search-filter="$ctrl.searchFilter"
+  search-active="$ctrl.searchActive"
+  search-disabled="true"
+  title="Food Map">
+</navbar>
+<main layout="column" flex style="min-height:100vh;" align="center">
+  <md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Info">
+      <organisation-dashboard-info organisation="$ctrl.organisation"></organisation-dashboard-info>
+    </md-tab>
+    <md-tab label="I/O">
+      <organisation-dashboard-i-o
+        organisation="$ctrl.organisation"
+        inputs="$ctrl.organisationInputs"
+        outputs="$ctrl.organisationOutputs">
+      </organisation-dashboard-i-o>
+    </md-tab>
+  </md-tabs>
+</main>

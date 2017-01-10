@@ -4,7 +4,14 @@ import './navbar.scss';
 
 const navbarComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    user: '<',
+    userActive: '<',
+    title: '@',
+    searchFilter: '=',
+    searchActive: '=',
+    searchDisabled: '<',
+  },
   template,
   controller,
 };

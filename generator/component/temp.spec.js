@@ -12,7 +12,7 @@ describe('<%= upCaseName %>', () => {
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      expect($rootScope).to.exist;
+      expect($rootScope).to.exist();
       return new <%= upCaseName %>Controller();
     };
   }));
