@@ -1,0 +1,24 @@
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-card-content>
+    <md-input-container class="md-block">
+      <label>Name</label>
+      <input ng-model="$ctrl.user.profile.name">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Email</label>
+      <input ng-model="$ctrl.user.emails[0].address" type="email">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Phone</label>
+      <input ng-model="$ctrl.user.profile.phone">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Address</label>
+      <textarea ng-model="$ctrl.user.profile.address" rows="3" md-select-on-focus></textarea>
+    </md-input-container>
+
+  </md-card-content>
+</md-card>

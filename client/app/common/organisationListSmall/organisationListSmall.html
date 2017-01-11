@@ -1,0 +1,12 @@
+<md-list flex>
+  <md-subheader class="md-no-sticky" ng-if="!$ctrl.hideHeader">Organisations</md-subheader>
+  <md-list-item class="md-2-line" ng-repeat="organisation in $ctrl.organisations">
+    <organisation-avatar class="md-avatar" size="40"></organisation-avatar>
+    <div class="md-list-item-text" layout="column">
+      <h3>{{organisation.name}}</h3>
+      <p>{{organisation.tagLine}}</p>
+    </div>
+    <span flex></span>
+    <md-icon style="color:black;" ng-if="$ctrl.pageOwned">close</md-icon>
+  </md-list-item>
+</md-list>

@@ -3,7 +3,12 @@ import Navbar from './navbar/navbar';
 import PromoSplash from './promoSplash/promoSplash';
 import SearchBar from './searchBar/searchBar';
 import SearchCommon from './searchCommon/searchCommon';
+import ProfileEditBasic from './profileEditBasic/profileEditBasic';
+import ProfileEditOrganisations from './profileEditOrganisations/profileEditOrganisations';
+import ProfileEditSkills from './profileEditSkills/profileEditSkills';
+import ProfileEditLinks from './profileEditLinks/profileEditLinks';
 import OrganisationList from './organisationList/organisationList';
+import OrganisationListSmall from './organisationListSmall/organisationListSmall';
 import OrganisationSplash from './organisationSplash/organisationSplash';
 import OrganisationSummary from './organisationSummary/organisationSummary';
 import OrganisationLocation from './organisationLocation/organisationLocation';
@@ -38,7 +43,12 @@ const commonModule = angular.module('app.common', [
   PromoSplash,
   SearchBar,
   SearchCommon,
+  ProfileEditBasic,
+  ProfileEditOrganisations,
+  ProfileEditSkills,
+  ProfileEditLinks,
   OrganisationList,
+  OrganisationListSmall,
   OrganisationSplash,
   OrganisationSummary,
   OrganisationLocation,

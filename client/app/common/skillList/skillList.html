@@ -1,10 +1,12 @@
 <md-list flex>
-  <md-subheader class="md-no-sticky">Skills</md-subheader>
+  <md-subheader class="md-no-sticky" ng-if="!$ctrl.hideHeader">Skills</md-subheader>
   <md-list-item class="md-2-line" ng-repeat="skill in $ctrl.skills">
     <skill-avatar class="md-avatar" size="40"></skill-avatar>
     <div class="md-list-item-text" layout="column">
       <h3>{{skill.name}}</h3>
-      <p>{{skill.level}} - {{skill.description}}</p>
+      <p>{{skill.level}}</p>
     </div>
+    <span flex></span>
+    <md-icon style="color:black;" ng-if="$ctrl.pageOwned">close</md-icon>
   </md-list-item>
 </md-list>

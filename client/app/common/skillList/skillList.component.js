@@ -5,8 +5,9 @@ import './skillList.scss';
 const skillListComponent = {
   restrict: 'E',
   bindings: {
-    user: '<',
     skills: '<',
+    hideHeader: '<',
+    pageOwned: '<',
   },
   template,
   controller,

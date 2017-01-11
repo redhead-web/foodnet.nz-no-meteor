@@ -1,0 +1,43 @@
+<main layout="column" flex style="min-height:100vh;">
+  <!-- list -->
+  <div ng-if="$ctrl.editType === 'profile'">
+    <span layout="row">
+      <md-button aria-label="More" class="md-icon-button" ui-sref="profile">
+        <md-icon style="color:black;">close</md-icon>
+      </md-button>
+      <h3>{{$ctrl.editType}} setings</h3>
+    </span>
+    <md-card flex layout="column" style="outline:none;" align="left">
+      <md-card-content>
+        <md-list>
+          <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'organisations'">organisations</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'skills'">skills</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <!-- detail -->
+  <div ng-if="$ctrl.editType !== 'profile'">
+    <span layout="row">
+      <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.editType = 'profile'">
+        <md-icon style="color:black;">keyboard_backspace</md-icon>
+      </md-button>
+      <h3>{{$ctrl.editType}} setings</h3>
+    </span>
+  </div>
+  <div ng-if="$ctrl.editType === 'basic'">
+    <profile-edit-basic user="$ctrl.user"></profile-edit-basic>
+  </div>
+  <div ng-if="$ctrl.editType === 'organisations'">
+    <profile-edit-organisations user="$ctrl.user" organisations="$ctrl.userOrganisations"></profile-edit-branding-organisations>
+  </div>
+  <div ng-if="$ctrl.editType === 'skills'">
+    <profile-edit-skills user="$ctrl.user" skills="$ctrl.userSkills"></profile-edit-skillss>
+  </div>
+  <div ng-if="$ctrl.editType === 'links'">
+    <profile-edit-links user="$ctrl.user"></profile-edit-links>
+  </div>
+</main>
