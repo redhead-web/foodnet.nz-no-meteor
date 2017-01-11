@@ -6,6 +6,8 @@ const iOOutputListComponent = {
   restrict: 'E',
   bindings: {
     outputs: '<',
+    pageOwned: '<',
+    hideHeader: '<',
   },
   template,
   controller,

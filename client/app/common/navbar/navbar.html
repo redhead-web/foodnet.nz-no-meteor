@@ -32,6 +32,20 @@
     <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.searchActive = !$ctrl.searchActive; $ctrl.searchFilter = ''" ng-if="!$ctrl.searchDisabled">
       <md-icon style="color:black;">{{$ctrl.searchActive ? 'close' : 'search'}}</md-icon>
     </md-button>
+
+    <md-menu>
+      <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
+        <md-icon style="color:black;">more_vert</md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-list>
+          <md-list-item class="md-2-line" ui-sref="home"><span><md-icon style="color:black;">share</md-icon> Share</span></md-list-item>
+          <md-list-item class="md-2-line" ui-sref="home"><span><md-icon style="color:black;">cloud_upload</md-icon> Analytics</span></md-list-item>
+          <md-list-item class="md-2-line" ui-sref="home" ng-if="$ctrl.pageOwned"><span><md-icon style="color:black;">content_copy</md-icon> Copy</span></md-list-item>
+          <md-list-item class="md-2-line" ui-sref="organisationEdit" ng-if="$ctrl.pageOwned"><span><md-icon style="color:black;">print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
+        </md-list>
+      </md-menu-content>
+    </md-menu>
   </div>
 </md-toolbar>
 
@@ -45,7 +59,7 @@
   md-component-id="menu"
   md-whiteframe="4">
     <md-content layout-padding style="background:grey;" ng-if="$ctrl.userActive" align="left">
-      <user-avatar width="75"></user-avatar>
+      <user-avatar size="75"></user-avatar>
       <br/>
       <span style="color:white;">{{$ctrl.user.emails[0].address || ''}}</span>
     </md-content>

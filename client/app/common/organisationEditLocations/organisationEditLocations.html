@@ -1,0 +1,16 @@
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-card-content>
+    <md-list flex>
+      <md-list-item ng-repeat="location in $ctrl.organisation.locations" layout="row">
+        <span>{{location.address}}</span><span flex></span><md-icon style="color:black;">close</md-icon>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>
+
+<span layout="row">
+  <span flex></span>
+  <md-button class="md-fab md-primary" aria-label="Add">
+    <md-icon>add</md-icon>
+  </md-button>
+</span>

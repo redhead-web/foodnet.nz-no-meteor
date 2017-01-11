@@ -13,6 +13,14 @@ import OrganisationDashboardHome from './organisationDashboardHome/organisationD
 import OrganisationDashboardInfo from './organisationDashboardInfo/organisationDashboardInfo';
 import OrganisationDashboardIO from './organisationDashboardIO/organisationDashboardIO';
 import OrganisationAvatar from './organisationAvatar/organisationAvatar';
+import OrganisationEditBasic from './organisationEditBasic/organisationEditBasic';
+import OrganisationEditBranding from './organisationEditBranding/organisationEditBranding';
+import OrganisationEditLocations from './organisationEditLocations/organisationEditLocations';
+import OrganisationEditDescription from './organisationEditDescription/organisationEditDescription';
+import OrganisationEditTeam from './organisationEditTeam/organisationEditTeam';
+import OrganisationEditInputs from './organisationEditInputs/organisationEditInputs';
+import OrganisationEditOutputs from './organisationEditOutputs/organisationEditOutputs';
+import OrganisationEditLinks from './organisationEditLinks/organisationEditLinks';
 import IOInputList from './iOInputList/iOInputList';
 import IOOutputList from './iOOutputList/iOOutputList';
 import IOAvatar from './iOAvatar/iOAvatar';
@@ -40,6 +48,14 @@ const commonModule = angular.module('app.common', [
   OrganisationDashboardInfo,
   OrganisationDashboardIO,
   OrganisationAvatar,
+  OrganisationEditBasic,
+  OrganisationEditBranding,
+  OrganisationEditLocations,
+  OrganisationEditDescription,
+  OrganisationEditTeam,
+  OrganisationEditInputs,
+  OrganisationEditOutputs,
+  OrganisationEditLinks,
   IOInputList,
   IOOutputList,
   IOAvatar,

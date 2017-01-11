@@ -14,6 +14,10 @@ class NavbarController {
     this.toggle = () => {
       $mdSidenav('menu').toggle();
     };
+
+    this.openMenu = ($mdOpenMenu, ev) => {
+      $mdOpenMenu(ev);
+    };
   }
 
   goTo(location) {

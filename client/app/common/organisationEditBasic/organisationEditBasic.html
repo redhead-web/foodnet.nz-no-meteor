@@ -1,0 +1,24 @@
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-card-content>
+    <md-input-container class="md-block">
+      <label>Name</label>
+      <input ng-model="$ctrl.organisation.name">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Type</label>
+      <input ng-model="$ctrl.organisation.type">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Registration</label>
+      <input ng-model="$ctrl.organisation.registration">
+    </md-input-container>
+
+    <md-switch ng-model="$ctrl.organisation.gstReg">{{$ctrl.organisation.gstReg ? "GST Registered" : "Not GST Registered"}}</md-switch>
+    <md-input-container class="md-block" ng-if="$ctrl.organisation.gstReg">
+      <label>GST Number</label>
+      <input ng-model="$ctrl.organisation.gstNum">
+    </md-input-container>
+  </md-card-content>
+</md-card>

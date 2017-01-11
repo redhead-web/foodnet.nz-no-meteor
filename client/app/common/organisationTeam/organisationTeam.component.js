@@ -7,6 +7,7 @@ const organisationTeamComponent = {
   bindings: {
     organisation: '<',
     team: '<',
+    pageOwned: '<',
   },
   template,
   controller,

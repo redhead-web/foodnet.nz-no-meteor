@@ -6,6 +6,8 @@ const iOInputListComponent = {
   restrict: 'E',
   bindings: {
     inputs: '<',
+    pageOwned: '<',
+    hideHeader: '<',
   },
   template,
   controller,

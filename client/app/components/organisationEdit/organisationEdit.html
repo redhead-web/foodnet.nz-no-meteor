@@ -1,0 +1,59 @@
+<main layout="column" flex style="min-height:100vh;">
+  <!-- list -->
+  <div ng-if="$ctrl.editType === 'organisation'">
+    <span layout="row">
+      <md-button aria-label="More" class="md-icon-button" ui-sref="organisation">
+        <md-icon style="color:black;">close</md-icon>
+      </md-button>
+      <h3>{{$ctrl.editType}} setings</h3>
+    </span>
+    <md-card flex layout="column" style="outline:none;" align="left">
+      <md-card-content>
+        <md-list>
+          <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'branding'">branding</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'locations'">locations</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'description'">description</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'team'">team</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'inputs'">inputs</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'outputs'">outputs</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <!-- detail -->
+  <div ng-if="$ctrl.editType !== 'organisation'">
+    <span layout="row">
+      <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.editType = 'organisation'">
+        <md-icon style="color:black;">keyboard_backspace</md-icon>
+      </md-button>
+      <h3>{{$ctrl.editType}} setings</h3>
+    </span>
+  </div>
+  <div ng-if="$ctrl.editType === 'basic'">
+    <organisation-edit-basic organisation="$ctrl.organisation"></organisation-edit-basic>
+  </div>
+  <div ng-if="$ctrl.editType === 'branding'">
+    <organisation-edit-branding organisation="$ctrl.organisation"></organisation-edit-branding>
+  </div>
+  <div ng-if="$ctrl.editType === 'locations'">
+    <organisation-edit-locations organisation="$ctrl.organisation"></organisation-edit-locations>
+  </div>
+  <div ng-if="$ctrl.editType === 'description'">
+    <organisation-edit-description organisation="$ctrl.organisation"></organisation-edit-description>
+  </div>
+  <div ng-if="$ctrl.editType === 'team'">
+    <organisation-edit-team organisation="$ctrl.organisation" team="$ctrl.organisationTeam"></organisation-edit-team>
+  </div>
+  <div ng-if="$ctrl.editType === 'inputs'">
+    <organisation-edit-inputs organisation="$ctrl.organisation" inputs="$ctrl.organisationInputs"></organisation-edit-inputs>
+  </div>
+  <div ng-if="$ctrl.editType === 'outputs'">
+    <organisation-edit-outputs organisation="$ctrl.organisation" outputs="$ctrl.organisationOutputs"></organisation-edit-outputs>
+  </div>
+  <div ng-if="$ctrl.editType === 'links'">
+    <organisation-edit-links organisation="$ctrl.organisation"></organisation-edit-links>
+  </div>
+</main>

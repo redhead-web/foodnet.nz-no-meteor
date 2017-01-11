@@ -1,0 +1,16 @@
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-card-content>
+    <organisation-avatar size="60"></organisation-avatar> Company Avatar<br/><br/>
+    <organisation-avatar size="60"></organisation-avatar> Company Logo
+
+    <md-input-container class="md-block">
+      <label>Tagline</label>
+      <input ng-model="$ctrl.organisation.tagLine">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Short Description</label>
+      <textarea ng-model="$ctrl.organisation.description.short" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+    </md-input-container>
+  </md-card-content>
+</md-card>

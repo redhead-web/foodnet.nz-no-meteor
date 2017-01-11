@@ -1,15 +1,14 @@
 <div
   flex
-  layout="row"
+  layout="column"
   layout-align="center bottom"
   align="center"
-  style = "background:black;
-          background-image: url('./splash/splash1.jpg);
+  style = "height: 150px;
+          background-image: url({{$ctrl.img}});
           background-repeat: no-repeat;
           background-size:cover;">
 
-  <span flex="10"></span>
-  <h1
-    style="color:white;">{{$ctrl.text}}</h1>
-  <span flex="10"></span>
+  <span></span>
+  <h1 style="color:white;">{{$ctrl.text}}</h1>
+  <span></span>
 </div>
