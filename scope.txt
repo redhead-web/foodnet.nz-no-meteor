@@ -47,6 +47,7 @@
 - name
 - NZQA code
 - training institute
+- skill level
 
 // skill relationship
 - scaled relationship with user

@@ -1,23 +1,30 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const authenticationMiddleware = require('./middleware');
+const router = require('./routes');
+const find = require('lodash').find;
 
 
 const testUser = {
-  username: 'test-user',
+  emails: [
+    { address: 'sean@maplekiwi.com', verified: false },
+  ],
   password: 'test-password',
+  profile: {
+    name: 'Sean Stanley',
+  },
   id: 1,
 };
 
-function findUser(username, callback) {
-  if (username === testUser.username) {
+function findUser(email, callback) {
+  if (find(testUser.emails, { address: email.toLowerCase() })) {
     return callback(null, testUser);
   }
   return callback(null);
 }
 
 passport.serializeUser((user, cb) => {
-  cb(null, user.username);
+  cb(null, user.emails[0].address);
 });
 
 passport.deserializeUser((username, cb) => {
@@ -25,7 +32,7 @@ passport.deserializeUser((username, cb) => {
 });
 
 
-function initPassport() {
+function initPassport(app) {
   passport.use(new LocalStrategy(
     (username, password, done) => {
       findUser(username, (err, user) => {
@@ -43,6 +50,7 @@ function initPassport() {
     }
   ));
   passport.authenticationMiddleware = authenticationMiddleware;
+  app.use('/auth', router);
 }
 
 module.exports = initPassport;
