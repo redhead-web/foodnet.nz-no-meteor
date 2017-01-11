@@ -13,7 +13,7 @@ export default angular.module('organisation', [
 
   $stateProvider
     .state('organisation', {
-      url: '/organisation',
+      url: '/organisation/:organisationId',
       component: 'organisation',
     });
 })

@@ -1,9 +1,9 @@
-<!-- top menu when large -->
+<!-- top menu when large >
 <md-nav-bar
   md-selected-nav-item="currentNavItem"
   nav-bar-aria-label="navigation links"
   hide-xs>
-  <!-- pages -->
+  <! pages >
   <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home">Home</md-nav-item>
   <md-nav-item md-nav-click="$ctrl.goTo('profile')" name="profile" ng-if="$ctrl.userActive">My Profile</md-nav-item>
   <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home" ng-if="$ctrl.userActive">My Organisations</md-nav-item>
@@ -11,15 +11,16 @@
   <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home" ng-if="$ctrl.userActive">Bookmarks</md-nav-item>
   <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home" ng-if="$ctrl.userActive">Endorsements</md-nav-item>
   <span flex></span>
-  <!-- log in button -->
-  <!--<auth-login-button></auth-login-button>-->
+  <! log in button >
+  <!<auth-login-button></auth-login-button>>
   <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.searchActive = !$ctrl.searchActive; $ctrl.searchFilter = ''" ng-if="!$ctrl.searchDisabled">
     <md-icon style="color:black;">{{$ctrl.searchActive ? 'close' : 'search'}}</md-icon>
   </md-button>
 </md-nav-bar>
+-->
 
-<!-- side menu when small -->
-<md-toolbar hide-gt-xs>
+<!-- side menu -->
+<md-toolbar>
   <div class="md-toolbar-tools">
     <!-- menu button -->
     <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.toggle()">
@@ -31,6 +32,10 @@
     <!--<auth-login-button></auth-login-button>-->
     <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.searchActive = !$ctrl.searchActive; $ctrl.searchFilter = ''" ng-if="!$ctrl.searchDisabled">
       <md-icon style="color:black;">{{$ctrl.searchActive ? 'close' : 'search'}}</md-icon>
+    </md-button>
+
+    <md-button aria-label="bookmark" class="md-icon-button" ng-click="$ctrl.toggleBookmark()" ng-if="$ctrl.pageType === 'organisation'">
+      <md-icon style="color:black;">{{$ctrl.bookmarked ? 'bookmark' : 'bookmark_border'}}</md-icon>
     </md-button>
 
     <md-menu>
@@ -66,8 +71,9 @@
     </md-content>
     <md-list layout-align="space-around" layout="column">
       <!-- pages -->
+      <md-list-item ui-sref="logIn" ng-click="$ctrl.toggle()" ng-if="!$ctrl.userActive"><span><md-icon>account_box</md-icon> Log In</span></md-list-item>
       <md-list-item ui-sref="home" ng-click="$ctrl.toggle()"><span><md-icon>home</md-icon> Home</span></md-list-item>
-      <md-list-item ui-sref="profile" ng-click="$ctrl.toggle()"><span><md-icon>account_box</md-icon> My Profile</span></md-list-item>
+      <md-list-item ui-sref="profile({userId: $ctrl.userActive})" ng-click="$ctrl.toggle()" ng-if="$ctrl.userActive"><span><md-icon>account_box</md-icon> My Profile</span></md-list-item>
       <md-list-item ui-sref="home" ng-click="$ctrl.toggle()" ng-if="$ctrl.userActive"><span><md-icon>send</md-icon> My Organisations</span></md-list-item>
       <md-list-item ui-sref="home" ng-click="$ctrl.toggle()" ng-if="$ctrl.userActive"><span><md-icon>forum</md-icon> Messages</span></md-list-item>
       <md-list-item ui-sref="home" ng-click="$ctrl.toggle()" ng-if="$ctrl.userActive"><span><md-icon>bookmark</md-icon> Bookmarks</span></md-list-item>

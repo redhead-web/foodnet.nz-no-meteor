@@ -1,0 +1,38 @@
+<navbar
+  user="$ctrl.user"
+  user-active="$ctrl.userActive"
+  search-filter="$ctrl.searchFilter"
+  search-active="$ctrl.searchActive"
+  title="Food Map">
+</navbar>
+<main>
+  <md-card flex layout="column" align="left">
+    <md-card-content>
+      <div ng-if="$ctrl.message">{{$ctrl.message}}</div>
+      <span ng-if="!$ctrl.recover">
+        <h3>Log In</h3>
+        <md-input-container class="md-block">
+          <label>Email</label>
+          <input ng-model="$ctrl.authentication.email" type="email">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Password</label>
+          <input ng-model="$ctrl.authentication.password" type="password">
+        </md-input-container>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="$ctrl.logIn()">Log In</md-button>
+        </md-card-actions>
+      </span>
+      <span ng-if="$ctrl.recover">
+        <md-input-container class="md-block">
+          <label>Email</label>
+          <input ng-model="$ctrl.authentication.email" type="email">
+        </md-input-container>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="$ctrl.recoveryEmail(); $ctrl.recover = !$ctrl.recover">Send recovery email</md-button>
+        </md-card-actions>
+      </span>
+    </md-card-content>
+  </md-card>
+  <div align="right" class="addPadding"><a href="#" ng-click="$ctrl.recover = !$ctrl.recover">{{$ctrl.recover ? 'Log In' : 'forgot password?'}}</a></div>
+</main>

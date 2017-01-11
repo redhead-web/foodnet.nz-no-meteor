@@ -1,8 +1,8 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import profileComponent from './profile.component';
+import logInComponent from './logIn.component';
 
-export default angular.module('profile', [
+export default angular.module('logIn', [
   uiRouter,
 ])
 
@@ -12,12 +12,12 @@ export default angular.module('profile', [
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('profile', {
-      url: '/profile/:userId',
-      component: 'profile',
+    .state('logIn', {
+      url: '/logIn',
+      component: 'logIn',
     });
 })
 
-.component('profile', profileComponent)
+.component('logIn', logInComponent)
 
 .name;

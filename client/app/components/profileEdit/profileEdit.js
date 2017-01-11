@@ -13,7 +13,7 @@ export default angular.module('profileEdit', [
 
   $stateProvider
     .state('profileEdit', {
-      url: '/profileEdit',
+      url: '/profileEdit/:userId',
       component: 'profileEdit',
     });
 })

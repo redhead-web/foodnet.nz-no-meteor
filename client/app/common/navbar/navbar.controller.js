@@ -4,6 +4,14 @@ class NavbarController {
 
     this.go = $state.go;
     this.name = 'navbar';
+    this.bookmarked = false;
+    if (this.organisationActive) {
+      for (let index = 0; index < this.user.profile.bookmarks.length; index += 1) {
+        if (this.user.profile.bookmarks[index] === this.organisationActive) {
+          this.bookmarked = true;
+        }
+      }
+    }
 
     // watch for state changes
     // $scope.$watch($state.current.name, () => {
@@ -22,6 +30,11 @@ class NavbarController {
 
   goTo(location) {
     this.go(location);
+  }
+
+  toggleBookmark() {
+    // call to database
+    this.bookmarked = !this.bookmarked;
   }
 }
 

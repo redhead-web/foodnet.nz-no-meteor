@@ -7,6 +7,7 @@ const navbarComponent = {
   bindings: {
     user: '<',
     userActive: '<',
+    organisationActive: '<',
     title: '@',
     searchFilter: '=',
     searchActive: '=',
