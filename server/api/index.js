@@ -19,10 +19,14 @@ if (isProd) {
   app.use(session({
     store: new RedisStore(options),
     secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
   }));
 } else {
   app.use(session({
     secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
   }));
 }
 

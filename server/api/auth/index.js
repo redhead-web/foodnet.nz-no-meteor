@@ -28,6 +28,7 @@ passport.serializeUser((user, cb) => {
 });
 
 passport.deserializeUser((username, cb) => {
+  console.log(username);
   findUser(username, cb);
 });
 

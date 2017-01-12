@@ -34,4 +34,8 @@ router.get('/logout', (req, res) => {
   res.status(200).send('loggedOut');
 });
 
+router.get('/is-signed-in', authMiddleware(), (req, res) => {
+  res.send(req.user);
+});
+
 module.exports = router;
