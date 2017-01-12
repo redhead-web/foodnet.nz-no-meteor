@@ -21,5 +21,10 @@ angular.module('app', [
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
+  .config(($mdThemingProvider) => {
+    'ngInject';
+
+    $mdThemingProvider.theme('default').primaryPalette('grey').accentPalette('teal');
+  })
 
   .component('app', AppComponent);
