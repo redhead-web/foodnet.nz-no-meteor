@@ -1,5 +1,5 @@
 <navbar
-  user="$ctrl.user"
+  user="$ctrl.profileData.person"
   user-active="$ctrl.userActive"
   search-filter="$ctrl.searchFilter"
   search-active="$ctrl.searchActive"
@@ -9,18 +9,18 @@
   page-type="profile">
 </navbar>
 <main>
-  {{$ctrl.profileData}}
-  <user-info user="$ctrl.profileData.person"></user-info>
-  <user-associations user="$ctrl.profileData.person" organisations-summary="$ctrl.userOrganisationsSummary"></user-associations>
-  <organisation-list
-    layout="row"
-    flex
-    organisations="$ctrl.userOrganisations">
-  </organisation-list>
+  <user-info
+    user="$ctrl.profileData.person">
+  </user-info>
+  <user-associations
+    user="$ctrl.profileData.person"
+    organisations="$ctrl.profileData.organisations"
+    organisations-summary="$ctrl.profileData.organisationsSummary">
+  </user-associations>
 
   <user-skills
-    user="$ctrl.user"
-    skills="$ctrl.userSkills"
-    skills-summary"$ctrl.userSkillsSummary">
+    user="$ctrl.profileData.person"
+    skills="$ctrl.profileData.skills"
+    skills-summary="$ctrl.profileData.skillsSummary">
   </user-skills>
 </main>

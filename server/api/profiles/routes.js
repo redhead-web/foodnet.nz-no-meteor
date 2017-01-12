@@ -12,11 +12,12 @@ router.get('/:profileId', (req, res) => {
         phone: '0210409066',
         address: { vacinity: 'Whangarei, Northland' },
         description: { short: 'I am good at everything' },
+        social: { email: 'email@email.com', facebook: 'facebook link', twitter: 'twitter link', instagram: 'instagram link', youtube: 'youtube link' },
       },
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     skills: [{ _id: 'someId', name: 'leetHaxoring', description: 'spooon!', level: 'Senior' }, { _id: 'someOtherId', name: 'Java', description: 'spooon!', level: 'Intermediate' }],
-    organisationSummary: { workingAt: 1, workedAt: 4, owned: 1 },
+    organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
     organisations: [{ _id: 'someId', name: 'Super Awesome Company', tags: 'carrots' }, { _id: 'someOtherId', name: 'A Company', tags: 'beans' }, { _id: 'someMoreId', name: 'Another Company', tags: 'HTML' }, { _id: 'someAlternateId', name: 'Yet Another Company', tags: 'Lamb' }],
   });
 });

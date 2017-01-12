@@ -6,6 +6,7 @@ const userAssociationsComponent = {
   restrict: 'E',
   bindings: {
     user: '<',
+    organisations: '<',
     organisationsSummary: '<',
   },
   template,

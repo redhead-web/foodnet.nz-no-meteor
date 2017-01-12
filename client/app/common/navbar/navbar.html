@@ -48,7 +48,7 @@
           <md-list-item class="md-2-line" ui-sref="home"><span><md-icon style="color:black;">cloud_upload</md-icon> Analytics</span></md-list-item>
           <md-list-item class="md-2-line" ui-sref="home" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon style="color:black;">content_copy</md-icon> Copy</span></md-list-item>
           <md-list-item class="md-2-line" ui-sref="organisationEdit" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon style="color:black;">print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
-          <md-list-item class="md-2-line" ui-sref="profileEdit" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'profile'"><span><md-icon style="color:black;">print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
+          <md-list-item class="md-2-line" ui-sref="profileEdit({userId: $ctrl.userActive})" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'profile'"><span><md-icon style="color:black;">print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
         </md-list>
       </md-menu-content>
     </md-menu>

@@ -4,7 +4,7 @@ import './profileEdit.scss';
 
 const profileEditComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: { profileData: '<' },
   template,
   controller,
 };
