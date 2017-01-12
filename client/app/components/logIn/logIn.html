@@ -6,7 +6,7 @@
   <md-card flex layout="column" align="left">
     <md-card-content>
       <div ng-if="$ctrl.message">{{$ctrl.message}}</div>
-      <span ng-if="!$ctrl.recover">
+      <span ng-if="$ctrl.state === 'logIn'">
         <h3>Log In</h3>
         <md-input-container class="md-block">
           <label>Email</label>
@@ -20,16 +20,41 @@
           <md-button ng-click="$ctrl.logIn()">Log In</md-button>
         </md-card-actions>
       </span>
-      <span ng-if="$ctrl.recover">
+      <span ng-if="$ctrl.state === 'recover'">
+        <h3>Recover Password</h3>
         <md-input-container class="md-block">
           <label>Email</label>
           <input ng-model="$ctrl.authentication.email" type="email">
         </md-input-container>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="$ctrl.recoveryEmail(); $ctrl.recover = !$ctrl.recover">Send recovery email</md-button>
+          <md-button ng-click="$ctrl.recoveryEmail(); $ctrl.state = 'logIn'">Send recovery email</md-button>
+        </md-card-actions>
+      </span>
+      <span ng-if="$ctrl.state === 'register'">
+        <h3>Create Account</h3>
+        <md-input-container class="md-block">
+          <label>Name</label>
+          <input ng-model="$ctrl.userInfo.name">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Email</label>
+          <input ng-model="$ctrl.authentication.email" type="email">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Password</label>
+          <input ng-model="$ctrl.authentication.password" type="password">
+        </md-input-container>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="$ctrl.createAccount(); $ctrl.state = 'logIn'">Create Account</md-button>
         </md-card-actions>
       </span>
     </md-card-content>
   </md-card>
-  <div align="right" class="addPadding"><a href="#" ng-click="$ctrl.recover = !$ctrl.recover">{{$ctrl.recover ? 'Log In' : 'forgot password?'}}</a></div>
+  <div class="addPadding" layout="row">
+    <a href="#" ng-click="$ctrl.state = 'register'" ng-if="$ctrl.state !== 'register'">Create Account</a>
+    <a href="#" ng-click="$ctrl.state = 'logIn'" ng-if="$ctrl.state === 'register'">Log in</a>
+    <span flex></span>
+    <a href="#" ng-click="$ctrl.state = 'recover'" ng-if="$ctrl.state !== 'recover'">forgot password?</a>
+    <a href="#" ng-click="$ctrl.state = 'logIn'" ng-if="$ctrl.state === 'recover'">Log in</a>
+  </div>
 </main>

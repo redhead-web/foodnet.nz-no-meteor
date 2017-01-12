@@ -6,15 +6,16 @@ class LogInController {
 
     // set up variables for logIn page
     this.authentication = { username: '', password: '' };
+    this.userInfo = { name: '' };
     this.message = false;
-    this.recover = false;
+    this.state = 'logIn';
 
     // login handler
     this.logIn = () => User.logIn(this.authentication, (err, user) => {
       if (user) {
         $state.go('home');
       } else {
-        this.error = err.data.message;
+        this.message = err.data.message;
       }
     });
 
@@ -25,6 +26,11 @@ class LogInController {
   recoveryEmail() {
     // send reovery email
     this.message = 'Recovery email sent';
+  }
+
+  createAccount() {
+    // create account
+    this.message = 'Account created';
   }
 }
 

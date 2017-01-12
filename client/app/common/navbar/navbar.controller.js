@@ -1,5 +1,5 @@
 class NavbarController {
-  constructor($state, $scope, $mdSidenav) {
+  constructor($state, $scope, $mdSidenav, User) {
     'ngInject';
 
     this.go = $state.go;
@@ -26,11 +26,16 @@ class NavbarController {
     this.openMenu = ($mdOpenMenu, ev) => {
       $mdOpenMenu(ev);
     };
+
+    this.logOut = () => {
+      User.logOut();
+    };
   }
 
   goTo(location) {
     this.go(location);
   }
+
 
   toggleBookmark() {
     // call to database
