@@ -2,7 +2,7 @@
   <!-- list -->
   <div ng-if="$ctrl.editType === 'organisation'">
     <span layout="row">
-      <md-button aria-label="More" class="md-icon-button" ui-sref="organisation">
+      <md-button aria-label="More" class="md-icon-button" ui-sref="organisation({organisationId: $ctrl.organisationActive})">
         <md-icon style="color:black;">close</md-icon>
       </md-button>
       <h3>{{$ctrl.editType}} setings</h3>
@@ -33,27 +33,46 @@
     </span>
   </div>
   <div ng-if="$ctrl.editType === 'basic'">
-    <organisation-edit-basic organisation="$ctrl.organisation"></organisation-edit-basic>
+    <organisation-edit-basic
+    organisation="$ctrl.organisationData.organisation">
+  </organisation-edit-basic>
   </div>
   <div ng-if="$ctrl.editType === 'branding'">
-    <organisation-edit-branding organisation="$ctrl.organisation"></organisation-edit-branding>
+    <organisation-edit-branding
+      organisation="$ctrl.organisationData.organisation">
+    </organisation-edit-branding>
   </div>
   <div ng-if="$ctrl.editType === 'locations'">
-    <organisation-edit-locations organisation="$ctrl.organisation"></organisation-edit-locations>
+    <organisation-edit-locations
+      organisation="$ctrl.organisationData.organisation">
+    </organisation-edit-locations>
   </div>
   <div ng-if="$ctrl.editType === 'description'">
-    <organisation-edit-description organisation="$ctrl.organisation"></organisation-edit-description>
+    <organisation-edit-description
+      organisation="$ctrl.organisationData.organisation">
+    </organisation-edit-description>
   </div>
   <div ng-if="$ctrl.editType === 'team'">
-    <organisation-edit-team organisation="$ctrl.organisation" team="$ctrl.organisationTeam"></organisation-edit-team>
+    <organisation-edit-team
+      organisation="$ctrl.organisationData.organisation"
+      team="$ctrl.organisationData.team">
+    </organisation-edit-team>
   </div>
   <div ng-if="$ctrl.editType === 'inputs'">
-    <organisation-edit-inputs organisation="$ctrl.organisation" inputs="$ctrl.organisationInputs"></organisation-edit-inputs>
+    <organisation-edit-inputs
+      organisation="$ctrl.organisationData.organisation"
+      inputs="$ctrl.organisationData.inputs">
+    </organisation-edit-inputs>
   </div>
   <div ng-if="$ctrl.editType === 'outputs'">
-    <organisation-edit-outputs organisation="$ctrl.organisation" outputs="$ctrl.organisationOutputs"></organisation-edit-outputs>
+    <organisation-edit-outputs
+      organisation="$ctrl.organisationData.organisation"
+      outputs="$ctrl.organisationData.outputs">
+    </organisation-edit-outputs>
   </div>
   <div ng-if="$ctrl.editType === 'links'">
-    <organisation-edit-links organisation="$ctrl.organisation"></organisation-edit-links>
+    <organisation-edit-links
+      organisation="$ctrl.organisationData.organisation">
+    </organisation-edit-links>
   </div>
 </main>

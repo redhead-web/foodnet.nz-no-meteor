@@ -1,11 +1,9 @@
 <navbar
-  user="$ctrl.user"
-  user-active="$ctrl.userActive"
-  organisation-active="$ctrl.organisationActive"
-  page-owned="true"
+  title="Food Map"
+  user-current="$root.currentUser"
   page-type="organisation"
-  page-id="$ctrl.organisation._id"
-  title="Food Map">
+  page-id="$ctrl.organisationActive"
+  page-owned="true">
 </navbar>
 <main layout="column" flex style="min-height:100vh;" align="center">
   <md-tabs md-dynamic-height md-border-bottom>

@@ -7,9 +7,6 @@ class LogInController {
     this.message = false;
     this.recover = false;
 
-    // ----- TODO: these need to be passed in through root scope -----
-    this.userActive = false;
-
     this.logIn = () => User.logIn(this.authentication, (err, user) => {
       if (user) {
         $state.go('home');

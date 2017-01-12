@@ -1,9 +1,9 @@
 <navbar
-  user="$ctrl.profileData.person"
-  user-active="$ctrl.userActive"
   title="Food Map"
-  page-owned="true"
-  page-type="profile">
+  page-type="profile"
+  page-id="$ctrl.userActive"
+  user-current="$root.currentUser"
+  page-owned="true">
 </navbar>
 <main>
   <user-info
