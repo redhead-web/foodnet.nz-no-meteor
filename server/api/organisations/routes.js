@@ -26,4 +26,13 @@ router.get('/:organisationId', (req, res) => {
   });
 });
 
+router.get('/bookmarks', (req, res) => {
+  res.json([
+    { _id: 'someId', name: 'Super Awesome Company', tags: ['carrots'] },
+    { _id: 'someOtherId', name: 'A Company', tags: ['beans'] },
+    { _id: 'someMoreId', name: 'Another Company', tags: ['HTML'] },
+    { _id: 'someAlternateId', name: 'Yet Another Company', tags: ['Lamb'] },
+  ]);
+});
+
 module.exports = router;

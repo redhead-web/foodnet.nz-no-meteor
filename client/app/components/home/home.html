@@ -12,14 +12,14 @@
     search-filter="$ctrl.searchFilter"
     search-active="$ctrl.searchActive">
   </search-common>
-  <h4 ng-if="$ctrl.searchFilter === ''">Newest Organisations</h4>
+  <h4>Newest Organisations</h4>
   <organisation-list
     layout="row"
     organisations="$ctrl.organisationsNewest"
     limit-to="2">
   </organisation-list>
 
-  <h4 ng-if="$ctrl.searchFilter === ''">Popular Organisations</h4>
+  <h4>Popular Organisations</h4>
   <organisation-list
     layout="row"
     organisations="$ctrl.organisationsPopular"

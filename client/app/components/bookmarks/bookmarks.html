@@ -1,0 +1,12 @@
+<navbar
+  title="Food Map"
+  user-current="$root.currentUser"
+  page-owned="true">
+</navbar>
+{{$ctrl.bookmarksData}}
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-subheader class="md-no-sticky">Bookmarks</md-subheader>
+  <organisation-list-small
+    organisations="$ctrl.bookmarksData" hide-header="true" page-owned="true">
+  </organisation-list-small>
+</md-card>

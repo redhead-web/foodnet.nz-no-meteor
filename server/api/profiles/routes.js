@@ -13,6 +13,7 @@ router.get('/:profileId', (req, res) => {
         address: { vacinity: 'Whangarei, Northland' },
         description: { short: 'I am good at everything' },
         social: { email: 'email@email.com', facebook: 'facebook link', twitter: 'twitter link', instagram: 'instagram link', youtube: 'youtube link' },
+        bookmarks: ['someId', 'someOtherId'],
       },
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },

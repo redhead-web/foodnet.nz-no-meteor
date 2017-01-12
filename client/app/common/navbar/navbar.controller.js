@@ -5,10 +5,14 @@ class NavbarController {
     this.go = $state.go;
     this.name = 'navbar';
     this.bookmarked = false;
-    if (this.organisationActive) {
-      for (let index = 0; index < this.user.profile.bookmarks.length; index += 1) {
-        if (this.user.profile.bookmarks[index] === this.organisationActive) {
-          this.bookmarked = true;
+
+    if (this.pageId && this.pageType === 'organisation') {
+      if (this.userCurrent && this.userCurrent.profile && this.userCurrent.profile.bookmarks) {
+        for (let index = 0; index < this.userCurrent.profile.bookmarks.length; index += 1) {
+          if (this.userCurrent.profile.bookmarks[index] === this.pageId) {
+            this.bookmarked = true;
+            break;
+          }
         }
       }
     }

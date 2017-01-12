@@ -6,21 +6,18 @@ const find = require('lodash').find;
 
 
 const testUser = {
-  emails: [
-    { address: 'sean@maplekiwi.com', verified: false },
-  ],
+  id: 1,
+  emails: [{ address: 'sean@maplekiwi.com', verified: false }],
   password: 'test-password',
   profile: {
     name: 'Sean Stanley',
-    searchHistory: [
-      'carrots',
-      'apples',
-      'Alex Mason',
-      'Redhead Web',
-      'Chicken',
-    ],
+    phone: '0210409066',
+    address: { vacinity: 'Whangarei, Northland' },
+    description: { short: 'I am good at everything' },
+    social: { email: 'email@email.com', facebook: 'facebook link', twitter: 'twitter link', instagram: 'instagram link', youtube: 'youtube link' },
+    bookmarks: ['someId', 'someOtherId'],
+    searchHistory: ['carrots', 'apples', 'Alex Mason', 'Redhead Web', 'Chicken'],
   },
-  id: 1,
 };
 
 function findUser(email, callback) {
@@ -35,7 +32,6 @@ passport.serializeUser((user, cb) => {
 });
 
 passport.deserializeUser((username, cb) => {
-  console.log(username);
   findUser(username, cb);
 });
 
