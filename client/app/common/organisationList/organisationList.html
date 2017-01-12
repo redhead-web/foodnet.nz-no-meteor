@@ -9,7 +9,7 @@
         style="outline:none;"
         flex
         layout="column"
-        ng-repeat="organisation in $ctrl.organisations | filter: $ctrl.searchFilter | limitTo: $ctrl.limitTo"
+        ng-repeat="organisation in $ctrl.organisations track by organisation._id"
         md-colspan-gt-sm="1"
         md-rowspan-gt-sm="1">
         <organisation-summary organisation="organisation" flex layout="column"></organisation-summary>

@@ -2,9 +2,9 @@
   <a ui-sref="organisation">
     <organisation-splash flex layout="column" organisation="$ctrl.organisation"></organisation-splash>
     <md-card-content flex layout="row">
-      <span>XX <md-icon>input</md-icon></span>
+      <span>{{organisation.input}}<md-icon>input</md-icon></span>
       <span flex></span>
-      <span>XX <md-icon>input</md-icon></span> <!-- cant find output icon -->
+      <span>{{organisation.output}}<md-icon>input</md-icon></span> <!-- cant find output icon -->
     </md-card-content>
   </a>
 </md-card>

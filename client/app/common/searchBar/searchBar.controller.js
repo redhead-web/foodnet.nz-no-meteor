@@ -4,6 +4,9 @@ class SearchBarController {
 
     this.back = () => $state.go($rootScope.lastState.state || 'home', $rootScope.lastState.params);
     this.name = 'searchBar';
+    this.search = (query) => {
+      this.onSearch({ query });
+    };
   }
 }
 

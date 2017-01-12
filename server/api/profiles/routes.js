@@ -19,7 +19,12 @@ router.get('/:profileId', (req, res) => {
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     skills: [{ _id: 'someId', name: 'leetHaxoring', description: 'spooon!', level: 'Senior' }, { _id: 'someOtherId', name: 'Java', description: 'spooon!', level: 'Intermediate' }],
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
-    organisations: [{ _id: 'someId', name: 'Super Awesome Company', tags: 'carrots' }, { _id: 'someOtherId', name: 'A Company', tags: 'beans' }, { _id: 'someMoreId', name: 'Another Company', tags: 'HTML' }, { _id: 'someAlternateId', name: 'Yet Another Company', tags: 'Lamb' }],
+    organisations: [
+      { _id: 'someId', name: 'Super Awesome Company', tags: 'carrots' },
+      { _id: 'someOtherId', name: 'A Company', tags: 'beans' },
+      { _id: 'someMoreId', name: 'Another Company', tags: 'HTML' },
+      { _id: 'someAlternateId', name: 'Yet Another Company', tags: 'Lamb' },
+    ],
   });
 });
 

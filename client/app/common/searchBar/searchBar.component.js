@@ -5,7 +5,7 @@ import './searchBar.scss';
 const searchBarComponent = {
   restrict: 'E',
   bindings: {
-    searchFilter: '=',
+    onSearch: '&',
   },
   template,
   controller,

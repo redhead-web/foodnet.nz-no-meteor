@@ -1,14 +1,14 @@
-<md-content
+<div
   flex
-  layout-padding
-  layout="row"
-  layout-align="left bottom"
+  layout="column"
+  layout-align="end stretch"
   style = "background:black;
-          background-image: url({{$ctrl.img}});
+          background-image: url({{$ctrl.organisation.banner}});
           background-repeat: no-repeat;
-          background-size:cover;">
+          background-size:cover;
+          min-height: 164px;">
 
-  <h4 style="color:white;">
+  <h4 class="md-headline organisation-title">
     {{$ctrl.organisation.name}}
   </h4>
-</md-content>
+</div>

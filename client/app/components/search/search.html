@@ -1,6 +1,5 @@
-
 <search-bar
-  search-filter="$ctrl.searchFilter">
+  on-search="$ctrl.search(query)">
 </search-bar>
 <search-suggestions ng-if="!$ctrl.searchFilter && $root.currentUser"
   set-search-filter="$ctrl.setFilter(suggestion)"
@@ -9,6 +8,6 @@
 <organisation-list
   layout="row"
   flex
-  organisations="$ctrl.organisations"
+  organisations="$ctrl.searchResults"
   search-filter="$ctrl.searchFilter">
 </organisation-list>
