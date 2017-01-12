@@ -4,7 +4,7 @@ import './profile.scss';
 
 const profileComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: { profileData: '<' },
   template,
   controller,
 };

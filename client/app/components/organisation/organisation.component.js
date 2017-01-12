@@ -4,7 +4,7 @@ import './organisation.scss';
 
 const organisationComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: { organisationData: '<' },
   template,
   controller,
 };

@@ -7,7 +7,7 @@ class ProfileController {
     this.searchActive = false;
 
     // ----- TODO: these need to be passed in through root scope -----
-    this.userActive = true;
+    this.userActive = 'someId';
     this.user = { _id: 'someId', emails: [{ address: 'admin@admin.co.nz' }], profile: { name: 'Some Name', phone: '021 111 1111', email: 'some@email.co.nz', address: { vacinity: 'Whangarei, Northland' }, description: { short: 'I am good at everything' } } };
     this.userSkillsSummary = { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 };
     this.userSkills = [{ _id: 'someId', name: 'leetHaxoring', description: 'spooon!', level: 'Senior' }, { _id: 'someOtherId', name: 'Java', description: 'spooon!', level: 'Intermediate' }];
