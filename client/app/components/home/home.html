@@ -15,13 +15,6 @@
     search-active="$ctrl.searchActive"
     ng-if="$ctrl.searchFilter === ''">
   </search-common>
-  <organisation-list
-    layout="row"
-    flex
-    organisations="$ctrl.organisations"
-    search-filter="$ctrl.searchFilter"
-    ng-if="$ctrl.searchFilter !== ''">
-  </organisation-list>
   <h4 ng-if="$ctrl.searchFilter === ''">Newest Organisations</h4>
   <organisation-list
     layout="row"
