@@ -18,7 +18,7 @@ router.get('/:organisationId', (req, res) => {
       gstNum: 'GST Number',
       website: 'https://foodcoop.nz',
     },
-    inputs: [{ _id: 'someId', name: 'carots' }, { _id: 'someOtherId', name: 'beatroot' }],
+    inputs: [{ _id: 'someId', name: 'carots', provider: 'Northland Naturals' }, { _id: 'someOtherId', name: 'beatroot', provider: 'Northland Naturals' }],
     outputs: [{ _id: 'someId', name: 'carots' }, { _id: 'someOtherId', name: 'beatroot' }],
     team: [{ _id: 'someId', name: 'Sean Stanley', roles: ['Administrator'] }, { _id: 'someId', name: 'Matt Stanley', roles: ['Director'] }, { _id: 'someId', name: 'Clive McKeg', roles: ['Director'] }],
   });
