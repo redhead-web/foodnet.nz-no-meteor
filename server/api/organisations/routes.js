@@ -7,6 +7,7 @@ router.get('/:organisationId', (req, res) => {
     organisation: {
       _id: 'someId',
       name: 'Whangarei Food Co-op',
+      emails: [{ address: 'email@email.com', primaryContact: 'true' }],
       tags: 'carrots',
       tagLine: 'Local - Fresh - Affordable',
       description: { short: 'spoon hammer fork', long: 'spoon hammer fork mustard cheese' },
@@ -17,6 +18,7 @@ router.get('/:organisationId', (req, res) => {
       gstReg: false,
       gstNum: 'GST Number',
       website: 'https://foodcoop.nz',
+      social: { facebook: 'facebook link', twitter: 'twitter link', instagram: 'instagram link', youtube: 'youtube link' },
     },
     inputs: [{ _id: 'someId', name: 'carots', provider: 'Northland Naturals' }, { _id: 'someOtherId', name: 'beatroot', provider: 'Northland Naturals' }],
     outputs: [{ _id: 'someId', name: 'carots' }, { _id: 'someOtherId', name: 'beatroot' }],
