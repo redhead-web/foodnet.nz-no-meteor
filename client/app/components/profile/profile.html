@@ -9,8 +9,9 @@
   page-type="profile">
 </navbar>
 <main>
-  <user-info user="$ctrl.user"></user-info>
-  <user-associations user="$ctrl.user" organisations-summary="$ctrl.userOrganisationsSummary"></user-associations>
+  {{$ctrl.profileData}}
+  <user-info user="$ctrl.profileData.person"></user-info>
+  <user-associations user="$ctrl.profileData.person" organisations-summary="$ctrl.userOrganisationsSummary"></user-associations>
   <organisation-list
     layout="row"
     flex

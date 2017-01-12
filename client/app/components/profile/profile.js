@@ -18,9 +18,9 @@ export default angular.module('profile', [
     .state('profile', {
       url: '/profile/:userId',
       component: 'profile',
-      //resolve: {
-      //  profileData: (Profile, $stateParams) => Profile.getProfileData($stateParams.userId),
-      //},
+      resolve: {
+        profileData: (Profile, $stateParams) => Profile.getProfileData($stateParams.userId),
+      },
     });
 })
 
