@@ -31,6 +31,8 @@ app.use(passport.session());
 
 require('./auth')(app);
 app.use('/organisations', require('./organisations').router);
+app.use('/resources', require('./resources').router);
+app.use('/profiles', require('./profiles').router);
 app.use('/search', require('./search').router);
 
 module.exports = app;
