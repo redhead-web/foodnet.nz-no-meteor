@@ -1,24 +1,3 @@
-<!-- top menu when large >
-<md-nav-bar
-  md-selected-nav-item="currentNavItem"
-  nav-bar-aria-label="navigation links"
-  hide-xs>
-  <! pages >
-  <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home">Home</md-nav-item>
-  <md-nav-item md-nav-click="$ctrl.goTo('profile')" name="profile" ng-if="$ctrl.userActive">My Profile</md-nav-item>
-  <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home" ng-if="$ctrl.userActive">My Organisations</md-nav-item>
-  <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home" ng-if="$ctrl.userActive">Messages</md-nav-item>
-  <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home" ng-if="$ctrl.userActive">Bookmarks</md-nav-item>
-  <md-nav-item md-nav-click="$ctrl.goTo('home')" name="home" ng-if="$ctrl.userActive">Endorsements</md-nav-item>
-  <span flex></span>
-  <! log in button >
-  <!<auth-login-button></auth-login-button>>
-  <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.searchActive = !$ctrl.searchActive; $ctrl.searchFilter = ''" ng-if="!$ctrl.searchDisabled">
-    <md-icon style="color:black;">{{$ctrl.searchActive ? 'close' : 'search'}}</md-icon>
-  </md-button>
-</md-nav-bar>
--->
-
 <!-- side menu -->
 <md-toolbar>
   <div class="md-toolbar-tools">
@@ -28,14 +7,12 @@
     </md-button>
     {{$ctrl.title}}
     <span flex></span>
-    <!-- log in button -->
-    <!--<auth-login-button></auth-login-button>-->
-    <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.searchActive = !$ctrl.searchActive; $ctrl.searchFilter = ''" ng-if="!$ctrl.searchDisabled">
-      <md-icon style="color:black;">{{$ctrl.searchActive ? 'close' : 'search'}}</md-icon>
-    </md-button>
-
     <md-button aria-label="bookmark" class="md-icon-button" ng-click="$ctrl.toggleBookmark()" ng-if="$ctrl.pageType === 'organisation'">
       <md-icon style="color:black;">{{$ctrl.bookmarked ? 'bookmark' : 'bookmark_border'}}</md-icon>
+    </md-button>
+
+    <md-button aria-label="login" class="md-icon-button" ui-sref="search({searchFilter: ''})" ng-if="!$ctrl.searchDisabled">
+      <md-icon style="color:black;">search</md-icon>
     </md-button>
 
     <md-menu>
@@ -54,11 +31,6 @@
     </md-menu>
   </div>
 </md-toolbar>
-
-<search-bar
-  ng-if="$ctrl.searchActive"
-  search-filter="$ctrl.searchFilter">
-</search-bar>
 
 <md-sidenav
   class="md-sidenav-left"

@@ -1,7 +1,7 @@
 <div flex layout="column" layout-align="top center">
   <h4>Top Searches</h4>
   <md-chips ng-model="$ctrl.commonSearches" readonly="true">
-    <md-chip-template ng-click="$ctrl.searchFilter = $chip; $ctrl.searchActive = true">
+    <md-chip-template ui-sref="search({searchFilter: $chip})">
       {{$chip}}
     </md-chip-template>
   </md-chips>
