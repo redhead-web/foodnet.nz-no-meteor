@@ -2,7 +2,10 @@
   <md-card-content>
     <md-list flex>
       <md-list-item ng-repeat="location in $ctrl.organisation.locations" layout="row">
-        <span>{{location.address}}</span><span flex></span><md-icon style="color:black;">close</md-icon>
+        <span>{{location.address}}</span><span flex></span>
+        <md-button class="md-icon-button" aria-label="Delete" ng-click="$ctrl.deleteLocation($index)">
+          <md-icon style="color:black;">close</md-icon>
+        </md-button>
       </md-list-item>
     </md-list>
   </md-card-content>

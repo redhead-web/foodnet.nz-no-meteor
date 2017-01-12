@@ -6,6 +6,7 @@ const organisationEditLocationsComponent = {
   restrict: 'E',
   bindings: {
     organisation: '=',
+    modifyOrganistion: '&',
   },
   template,
   controller,
