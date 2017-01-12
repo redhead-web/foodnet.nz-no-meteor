@@ -51,6 +51,7 @@
     "express-session": "^1.14.2",
     "ip": "^1.1.4",
     "minimist": "^1.2.0",
+    "ng-focus-if": "^1.0.7",
     "normalize.css": "^3.0.3",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

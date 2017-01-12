@@ -4,6 +4,7 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import ngMaterial from 'angular-material';
+import ngFocusIf from 'ng-focus-if';
 import 'normalize.css';
 
 angular.module('app', [
@@ -11,6 +12,7 @@ angular.module('app', [
   Common,
   Components,
   ngMaterial,
+  ngFocusIf,
 ])
   .config(($locationProvider) => {
     'ngInject';

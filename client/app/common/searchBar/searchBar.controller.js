@@ -1,5 +1,8 @@
 class SearchBarController {
-  constructor() {
+  constructor($history) {
+    'ngInject';
+
+    this.back = () => $history.back();
     this.name = 'searchBar';
   }
 }

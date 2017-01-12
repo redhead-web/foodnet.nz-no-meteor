@@ -3,6 +3,7 @@ import Navbar from './navbar/navbar';
 import PromoSplash from './promoSplash/promoSplash';
 import SearchBar from './searchBar/searchBar';
 import SearchCommon from './searchCommon/searchCommon';
+import SearchSuggestions from './searchSuggestions/searchSuggestions';
 import ProfileEditBasic from './profileEditBasic/profileEditBasic';
 import ProfileEditOrganisations from './profileEditOrganisations/profileEditOrganisations';
 import ProfileEditSkills from './profileEditSkills/profileEditSkills';
@@ -36,6 +37,7 @@ import UserSkills from './userSkills/userSkills';
 import UserAvatar from './userAvatar/userAvatar';
 import SkillList from './skillList/skillList';
 import SkillAvatar from './skillAvatar/skillAvatar';
+import History from './history/history.factory';
 
 
 const commonModule = angular.module('app.common', [
@@ -43,6 +45,7 @@ const commonModule = angular.module('app.common', [
   PromoSplash,
   SearchBar,
   SearchCommon,
+  SearchSuggestions,
   ProfileEditBasic,
   ProfileEditOrganisations,
   ProfileEditSkills,
@@ -76,6 +79,7 @@ const commonModule = angular.module('app.common', [
   UserAvatar,
   SkillList,
   SkillAvatar,
+  History,
 ])
 
 .name;

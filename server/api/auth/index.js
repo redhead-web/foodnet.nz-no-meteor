@@ -12,6 +12,13 @@ const testUser = {
   password: 'test-password',
   profile: {
     name: 'Sean Stanley',
+    searchHistory: [
+      'carrots',
+      'apples',
+      'Alex Mason',
+      'Redhead Web',
+      'Chicken',
+    ],
   },
   id: 1,
 };

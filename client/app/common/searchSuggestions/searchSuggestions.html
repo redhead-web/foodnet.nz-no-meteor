@@ -1,0 +1,10 @@
+<md-card>
+  <md-list class="md-dense">
+    <md-list-item ng-repeat="suggestion in $ctrl.suggestions" ng-click="$ctrl.setSearchFilter({suggestion})">
+      <div class="md-list-item-text md-offset">
+        <h3>{{ suggestion }}</h3>
+      </div>
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
+</md-card>
