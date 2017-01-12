@@ -4,7 +4,11 @@ import './home.scss';
 
 const homeComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    organisationsNewest: '<',
+    organisationsPopular: '<',
+    commonSearches: '<',
+  },
   template,
   controller,
 };

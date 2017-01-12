@@ -1,13 +1,13 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import bookmarksComponent from './bookmarks.component';
-import BookmarksFactory from './bookmarks.factory';
+import OrgansationFactory from '../organisation/organisation.factory';
 
 export default angular.module('bookmarks', [
   uiRouter,
 ])
 
-.factory('Bookmarks', BookmarksFactory)
+.factory('Organisations', OrgansationFactory)
 
 .config(($stateProvider, $urlRouterProvider) => {
   'ngInject';
@@ -19,7 +19,7 @@ export default angular.module('bookmarks', [
       url: '/bookmarks',
       component: 'bookmarks',
       resolve: {
-        bookmarksData: (Bookmarks) => Bookmarks.getBookmarksData(),
+        bookmarksData: (Organisations) => Organisations.getBookmarksData(),
       },
     });
 })

@@ -22,6 +22,10 @@ const testOrganisations = [
   },
 ];
 
+router.get('/common', (req, res) => {
+  res.json(['Carrots', 'Organic Fertilizer', 'Lamb Mince', 'Tomatoes', 'Websites', 'Packaging', 'HTML', 'Lettuce', 'Organic Sweeteners']);
+});
+
 router.get('/', (req, res) => {
   // const results = filter(testOrganisations, req.query.q);
   res.json(testOrganisations);
