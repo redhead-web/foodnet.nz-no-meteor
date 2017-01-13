@@ -10,7 +10,7 @@ const testOrganisations = [
     tags: 'carrots',
     banner: 'http://lorempixel.com/400/200/business',
     inputsCount: 5,
-    outputs: 400,
+    outputsCount: 400,
   },
   {
     _id: 'someId2',
@@ -18,7 +18,7 @@ const testOrganisations = [
     tags: 'celery',
     banner: 'http://lorempixel.com/400/200/nature',
     inputsCount: 10,
-    outputs: 1000,
+    outputsCount: 1000,
   },
 ];
 
