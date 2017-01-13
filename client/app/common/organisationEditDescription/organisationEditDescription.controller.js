@@ -5,9 +5,10 @@ class OrganisationEditDescriptionController {
 
   modify() {
     const modifyDetails = [
-      { type: 'modify', field: 'description', fieldType: 'value', value: this.organisation.description },
+      { type: 'update', field: 'description', fieldType: 'value', value: this.organisation.description },
     ];
-    this.modifyOrganisation({ modifyDetails });
+    const stateChange = true;
+    this.modifyOrganisation({ modifyDetails, stateChange });
   }
 }
 

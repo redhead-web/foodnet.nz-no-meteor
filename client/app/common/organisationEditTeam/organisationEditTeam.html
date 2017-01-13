@@ -1,4 +1,10 @@
-<organisation-team organisation="$ctrl.organisation" team="$ctrl.team" page-owned="true"></organisation-team>
+<md-card flex layout="column" align="left">
+  <organisation-team
+    on-modify="$ctrl.modify(modifyDetails)"
+    organisation="$ctrl.organisation"
+    team="$ctrl.team"
+    page-owned="true"></organisation-team>
+</md-card>
 <span layout="row">
   <span flex></span>
   <md-button class="md-fab md-primary" aria-label="Add">

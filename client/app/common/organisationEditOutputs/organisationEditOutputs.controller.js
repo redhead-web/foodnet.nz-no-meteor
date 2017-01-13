@@ -2,8 +2,8 @@ class OrganisationEditOutputsController {
   constructor() {
     this.name = 'organisationEditOutputs';
   }
-  modify(modifyDetails) {
-    this.modifyOutputs({ modifyDetails });
+  modify(modifyDetails, stateChange) {
+    this.modifyOutputs({ modifyDetails, stateChange });
   }
 }
 

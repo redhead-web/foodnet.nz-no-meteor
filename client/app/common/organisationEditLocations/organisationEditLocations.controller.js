@@ -4,8 +4,9 @@ class OrganisationEditLocationsController {
   }
 
   delete(index) {
-    const modifyDetails = [{ type: 'delete', field: 'locations', fieldType: 'array', index }];
-    this.modifyOrganisation({ modifyDetails });
+    const modifyDetails = [{ type: 'remove', field: 'locations', fieldType: 'array', index }];
+    const stateChange = false;
+    this.modifyOrganisation({ modifyDetails, stateChange });
   }
 }
 

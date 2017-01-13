@@ -5,13 +5,14 @@ class OrganisationEditBasicController {
 
   modify() {
     const modifyDetails = [
-      { type: 'modify', field: 'name', fieldType: 'value', value: this.organisation.name },
-      { type: 'modify', field: 'type', fieldType: 'value', value: this.organisation.type },
-      { type: 'modify', field: 'registration', fieldType: 'value', value: this.organisation.registration },
-      { type: 'modify', field: 'gstReg', fieldType: 'value', value: this.organisation.gstReg },
-      { type: 'modify', field: 'gstNum', fieldType: 'value', value: this.organisation.gstNum },
+      { type: 'update', field: 'name', fieldType: 'value', value: this.organisation.name },
+      { type: 'update', field: 'type', fieldType: 'value', value: this.organisation.type },
+      { type: 'update', field: 'registration', fieldType: 'value', value: this.organisation.registration },
+      { type: 'update', field: 'gstReg', fieldType: 'value', value: this.organisation.gstReg },
+      { type: 'update', field: 'gstNum', fieldType: 'value', value: this.organisation.gstNum },
     ];
-    this.modifyOrganisation({ modifyDetails });
+    const stateChange = true;
+    this.modifyOrganisation({ modifyDetails, stateChange });
   }
 }
 

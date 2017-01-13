@@ -1,13 +1,17 @@
-<md-card flex layout="column" align="left">
-  <md-list flex>
-    <md-list-item class="md-2-line" ng-repeat="person in $ctrl.team" ui-sref="profile({userId: person._id})">
-      <user-avatar class="md-avatar" size="40"></user-avatar>
-      <div class="md-list-item-text" layout="column">
-        <h3>{{person.name}}</h3>
-        <p>{{person.roles[0]}}</p>
-      </div>
-      <span flex></span>
-      <md-icon style="color:black;" ng-if="$ctrl.pageOwned">close</md-icon>
-    </md-list-item>
-  </md-list>
-</md-card>
+<md-list flex>
+  <md-list-item class="md-2-line" ng-repeat="person in $ctrl.team" ui-sref="profile({userId: person._id})">
+    <user-avatar class="md-avatar" size="40"></user-avatar>
+    <div class="md-list-item-text" layout="column">
+      <h3>{{person.name}}</h3>
+      <p>{{person.roles[0]}}</p>
+    </div>
+    <span flex></span>
+    <md-button
+      ng-if="$ctrl.pageOwned"`
+      class="md-icon-button md-secondary"
+      aria-label="Delete"
+      ng-click="$ctrl.delete($index)">
+      <md-icon style="color:black;">close</md-icon>
+    </md-button>
+  </md-list-item>
+</md-list>

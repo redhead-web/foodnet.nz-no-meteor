@@ -12,7 +12,7 @@ class ProfileEditController {
   modifyProfile(modifyDetails, stateChange) {
     for (let index = 0; index < modifyDetails.length; index += 1) {
       const modify = modifyDetails[index];
-      if (modify.type === 'delete') {
+      if (modify.type === 'remove') {
         if (modify.fieldType === 'array') {
           if (modify.fieldPlacement === 'profile') {
             this.profileData.person.profile[modify.field].splice(modify.index, 1);
@@ -26,7 +26,7 @@ class ProfileEditController {
             this.profileData.person = '';
           }
         }
-      } else if (modify.type === 'modify') {
+      } else if (modify.type === 'update') {
         if (modify.fieldType === 'array') {
           if (modify.fieldPlacement === 'profile') {
             // modify array
@@ -40,7 +40,7 @@ class ProfileEditController {
             this.profileData.person[modify.field] = modify.value;
           }
         }
-      } else if (modify.type === 'add') {
+      } else if (modify.type === 'insert') {
         if (modify.fieldType === 'array') {
           if (modify.fieldPlacement === 'profile') {
             // add too array
