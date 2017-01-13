@@ -1,0 +1,28 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h3 class="md-headline">{{$ctrl.title}}</h3>
+        <!--  TODO make the fields autocomplete from server side searches  -->
+        <md-input-container>
+          <label>Input name</label>
+          <input ng-model="$ctrl.data.name">
+        </md-input-container>
+        <md-input-container>
+          <label>Input Provider</label>
+          <input ng-model="$ctrl.data.provider">
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="$ctrl.answer($ctrl.data)" type="submit">
+       Ok
+      </md-button>
+      <md-button ng-click="$ctrl.cancel()">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
