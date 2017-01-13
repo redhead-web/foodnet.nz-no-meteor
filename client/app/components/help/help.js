@@ -7,10 +7,8 @@ export default angular.module('help', [
 ])
 
 .component('help', helpComponent)
-.config(($stateProvider, $urlRouterProvider) => {
+.config(($stateProvider) => {
   'ngInject';
-
-  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('help', {
