@@ -30,7 +30,8 @@
   </div>
   <div ng-if="$ctrl.editType === 'basic'">
     <profile-edit-basic
-      user="$ctrl.profileData.person">
+      user="$ctrl.profileData.person"
+      modify-profile="$ctrl.modifyProfile(modifyDetails)">
     </profile-edit-basic>
   </div>
   <div ng-if="$ctrl.editType === 'organisations'">
@@ -47,7 +48,8 @@
   </div>
   <div ng-if="$ctrl.editType === 'links'">
     <profile-edit-links
-      user="$ctrl.profileData.person">
+      user="$ctrl.profileData.person"
+      modify-profile="$ctrl.modifyProfile(modifyDetails)">
     </profile-edit-links>
   </div>
 </main>

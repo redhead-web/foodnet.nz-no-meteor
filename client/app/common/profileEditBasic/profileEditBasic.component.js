@@ -5,6 +5,7 @@ import './profileEditBasic.scss';
 const profileEditBasicComponent = {
   restrict: 'E',
   bindings: {
+    modifyProfile: '&',
     user: '<',
   },
   template,

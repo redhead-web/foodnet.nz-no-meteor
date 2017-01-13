@@ -10,7 +10,6 @@ class OrganisationEditController {
   }
 
   modifyOrganisation(modifyDetails) {
-    console.log(modifyDetails);
     for (let index = 0; index < modifyDetails.length; index += 1) {
       const modify = modifyDetails[index];
       if (modify.type === 'delete') {
