@@ -1,6 +1,6 @@
 <md-list flex>
   <md-subheader class="md-no-sticky" ng-if="!$ctrl.hideHeader">Outputs</md-subheader>
-  <md-list-item class="md-2-line" ng-repeat="output in $ctrl.outputs">
+  <md-list-item class="md-2-line" ng-repeat="output in $ctrl.outputs" ui-sref="search({q: output.name, output:1})">
     <i-o-avatar class="md-avatar" size="40"></i-o-avatar>
     <div class="md-list-item-text" layout="column">
       <h3>{{output.name}}</h3>

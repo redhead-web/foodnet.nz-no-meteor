@@ -12,8 +12,11 @@ export default angular.module('search', [
 
   $stateProvider
     .state('search', {
-      url: '/search/:searchFilter',
+      url: '/search?{q:string}{input:bool}{output:bool}',
       component: 'search',
+      params: {
+        q: { dynamic: true },
+      },
     });
 })
 
@@ -22,7 +25,6 @@ export default angular.module('search', [
   'ngInject';
 
   $transitions.onSuccess({ to: 'search' }, (transition) => {
-    console.log('success!');
     const from = transition.from().name;
     const fromParams = transition.params('from');
     $rootScope.lastState = { state: from, params: fromParams };
