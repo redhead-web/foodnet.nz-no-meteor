@@ -1,12 +1,12 @@
 <md-bottom-sheet class="md-list md-has-header">
   <md-list ng-cloak>
-    <md-list-item ui-sref="help"><span><md-icon>help_outline</md-icon> Help</span></md-list-item>
-    <md-list-item ui-sref="home"><span><md-icon>share</md-icon> Share</span></md-list-item>
-    <md-list-item ui-sref="home"><span><md-icon>cloud_upload</md-icon> Analytics</span></md-list-item>
-    <md-list-item ui-sref="home" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon>content_copy</md-icon> Copy</span></md-list-item>
+    <md-list-item ui-sref="help" ng-click="$ctrl.hide()"><span><md-icon>help_outline</md-icon> Help</span></md-list-item>
+    <md-list-item ui-sref="home" ng-click="$ctrl.hide()"><span><md-icon>share</md-icon> Share</span></md-list-item>
+    <md-list-item ui-sref="home" ng-click="$ctrl.hide()"><span><md-icon>cloud_upload</md-icon> Analytics</span></md-list-item>
+    <md-list-item ui-sref="home" ng-click="$ctrl.hide()" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon>content_copy</md-icon> Copy</span></md-list-item>
 
-    <md-list-item class="md-2-line" ui-sref="organisationEdit({organisationId: $ctrl.pageId})" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon>print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
+    <md-list-item ng-click="$ctrl.hide()" ui-sref="organisationEdit({organisationId: $ctrl.pageId})" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon>print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
 
-    <md-list-item class="md-2-line" ui-sref="{{$ctrl.pageType}}Edit({userId: $ctrl.pageId})" ng-if="$ctrl.pageOwned"><span><md-icon>print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
+    <md-list-item ng-click="$ctrl.hide()" ui-sref="profileEdit({userId: $ctrl.pageId})" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'profile'"><span><md-icon>print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
   </md-list>
 </md-bottom-sheet>

@@ -51,6 +51,20 @@ class NavbarController {
   openBottomSheet() {
     this.$mdBottomSheet.show({
       template,
+      locals: {
+        pageType: this.pageType,
+        pageId: this.pageId,
+        pageOwned: this.pageOwned,
+      },
+      controllerAs: '$ctrl',
+      controller($mdBottomSheet, pageType, pageId, pageOwned) {
+        'ngInject';
+
+        this.hide = $mdBottomSheet.hide;
+        this.pageType = pageType;
+        this.pageId = pageId;
+        this.pageOwned = pageOwned;
+      },
     });
   }
 }
