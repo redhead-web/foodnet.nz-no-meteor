@@ -5,20 +5,22 @@
 <main>
   <md-card flex layout="column" align="left">
     <md-card-content>
-      <div ng-if="$ctrl.message">{{$ctrl.message}}</div>
       <span ng-if="$ctrl.state === 'logIn'">
         <h3>Log In</h3>
-        <md-input-container class="md-block">
-          <label>Email</label>
-          <input ng-model="$ctrl.authentication.username" type="email">
-        </md-input-container>
-        <md-input-container class="md-block">
-          <label>Password</label>
-          <input ng-model="$ctrl.authentication.password" type="password">
-        </md-input-container>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button ng-click="$ctrl.logIn()">Log In</md-button>
-        </md-card-actions>
+        <p ng-if="$ctrl.message">{{$ctrl.message}}</p>
+        <form ng-submit="$ctrl.message = ''; $ctrl.logIn();">
+          <md-input-container class="md-block">
+            <label>Email</label>
+            <input ng-model="$ctrl.authentication.username" type="email">
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Password</label>
+            <input ng-model="$ctrl.authentication.password" type="password">
+          </md-input-container>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button type="submit">Log In</md-button>
+          </md-card-actions>
+        </form>
       </span>
       <span ng-if="$ctrl.state === 'recover'">
         <h3>Recover Password</h3>

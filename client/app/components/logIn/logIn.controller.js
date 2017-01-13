@@ -15,7 +15,7 @@ class LogInController {
       if (user) {
         $state.go('home');
       } else {
-        this.message = err.data.message;
+        this.message = 'Sorry, check your email and password and try again';
       }
     });
 

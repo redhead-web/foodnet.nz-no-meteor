@@ -13,7 +13,7 @@ const UserFactory = ($http, $rootScope) => {
     } else {
       cb(response, null);
     }
-  });
+  }, (err) => cb(err, null));
 
   const logOut = (cb = angular.noop) => $http.get('/api/auth/logout').then(() => {
     $rootScope.currentUser = undefined;
