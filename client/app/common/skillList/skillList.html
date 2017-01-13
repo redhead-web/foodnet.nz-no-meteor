@@ -7,6 +7,12 @@
       <p>{{skill.level}}</p>
     </div>
     <span flex></span>
-    <md-icon style="color:black;" ng-if="$ctrl.pageOwned">close</md-icon>
+    <md-button
+      ng-if="$ctrl.pageOwned"`
+      class="md-icon-button md-secondary"
+      aria-label="Delete"
+      ng-click="$ctrl.delete($index)">
+      <md-icon style="color:black;">close</md-icon>
+    </md-button>
   </md-list-item>
 </md-list>

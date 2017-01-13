@@ -60,6 +60,24 @@ class ProfileEditController {
       this.editType = 'profile';
     }
   }
+
+  modifyLists(modifyDetails, stateChange) {
+    switch (modifyDetails.type) {
+      case 'insert':
+        this.profileData[modifyDetails.field].push(modifyDetails.value);
+        break;
+      case 'update':
+        this.profileData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
+        break;
+      case 'remove':
+        this.profileData[modifyDetails.field].splice(modifyDetails.index, 1);
+        break;
+      default:
+    }
+    if (stateChange) {
+      this.editType = 'organisation';
+    }
+  }
 }
 
 export default ProfileEditController;

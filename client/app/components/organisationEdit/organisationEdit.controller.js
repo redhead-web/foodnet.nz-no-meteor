@@ -37,7 +37,7 @@ class OrganisationEditController {
     }
   }
 
-  modifyIO(modifyDetails, stateChange) {
+  modifyLists(modifyDetails, stateChange) {
     switch (modifyDetails.type) {
       case 'insert':
         this.organisationData[modifyDetails.field].push(modifyDetails.value);

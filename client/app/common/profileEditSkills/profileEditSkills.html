@@ -1,5 +1,11 @@
 <md-card flex layout="column" style="outline:none;" align="left">
-  <skill-list user="$ctrl.user" skills="$ctrl.skills" hide-header="true" page-owned="true"></skill-list>
+  <skill-list
+    on-modify="$ctrl.modify(modifyDetails, stateChange)"
+    user="$ctrl.user"
+    skills="$ctrl.skills"
+    hide-header="true"
+    page-owned="true">
+  </skill-list>
 </md-card>
 <span layout="row">
   <span flex></span>

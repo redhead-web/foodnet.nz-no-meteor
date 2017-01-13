@@ -37,13 +37,15 @@
   <div ng-if="$ctrl.editType === 'organisations'">
     <profile-edit-organisations
       user="$ctrl.profileData.person"
-      organisations="$ctrl.profileData.organisations">
+      organisations="$ctrl.profileData.organisations"
+      modify-organisations="$ctrl.modifyLists(modifyDetails, stateChange)">
     </profile-edit-branding-organisations>
   </div>
   <div ng-if="$ctrl.editType === 'skills'">
     <profile-edit-skills
       user="$ctrl.profileData.person"
-      skills="$ctrl.profileData.skills">
+      skills="$ctrl.profileData.skills"
+      modify-skills="$ctrl.modifyLists(modifyDetails, stateChange)">
     </profile-edit-skillss>
   </div>
   <div ng-if="$ctrl.editType === 'links'">

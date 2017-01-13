@@ -5,6 +5,7 @@ import './organisationListSmall.scss';
 const organisationListSmallComponent = {
   restrict: 'E',
   bindings: {
+    onModify: '&',
     organisations: '<',
     hideHeader: '<',
     pageOwned: '<',

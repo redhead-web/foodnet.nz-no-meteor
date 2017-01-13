@@ -60,21 +60,21 @@
     <organisation-edit-team
       organisation="$ctrl.organisationData.organisation"
       team="$ctrl.organisationData.team"
-      modify-team="$ctrl.modifyIO(modifyDetails, stateChange)">
+      modify-team="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-team>
   </div>
   <div ng-if="$ctrl.editType === 'inputs'">
     <organisation-edit-inputs
       organisation="$ctrl.organisationData.organisation"
       inputs="$ctrl.organisationData.inputs"
-      modify-inputs="$ctrl.modifyIO(modifyDetails, stateChange)">
+      modify-inputs="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-inputs>
   </div>
   <div ng-if="$ctrl.editType === 'outputs'">
     <organisation-edit-outputs
       organisation="$ctrl.organisationData.organisation"
       outputs="$ctrl.organisationData.outputs"
-      modify-outputs="$ctrl.modifyIO(modifyDetails, stateChange)">
+      modify-outputs="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-outputs>
   </div>
   <div ng-if="$ctrl.editType === 'links'">
