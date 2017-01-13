@@ -5,7 +5,7 @@ import './profileEditLinks.scss';
 const profileEditLinksComponent = {
   restrict: 'E',
   bindings: {
-    user: '=',
+    user: '<',
   },
   template,
   controller,

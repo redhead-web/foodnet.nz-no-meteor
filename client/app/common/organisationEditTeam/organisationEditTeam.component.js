@@ -5,8 +5,9 @@ import './organisationEditTeam.scss';
 const organisationEditTeamComponent = {
   restrict: 'E',
   bindings: {
-    organisation: '=',
-    team: '=',
+    modifyOrganisation: '&',
+    organisation: '<',
+    team: '<',
   },
   template,
   controller,

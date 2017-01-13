@@ -5,8 +5,9 @@ import './organisationEditOutputs.scss';
 const organisationEditOutputsComponent = {
   restrict: 'E',
   bindings: {
-    organisation: '=',
-    outputs: '=',
+    modifyOrganisation: '&',
+    organisation: '<',
+    outputs: '<',
   },
   template,
   controller,

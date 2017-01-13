@@ -5,7 +5,8 @@ import './organisationEditLinks.scss';
 const organisationEditLinksComponent = {
   restrict: 'E',
   bindings: {
-    organisation: '=',
+    modifyOrganisation: '&',
+    organisation: '<',
   },
   template,
   controller,

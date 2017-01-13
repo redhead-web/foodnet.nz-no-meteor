@@ -5,7 +5,8 @@ import './organisationEditBranding.scss';
 const organisationEditBrandingComponent = {
   restrict: 'E',
   bindings: {
-    organisation: '=',
+    organisation: '<',
+    modifyOrganisation: '&',
   },
   template,
   controller,

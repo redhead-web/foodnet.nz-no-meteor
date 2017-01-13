@@ -5,7 +5,8 @@ import './organisationEditDescription.scss';
 const organisationEditDescriptionComponent = {
   restrict: 'E',
   bindings: {
-    organisation: '=',
+    organisation: '<',
+    modifyOrganisation: '&',
   },
   template,
   controller,

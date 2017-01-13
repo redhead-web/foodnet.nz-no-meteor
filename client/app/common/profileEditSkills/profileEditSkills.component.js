@@ -5,8 +5,8 @@ import './profileEditSkills.scss';
 const profileEditSkillsComponent = {
   restrict: 'E',
   bindings: {
-    user: '=',
-    skills: '=',
+    user: '<',
+    skills: '<',
   },
   template,
   controller,

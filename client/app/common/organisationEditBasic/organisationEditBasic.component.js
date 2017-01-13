@@ -5,7 +5,8 @@ import './organisationEditBasic.scss';
 const organisationEditBasicComponent = {
   restrict: 'E',
   bindings: {
-    organisation: '=',
+    organisation: '<',
+    modifyOrganisation: '&',
   },
   template,
   controller,

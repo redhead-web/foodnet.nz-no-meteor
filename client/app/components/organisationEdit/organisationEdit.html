@@ -34,46 +34,53 @@
   </div>
   <div ng-if="$ctrl.editType === 'basic'">
     <organisation-edit-basic
-    organisation="$ctrl.organisationData.organisation">
+    organisation="$ctrl.organisationData.organisation"
+    modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
   </organisation-edit-basic>
   </div>
   <div ng-if="$ctrl.editType === 'branding'">
     <organisation-edit-branding
-      organisation="$ctrl.organisationData.organisation">
+      organisation="$ctrl.organisationData.organisation"
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
     </organisation-edit-branding>
   </div>
   <div ng-if="$ctrl.editType === 'locations'">
     <organisation-edit-locations
       organisation="$ctrl.organisationData.organisation"
-      modify-organistion="$ctrl.modifyOrganistion(modifyDetails)">
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
     </organisation-edit-locations>
   </div>
   <div ng-if="$ctrl.editType === 'description'">
     <organisation-edit-description
-      organisation="$ctrl.organisationData.organisation">
+      organisation="$ctrl.organisationData.organisation"
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
     </organisation-edit-description>
   </div>
   <div ng-if="$ctrl.editType === 'team'">
     <organisation-edit-team
       organisation="$ctrl.organisationData.organisation"
-      team="$ctrl.organisationData.team">
+      team="$ctrl.organisationData.team"
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
     </organisation-edit-team>
   </div>
   <div ng-if="$ctrl.editType === 'inputs'">
     <organisation-edit-inputs
       organisation="$ctrl.organisationData.organisation"
-      inputs="$ctrl.organisationData.inputs">
+      inputs="$ctrl.organisationData.inputs"
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
     </organisation-edit-inputs>
   </div>
   <div ng-if="$ctrl.editType === 'outputs'">
     <organisation-edit-outputs
       organisation="$ctrl.organisationData.organisation"
-      outputs="$ctrl.organisationData.outputs">
+      outputs="$ctrl.organisationData.outputs"
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
     </organisation-edit-outputs>
   </div>
   <div ng-if="$ctrl.editType === 'links'">
     <organisation-edit-links
-      organisation="$ctrl.organisationData.organisation">
+      organisation="$ctrl.organisationData.organisation"
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
     </organisation-edit-links>
   </div>
 </main>

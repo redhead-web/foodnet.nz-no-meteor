@@ -1,5 +1,11 @@
 <md-card flex layout="column" style="outline:none;" align="left">
-  <i-o-input-list organisation="$ctrl.organisation" inputs="$ctrl.inputs" page-owned="true" hide-header="true"></i-o-input-list>
+  <i-o-input-list
+    modify-organisation="$ctrl.modifyOrganisation(modifyDetails)"
+    organisation="$ctrl.organisation"
+    inputs="$ctrl.inputs"
+    page-owned="true"
+    hide-header="true">
+  </i-o-input-list>
 </md-card>
 
 <span layout="row">
