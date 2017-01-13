@@ -5,7 +5,7 @@ import './iOInputList.scss';
 const iOInputListComponent = {
   restrict: 'E',
   bindings: {
-    modifyOrganisation: '&',
+    onModify: '&',
     inputs: '<',
     pageOwned: '<',
     hideHeader: '<',

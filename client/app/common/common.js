@@ -38,6 +38,7 @@ import UserAvatar from './userAvatar/userAvatar';
 import SkillList from './skillList/skillList';
 import SkillAvatar from './skillAvatar/skillAvatar';
 import History from './history/history.factory';
+import QualificationsList from './qualificationList/qualificationList';
 
 
 const commonModule = angular.module('app.common', [
@@ -80,6 +81,7 @@ const commonModule = angular.module('app.common', [
   SkillList,
   SkillAvatar,
   History,
+  QualificationsList,
 ])
 
 .name;

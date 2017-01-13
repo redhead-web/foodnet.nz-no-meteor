@@ -1,6 +1,6 @@
 <md-list flex>
   <md-subheader class="md-no-sticky" ng-if="!$ctrl.hideHeader">inputs</md-subheader>
-  <md-list-item class="md-2-line" ng-repeat="input in $ctrl.inputs" ui-sref="search({q: input.name, input:1})">
+  <md-list-item class="md-2-line" ng-repeat="input in $ctrl.inputs" ng-click="$ctrl.click()">
     <i-o-avatar class="md-avatar" size="40"></i-o-avatar>
     <div class="md-list-item-text" layout="column">
       <h3>{{input.name}}</h3>
@@ -9,7 +9,7 @@
     <span flex></span>
     <md-button
       ng-if="$ctrl.pageOwned"`
-      class="md-icon-button"
+      class="md-icon-button md-secondary"
       aria-label="Delete"
       ng-click="$ctrl.delete($index)">
       <md-icon style="color:black;">close</md-icon>

@@ -5,6 +5,7 @@ import './iOOutputList.scss';
 const iOOutputListComponent = {
   restrict: 'E',
   bindings: {
+    onModify: '&',
     outputs: '<',
     pageOwned: '<',
     hideHeader: '<',

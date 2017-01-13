@@ -33,6 +33,21 @@ class OrganisationEditController {
       }
     }
   }
+
+  modifyIO(modifyDetails) {
+    switch (modifyDetails.type) {
+      case 'insert':
+        this.organisationData[modifyDetails.field].push(modifyDetails.value);
+        break;
+      case 'update':
+        this.organisationData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
+        break;
+      case 'remove':
+        this.organisationData[modifyDetails.field].splice(modifyDetails.index, 1);
+        break;
+      default:
+    }
+  }
 }
 
 export default OrganisationEditController;

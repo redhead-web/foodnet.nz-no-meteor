@@ -67,14 +67,14 @@
     <organisation-edit-inputs
       organisation="$ctrl.organisationData.organisation"
       inputs="$ctrl.organisationData.inputs"
-      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
+      modify-inputs="$ctrl.modifyIO(modifyDetails)">
     </organisation-edit-inputs>
   </div>
   <div ng-if="$ctrl.editType === 'outputs'">
     <organisation-edit-outputs
       organisation="$ctrl.organisationData.organisation"
       outputs="$ctrl.organisationData.outputs"
-      modify-organisation="$ctrl.modifyOrganisation(modifyDetails)">
+      modify-outputs="$ctrl.modifyIO(modifyDetails)">
     </organisation-edit-outputs>
   </div>
   <div ng-if="$ctrl.editType === 'links'">

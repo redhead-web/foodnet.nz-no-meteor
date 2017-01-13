@@ -4,8 +4,17 @@ class IOInputListController {
   }
 
   delete(index) {
-    const modifyDetails = [{ type: 'delete', field: 'inputs', fieldType: 'array', index }];
-    this.modifyOrganisation({ modifyDetails });
+    const modifyDetails = { type: 'remove', field: 'inputs', index };
+    this.onModify({ modifyDetails });
+  }
+
+  update(index, value) {
+    const modifyDetails = { type: 'update', field: 'inputs', index, value };
+    this.onModify({ modifyDetails });
+  }
+  insert(value) {
+    const modifyDetails = { type: 'insert', field: 'inputs', value };
+    this.onModify({ modifyDetails });
   }
 }
 
