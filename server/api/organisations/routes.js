@@ -35,6 +35,7 @@ router.get('/:organisationId', (req, res) => {
       _id: 'someId',
       name: 'Whangarei Food Co-op',
       emails: [{ address: 'email@email.com', primaryContact: 'true' }],
+      banner: 'http://lorempixel.com/400/200/nature',
       tags: 'carrots',
       tagLine: 'Local - Fresh - Affordable',
       description: { short: 'spoon hammer fork', long: 'spoon hammer fork mustard cheese' },
