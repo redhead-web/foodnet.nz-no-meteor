@@ -3,7 +3,7 @@ class SearchController {
     'ngInject';
 
     this.name = 'search';
-    this.searchFilter = $stateParams.searchFilter;
+    this.searchFilter = $stateParams.q;
 
     this.get = $http.get;
     this.$timeout = $timeout;

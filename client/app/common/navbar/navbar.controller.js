@@ -1,10 +1,13 @@
+import template from './bottom-sheet-list-template.html';
+
 class NavbarController {
-  constructor($state, $scope, $mdSidenav, User) {
+  constructor($state, $scope, $mdSidenav, $mdBottomSheet, User) {
     'ngInject';
 
     this.go = $state.go;
     this.name = 'navbar';
     this.bookmarked = false;
+    this.$mdBottomSheet = $mdBottomSheet;
 
     if (this.pageId && this.pageType === 'organisation') {
       if (this.userCurrent && this.userCurrent.profile && this.userCurrent.profile.bookmarks) {
@@ -40,10 +43,15 @@ class NavbarController {
     this.go(location);
   }
 
-
   toggleBookmark() {
     // call to database
     this.bookmarked = !this.bookmarked;
+  }
+
+  openBottomSheet() {
+    this.$mdBottomSheet.show({
+      template,
+    });
   }
 }
 

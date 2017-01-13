@@ -13,14 +13,14 @@
     search-active="$ctrl.searchActive">
   </search-common>
   <h4>Newest Organisations</h4>
-  <organisation-list
+  <organisation-list ng-if="$ctrl.organisationsNewest"
     layout="row"
     organisations="$ctrl.organisationsNewest"
     limit-to="2">
   </organisation-list>
 
   <h4>Popular Organisations</h4>
-  <organisation-list
+  <organisation-list ng-if="$ctrl.organisationsPopular"
     layout="row"
     organisations="$ctrl.organisationsPopular"
     limit-to="2">
