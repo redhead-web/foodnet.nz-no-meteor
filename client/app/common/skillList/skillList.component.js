@@ -5,6 +5,7 @@ import './skillList.scss';
 const skillListComponent = {
   restrict: 'E',
   bindings: {
+    onModify: '&',
     skills: '<',
     hideHeader: '<',
     pageOwned: '<',

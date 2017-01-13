@@ -5,6 +5,7 @@ import './profileEditSkills.scss';
 const profileEditSkillsComponent = {
   restrict: 'E',
   bindings: {
+    modifySkills: '&',
     user: '<',
     skills: '<',
   },

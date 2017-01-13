@@ -5,10 +5,11 @@ class OrganisationEditLinksController {
 
   modify() {
     const modifyDetails = [
-      { type: 'modify', field: 'emails', fieldType: 'value', value: this.organisation.emails },
-      { type: 'modify', field: 'social', fieldType: 'value', value: this.organisation.social },
+      { type: 'update', field: 'emails', fieldType: 'value', value: this.organisation.emails },
+      { type: 'update', field: 'social', fieldType: 'value', value: this.organisation.social },
     ];
-    this.modifyOrganisation({ modifyDetails });
+    const stateChange = true;
+    this.modifyOrganisation({ modifyDetails, stateChange });
   }
 }
 

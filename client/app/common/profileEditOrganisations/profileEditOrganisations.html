@@ -1,5 +1,11 @@
 <md-card flex layout="column" style="outline:none;" align="left">
-  <organisation-list-small user="$ctrl.user" organisations="$ctrl.organisations" hide-header="true" page-owned="true"></organisation-list-small>
+  <organisation-list-small
+    on-modify="$ctrl.modify(modifyDetails, stateChange)"
+    user="$ctrl.user"
+    organisations="$ctrl.organisations"
+    hide-header="true"
+    page-owned="true">
+  </organisation-list-small>
 </md-card>
 <span layout="row">
   <span flex></span>

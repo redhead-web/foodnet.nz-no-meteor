@@ -5,6 +5,7 @@ import './profileEditOrganisations.scss';
 const profileEditOrganisationsComponent = {
   restrict: 'E',
   bindings: {
+    modifyOrganisations: '&',
     user: '<',
     organisations: '<',
   },

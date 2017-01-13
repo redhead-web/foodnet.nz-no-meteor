@@ -40,12 +40,14 @@ class IOInputListController {
 
   delete(index) {
     const modifyDetails = { type: 'remove', field: 'inputs', index };
-    this.onModify({ modifyDetails });
+    const stateChange = false;
+    this.onModify({ modifyDetails, stateChange });
   }
 
   update(index, value) {
     const modifyDetails = { type: 'update', field: 'inputs', index, value };
-    this.onModify({ modifyDetails });
+    const stateChange = false;
+    this.onModify({ modifyDetails, stateChange });
   }
 }
 

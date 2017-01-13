@@ -5,6 +5,7 @@ import './organisationTeam.scss';
 const organisationTeamComponent = {
   restrict: 'E',
   bindings: {
+    onModify: '&',
     organisation: '<',
     team: '<',
     pageOwned: '<',
