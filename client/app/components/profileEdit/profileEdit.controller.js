@@ -9,7 +9,7 @@ class ProfileEditController {
     this.userActive = $stateParams.userId;
   }
 
-  modifyProfile(modifyDetails) {
+  modifyProfile(modifyDetails, stateChange) {
     for (let index = 0; index < modifyDetails.length; index += 1) {
       const modify = modifyDetails[index];
       if (modify.type === 'delete') {
@@ -55,6 +55,9 @@ class ProfileEditController {
           }
         }
       }
+    }
+    if (stateChange) {
+      this.editType = 'profile';
     }
   }
 }
