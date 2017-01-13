@@ -15,12 +15,13 @@
       <md-icon style="color:black;">search</md-icon>
     </md-button>
 
-    <md-menu>
+    <md-menu hide-xs>
       <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
         <md-icon style="color:black;">more_vert</md-icon>
       </md-button>
       <md-menu-content width="4">
         <md-list>
+          <md-list-item class="md-2-line" ui-sref="help"><span><md-icon style="color:black;">help_outline</md-icon> Help</span></md-list-item>
           <md-list-item class="md-2-line" ui-sref="home"><span><md-icon style="color:black;">share</md-icon> Share</span></md-list-item>
           <md-list-item class="md-2-line" ui-sref="home"><span><md-icon style="color:black;">cloud_upload</md-icon> Analytics</span></md-list-item>
           <md-list-item class="md-2-line" ui-sref="home" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon style="color:black;">content_copy</md-icon> Copy</span></md-list-item>
