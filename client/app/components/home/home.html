@@ -15,14 +15,14 @@
   <h4>Newest Organisations</h4>
   <organisation-list ng-if="$ctrl.organisationsNewest"
     layout="row"
-    organisations="$ctrl.organisationsNewest"
+    organisations="$ctrl.organisationsNewest.organisations"
     limit-to="2">
   </organisation-list>
 
   <h4>Popular Organisations</h4>
   <organisation-list ng-if="$ctrl.organisationsPopular"
     layout="row"
-    organisations="$ctrl.organisationsPopular"
+    organisations="$ctrl.organisationsPopular.organisations"
     limit-to="2">
   </organisation-list>
 </main>

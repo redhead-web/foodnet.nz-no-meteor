@@ -1,9 +1,24 @@
 class BookmarksController {
   constructor() {
     this.name = 'bookmarks';
+  }
 
-    // ----- TODO: these need to be passed in through root scope -----
-    this.organisations = [{ _id: 'someId', name: 'Super Awesome Company', tags: 'carrots' }, { _id: 'someOtherId', name: 'A Company', tags: 'beans' }, { _id: 'someMoreId', name: 'Another Company', tags: 'HTML' }, { _id: 'someAlternateId', name: 'Yet Another Company', tags: 'Lamb' }];
+  modifyLists(modifyDetails, stateChange) {
+    switch (modifyDetails.type) {
+      case 'insert':
+        this.bookmarksData[modifyDetails.field].push(modifyDetails.value);
+        break;
+      case 'update':
+        this.bookmarksData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
+        break;
+      case 'remove':
+        this.bookmarksData[modifyDetails.field].splice(modifyDetails.index, 1);
+        break;
+      default:
+    }
+    if (stateChange) {
+      this.editType = 'organisation';
+    }
   }
 }
 
