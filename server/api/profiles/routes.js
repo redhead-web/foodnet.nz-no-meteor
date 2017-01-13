@@ -18,6 +18,10 @@ router.get('/:profileId', (req, res) => {
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     skills: [{ _id: 'someId', name: 'leetHaxoring', description: 'spooon!', level: 'Senior' }, { _id: 'someOtherId', name: 'Java', description: 'spooon!', level: 'Intermediate' }],
+    qualifications: [
+      { _id: 1, name: 'Bachelor of Arts', institute: 'NorthTec' },
+      { _id: 2, name: 'Certificate of Awesome', institute: 'My mother' },
+    ],
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
     organisations: [
       { _id: 'someId', name: 'Super Awesome Company', tags: 'carrots' },
