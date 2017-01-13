@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/skills/:personId/', (req, res) => {
+router.get('/:personId', (req, res) => {
   res.json(
     {
       skills: [{ _id: 'someId', name: 'leetHaxoring', level: 'Senior' }, { _id: 'someOtherId', name: 'Java', level: 'Intermediate' }],

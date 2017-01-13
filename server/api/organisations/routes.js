@@ -29,7 +29,7 @@ router.get('/bookmarks', (req, res) => {
   ]);
 });
 
-router.get('/:organisationId', (req, res) => {
+router.get('/one/:organisationId', (req, res) => {
   res.json({
     organisation: {
       _id: 'someId',

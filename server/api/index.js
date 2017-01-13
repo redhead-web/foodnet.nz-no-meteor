@@ -38,5 +38,6 @@ app.use('/organisations', require('./organisations').router);
 app.use('/resources', require('./resources').router);
 app.use('/profiles', require('./profiles').router);
 app.use('/search', require('./search').router);
+app.use('/skills', require('./skills').router);
 
 module.exports = app;
