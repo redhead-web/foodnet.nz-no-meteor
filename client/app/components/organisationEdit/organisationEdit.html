@@ -83,4 +83,10 @@
       modify-organisation="$ctrl.modifyOrganisation(modifyDetails, stateChange)">
     </organisation-edit-links>
   </div>
+  <div ng-if"$$ctrl.editType === 'team member'">
+    <organisation-edit-team-member
+      organisation="$ctrl.organisationData.organisation"
+      modify-organisation="$ctrl.modifyOrganisation(modifyDetails, stateChange)">
+    </organisation-edit-team-member>
+  </div>
 </main>

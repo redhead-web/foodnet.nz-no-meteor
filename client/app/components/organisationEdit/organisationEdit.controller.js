@@ -6,6 +6,7 @@ class OrganisationEditController {
 
     // set up variables for organisationEdit page
     this.editType = 'organisation';
+    this.data = false;
     this.organisationActive = $stateParams.organisationId;
   }
 
@@ -33,11 +34,16 @@ class OrganisationEditController {
       }
     }
     if (stateChange) {
-      this.editType = 'organisation';
+      this.editType = stateChange;
     }
   }
 
   modifyLists(modifyDetails, stateChange) {
+    if (modifyDetails.data) {
+      this.data = modifyDetails.data;
+    } else {
+      this.data = false;
+    }
     switch (modifyDetails.type) {
       case 'insert':
         this.organisationData[modifyDetails.field].push(modifyDetails.value);
@@ -48,10 +54,12 @@ class OrganisationEditController {
       case 'remove':
         this.organisationData[modifyDetails.field].splice(modifyDetails.index, 1);
         break;
+      case 'none':
+        break;
       default:
     }
     if (stateChange) {
-      this.editType = 'organisation';
+      this.editType = stateChange;
     }
   }
 }

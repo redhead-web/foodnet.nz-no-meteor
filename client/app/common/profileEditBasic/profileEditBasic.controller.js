@@ -10,7 +10,7 @@ class ProfileEditBasicController {
       { type: 'update', field: 'phone', fieldType: 'value', fieldPlacement: 'profile', value: this.user.profile.phone },
       { type: 'update', field: 'address', fieldType: 'value', fieldPlacement: 'profile', value: this.user.profile.address },
     ];
-    const stateChange = true;
+    const stateChange = 'profile';
     this.modifyProfile({ modifyDetails, stateChange });
   }
 }

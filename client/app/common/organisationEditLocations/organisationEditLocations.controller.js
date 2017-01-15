@@ -5,7 +5,7 @@ class OrganisationEditLocationsController {
 
   delete(index) {
     const modifyDetails = [{ type: 'remove', field: 'locations', fieldType: 'array', index }];
-    const stateChange = false;
+    const stateChange = 'organisation';
     this.modifyOrganisation({ modifyDetails, stateChange });
   }
 }
