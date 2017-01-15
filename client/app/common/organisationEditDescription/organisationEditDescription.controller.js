@@ -5,7 +5,7 @@ class OrganisationEditDescriptionController {
 
   modify() {
     const modifyDetails = [
-      { type: 'update', field: 'description', fieldType: 'value', value: this.organisation.description },
+      { type: 'update', field: 'description', value: this.organisation.description },
     ];
     const stateChange = 'organisation';
     this.modifyOrganisation({ modifyDetails, stateChange });

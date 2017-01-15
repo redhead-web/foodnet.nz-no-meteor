@@ -4,9 +4,7 @@ class OrganisationEditTeamMemberController {
   }
 
   modify() {
-    const modifyDetails = {
-
-    };
+    const modifyDetails = {};
     const stateChange = 'team';
     this.modifyTeamMember({ modifyDetails, stateChange });
   }

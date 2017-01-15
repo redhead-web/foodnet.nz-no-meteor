@@ -15,23 +15,9 @@ class OrganisationEditController {
       if (modify.data) { this.passData = modify.passData; } else { this.data = false; }
       const modify = modifyDetails[index];
       if (modify.type === 'remove') {
-        if (modify.fieldType === 'array') {
-          this.organisationData.organisation[modify.field].splice(modify.index, 1);
-        } else if (modify.fieldType === 'value') {
-          this.organisationData.organisation[modify.field] = '';
-        }
+        this.organisationData.organisation[modify.field] = '';
       } else if (modify.type === 'update') {
-        if (modify.fieldType === 'array') {
-          this.organisationData.organisation[modify.field][modifyDetails.index] = modifyDetails.value;
-        } else if (modify.fieldType === 'value') {
-          this.organisationData.organisation[modify.field] = modify.value;
-        }
-      } else if (modify.type === 'insert') {
-        if (modify.fieldType === 'array') {
-          this.organisationData.organisation[modify.field][modifyDetails.index].push(modifyDetails.value);
-        } else if (modify.fieldType === 'value') {
-          // add value should never be called
-        }
+        this.organisationData.organisation[modify.field] = modify.value;
       }
     }
     if (stateChange) {
@@ -47,7 +33,6 @@ class OrganisationEditController {
   }
 
   modifyLists(modifyDetails, stateChange) {
-    console.log(modifyDetails);
     if (modifyDetails.passData) { this.data = modifyDetails.passData; } else { this.data = false; }
     switch (modifyDetails.type) {
       case 'insert':
