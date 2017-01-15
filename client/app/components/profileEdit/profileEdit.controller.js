@@ -1,11 +1,12 @@
 class ProfileEditController {
-  constructor($stateParams) {
+  constructor($stateParams, $mdDialog) {
     'ngInject';
 
     this.name = 'profileEdit';
 
     // set up variables for profileEdit page
     this.editType = 'profile';
+    this.mdDialog = $mdDialog;
     this.userActive = $stateParams.userId;
   }
 
@@ -70,6 +71,21 @@ class ProfileEditController {
         this.profileData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
         break;
       case 'remove':
+        if (modifyDetails.field === 'organisations') {
+          // Appending dialog to document.body to cover sidenav in docs app
+          const confirm = this.mdDialog.confirm()
+          .title('Would you like to move this job to previous employment?')
+          .textContent('This will keep an employment history')
+          .ariaLabel('previous employment')
+          .ok('Yes')
+          .cancel('No');
+
+          this.mdDialog.show(confirm).then(() => {
+            console.log('move to previous');
+          }, () => {
+            console.log('do not move to previous');
+          });
+        }
         this.profileData[modifyDetails.field].splice(modifyDetails.index, 1);
         break;
       default:
