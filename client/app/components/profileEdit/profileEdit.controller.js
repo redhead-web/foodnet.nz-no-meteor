@@ -57,7 +57,7 @@ class ProfileEditController {
       }
     }
     if (stateChange) {
-      this.editType = 'profile';
+      this.editType = stateChange;
     }
   }
 
@@ -75,7 +75,7 @@ class ProfileEditController {
       default:
     }
     if (stateChange) {
-      this.editType = 'organisation';
+      this.editType = stateChange;
     }
   }
 }

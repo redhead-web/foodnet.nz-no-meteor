@@ -1,6 +1,20 @@
 class OrganisationTeamController {
-  constructor() {
+  constructor($state) {
+    'ngInject';
+
     this.name = 'organisationTeam';
+
+    this.go = $state.go;
+  }
+
+  teamMemberClick(teamMemberId) {
+    if (this.pageOwned) {
+      const modifyDetails = { type: 'none', passData: { teamMemberId } };
+      const stateChange = 'teamMember';
+      this.onModify({ modifyDetails, stateChange });
+    } else {
+      this.go('profile', { userId: teamMemberId });
+    }
   }
 
   delete(index) {

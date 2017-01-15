@@ -11,7 +11,7 @@ class OrganisationEditBasicController {
       { type: 'update', field: 'gstReg', fieldType: 'value', value: this.organisation.gstReg },
       { type: 'update', field: 'gstNum', fieldType: 'value', value: this.organisation.gstNum },
     ];
-    const stateChange = true;
+    const stateChange = 'organisation';
     this.modifyOrganisation({ modifyDetails, stateChange });
   }
 }

@@ -7,7 +7,7 @@ class ProfileEditLinksController {
     const modifyDetails = [
       { type: 'update', field: 'social', fieldType: 'value', fieldPlacement: 'profile', value: this.user.profile.social },
     ];
-    const stateChange = true;
+    const stateChange = 'profile';
     this.modifyProfile({ modifyDetails, stateChange });
   }
 }
