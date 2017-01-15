@@ -9,11 +9,14 @@ class OrganisationEditLocationFormController {
     }
   }
 
-  save(location) {
+  save(location, index) {
+    const stateChange = 'locationsForm';
     if (this.isNew) {
-      this.onSave({ location, method: 'insert' });
+      const modifyDetails = { type: 'update', field: 'locations', index, value: location };
+      this.modifyList({ modifyDetails, stateChange });
     } else {
-      this.onSave({ location, method: 'update' });
+      const modifyDetails = { type: 'update', field: 'locations', index, value: location };
+      this.modifyList({ modifyDetails, stateChange });
     }
   }
 }
