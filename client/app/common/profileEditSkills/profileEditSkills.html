@@ -3,9 +3,16 @@
     on-modify="$ctrl.modify(modifyDetails, stateChange)"
     user="$ctrl.user"
     skills="$ctrl.skills"
-    hide-header="true"
+    hide-header="false"
     page-owned="true">
   </skill-list>
+  <qualification-list
+    on-modify="$ctrl.modify(modifyDetails, stateChange)"
+    user="$ctrl.user"
+    qualifications="$ctrl.qualifications"
+    hide-header="false"
+    page-owned="true">
+  </qualification-list>
 </md-card>
 <span layout="row">
   <span flex></span>

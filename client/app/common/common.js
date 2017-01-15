@@ -40,6 +40,7 @@ import SkillList from './skillList/skillList';
 import SkillAvatar from './skillAvatar/skillAvatar';
 import History from './history/history.factory';
 import QualificationsList from './qualificationList/qualificationList';
+import QualificationsAvatar from './qualificationAvatar/qualificationAvatar';
 import OrganisationEditLocationForm from './organisationEditLocationForm/organisationEditLocationForm';
 
 
@@ -85,6 +86,7 @@ const commonModule = angular.module('app.common', [
   SkillAvatar,
   History,
   QualificationsList,
+  QualificationsAvatar,
   OrganisationEditLocationForm,
 ])
 

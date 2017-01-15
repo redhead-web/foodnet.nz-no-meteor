@@ -6,6 +6,7 @@ const organisationSplashComponent = {
   restrict: 'E',
   bindings: {
     organisation: '<',
+    hideTitle: '<',
   },
   template,
   controller,

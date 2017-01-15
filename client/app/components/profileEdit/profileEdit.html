@@ -12,7 +12,7 @@
         <md-list>
           <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
           <md-list-item ng-click="$ctrl.editType = 'organisations'">organisations</md-list-item>
-          <md-list-item ng-click="$ctrl.editType = 'skills'">skills</md-list-item>
+          <md-list-item ng-click="$ctrl.editType = 'skills'">skills and qualifications</md-list-item>
           <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
         </md-list>
       </md-card-content>
@@ -45,6 +45,7 @@
     <profile-edit-skills
       user="$ctrl.profileData.person"
       skills="$ctrl.profileData.skills"
+      qualifications="$ctrl.profileData.qualifications"
       modify-skills="$ctrl.modifyLists(modifyDetails, stateChange)">
     </profile-edit-skillss>
   </div>

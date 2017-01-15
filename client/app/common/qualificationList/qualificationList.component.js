@@ -5,6 +5,7 @@ import './qualificationList.scss';
 const qualificationListComponent = {
   restrict: 'E',
   bindings: {
+    onModify: '&',
     qualifications: '<',
     hideHeader: '<',
     pageOwned: '<',

@@ -7,6 +7,7 @@ const userSkillsComponent = {
   bindings: {
     user: '<',
     skills: '<',
+    qualifications: '<',
     skillsSummary: '<',
   },
   template,

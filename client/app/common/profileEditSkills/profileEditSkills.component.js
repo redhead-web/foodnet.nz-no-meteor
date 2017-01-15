@@ -8,6 +8,7 @@ const profileEditSkillsComponent = {
     modifySkills: '&',
     user: '<',
     skills: '<',
+    qualifications: '<',
   },
   template,
   controller,
