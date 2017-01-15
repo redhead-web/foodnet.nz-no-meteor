@@ -1,3 +1,41 @@
-<div>
-  <h1>{{ $ctrl.name }}</h1>
-</div>
+<md-card style="outline:none;" align="left">
+  <form ng-submit="$ctrl.save($ctrl.location.location, $ctrl.location.index)">
+    <md-card-content layout="column">
+      <md-input-container>
+        <label>Address</label>
+        <input ng-model="$ctrl.location.location.address">
+      </md-input-container>
+      <md-input-container>
+        <label>Phone Number</label>
+        <input ng-model="$ctrl.location.location.phone">
+      </md-input-container>
+      <table>
+        <tr ng-repeat="day in $ctrl.daysOfWeek" class="schedule-container">
+          <td>
+            <label>{{day}}</label>
+          </td>
+          <td>
+            <md-input-container >
+              <label>Open</label>
+              <input ng-model="$ctrl.location.location.hours[day].startTime" type="time"
+              ng-disabled="$ctrl.location.location.hours[day].closed">
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container >
+              <label>Close</label>
+              <input ng-model="$ctrl.location.location.hours[day].endTime" type="time"
+              ng-disabled="$ctrl.location.location.hours[day].closed">
+            </md-input-container>
+          </td>
+          <td>
+            <md-checkbox ng-model="$ctrl.location.location.hours[day].closed">Closed</md-checkbox>
+          </td>
+        </tr>
+      </table>
+      <md-card-actions layout="row" layout-align="end end">
+        <md-button class="md-accent md-raised" type="submit">Save</md-button>
+      </md-card-actions>
+    </md-card-content>
+  </form>
+</md-card>

@@ -24,7 +24,7 @@ angular.module('app', [
   .config(($mdThemingProvider) => {
     'ngInject';
 
-    $mdThemingProvider.theme('default').primaryPalette('grey').accentPalette('teal');
+    $mdThemingProvider.theme('default').primaryPalette('purple').accentPalette('orange');
   })
 
   .component('app', AppComponent);

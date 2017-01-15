@@ -14,6 +14,11 @@ class OrganisationEditLocationsController {
     const stateChange = 'locationsForm';
     this.modifyLocations({ modifyDetails, stateChange });
   }
+  add() {
+    const modifyDetails = { type: 'none', data: { location: {} } };
+    const stateChange = 'locationsForm';
+    this.modifyLocations({ modifyDetails, stateChange });
+  }
 }
 
 export default OrganisationEditLocationsController;

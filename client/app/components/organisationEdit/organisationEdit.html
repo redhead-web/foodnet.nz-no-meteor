@@ -49,13 +49,12 @@
   </div>
   <div ng-if="$ctrl.editType === 'locations'">
     <organisation-edit-locations
-      organisation="$ctrl.organisationData.organisation"
+      locations="$ctrl.organisationData.locations"
       modify-locations="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-locations>
   </div>
   <div ng-if="$ctrl.editType === 'locationsForm'">
     <organisation-edit-location-form
-      organisation="$ctrl.organisationData.organisation"
       location="$ctrl.data"
       modify-location="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-location-form>

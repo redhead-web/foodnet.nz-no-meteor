@@ -5,7 +5,7 @@ import './organisationEditLocations.scss';
 const organisationEditLocationsComponent = {
   restrict: 'E',
   bindings: {
-    organisation: '<',
+    locations: '<',
     modifyLocations: '&',
   },
   template,
