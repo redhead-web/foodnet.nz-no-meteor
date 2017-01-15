@@ -10,12 +10,13 @@ class OrganisationEditLocationsController {
   }
 
   edit(location, index) {
-    const modifyDetails = { type: 'none', data: { location, index } };
+    const modifyDetails = { type: 'none', passData: { location, index } };
     const stateChange = 'locationsForm';
     this.modifyLocations({ modifyDetails, stateChange });
   }
   add() {
-    const modifyDetails = { type: 'none', data: { location: {} } };
+    console.log('add button pressed');
+    const modifyDetails = { type: 'none', passData: { location: {} } };
     const stateChange = 'locationsForm';
     this.modifyLocations({ modifyDetails, stateChange });
   }
