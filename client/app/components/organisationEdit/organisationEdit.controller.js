@@ -60,6 +60,7 @@ class OrganisationEditController {
         this.organisationData[modifyDetails.field].splice(modifyDetails.index, 1);
         break;
       case 'none':
+        this.data = modifyDetails.data;
         break;
       default:
     }
