@@ -12,6 +12,7 @@ class OrganisationEditController {
 
   modifyOrganisation(modifyDetails, stateChange) {
     for (let index = 0; index < modifyDetails.length; index += 1) {
+      if (modify.data) { this.data = modify.data; } else { this.data = false; }
       const modify = modifyDetails[index];
       if (modify.type === 'remove') {
         if (modify.fieldType === 'array') {
@@ -39,11 +40,7 @@ class OrganisationEditController {
   }
 
   modifyLists(modifyDetails, stateChange) {
-    if (modifyDetails.data) {
-      this.data = modifyDetails.data;
-    } else {
-      this.data = false;
-    }
+    if (modifyDetails.data) { this.data = modifyDetails.data; } else { this.data = false; }
     switch (modifyDetails.type) {
       case 'insert':
         this.organisationData[modifyDetails.field].push(modifyDetails.value);
