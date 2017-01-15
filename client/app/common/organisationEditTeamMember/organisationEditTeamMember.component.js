@@ -4,7 +4,11 @@ import './organisationEditTeamMember.scss';
 
 const organisationEditTeamMemberComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    teamMember: '<',
+    organisation: '<',
+    modifyTeamMember: '&',
+  },
   template,
   controller,
 };

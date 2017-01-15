@@ -6,6 +6,7 @@ const searchBarComponent = {
   restrict: 'E',
   bindings: {
     onSearch: '&',
+    hideBack: '<',
   },
   template,
   controller,

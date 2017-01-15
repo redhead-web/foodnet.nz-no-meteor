@@ -23,10 +23,10 @@ router.get('/:profileId', (req, res) => {
     ],
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
     organisations: [
-      { _id: 'someId', name: 'Super Awesome Company', tags: 'carrots' },
-      { _id: 'someOtherId', name: 'A Company', tags: 'beans' },
-      { _id: 'someMoreId', name: 'Another Company', tags: 'HTML' },
-      { _id: 'someAlternateId', name: 'Yet Another Company', tags: 'Lamb' },
+      { _id: 'someId', name: 'Super Awesome Company', tags: 'carrots', jobTitle: 'some title' },
+      { _id: 'someOtherId', name: 'A Company', tags: 'beans', jobTitle: 'some title' },
+      { _id: 'someMoreId', name: 'Another Company', tags: 'HTML', jobTitle: 'some title' },
+      { _id: 'someAlternateId', name: 'Yet Another Company', tags: 'Lamb', jobTitle: 'some title' },
     ],
   });
 });

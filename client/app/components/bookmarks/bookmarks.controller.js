@@ -1,6 +1,7 @@
 class BookmarksController {
   constructor() {
     this.name = 'bookmarks';
+    this.searchFilter = '';
   }
 
   modifyLists(modifyDetails, stateChange) {
@@ -19,6 +20,10 @@ class BookmarksController {
     if (stateChange) {
       this.editType = 'organisation';
     }
+  }
+
+  search(query) {
+    this.searchFilter = query;
   }
 }
 

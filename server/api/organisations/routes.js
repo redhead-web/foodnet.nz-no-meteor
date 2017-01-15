@@ -50,7 +50,10 @@ router.get('/one/:organisationId', (req, res) => {
     locations: [{ address: '1 woods road', headOffice: true }, { address: 'some place else' }],
     inputs: [{ _id: 'someId', name: 'carots', provider: 'Northland Naturals' }, { _id: 'someOtherId', name: 'beatroot', provider: 'Northland Naturals' }],
     outputs: [{ _id: 'someId', name: 'carots' }, { _id: 'someOtherId', name: 'beatroot' }],
-    team: [{ _id: 'someId', name: 'Sean Stanley', roles: ['Administrator'] }, { _id: 'someId', name: 'Matt Stanley', roles: ['Director'] }, { _id: 'someId', name: 'Clive McKeg', roles: ['Director'] }],
+    team: [
+      { _id: 'someId', name: 'Sean Stanley', jobTitle: 'some title', emails: [{ address: 'hello@hello.com' }] },
+      { _id: 'someId', name: 'Matt Stanley', jobTitle: 'some title', emails: [{ address: 'hello@hello.com' }] },
+      { _id: 'someId', name: 'Clive McKeg', jobTitle: 'some title', emails: [{ address: 'hello@hello.com' }] }],
   });
 });
 

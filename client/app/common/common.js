@@ -24,6 +24,7 @@ import OrganisationEditBranding from './organisationEditBranding/organisationEdi
 import OrganisationEditLocations from './organisationEditLocations/organisationEditLocations';
 import OrganisationEditDescription from './organisationEditDescription/organisationEditDescription';
 import OrganisationEditTeam from './organisationEditTeam/organisationEditTeam';
+import OrganisationEditTeamMember from './organisationEditTeamMember/organisationEditTeamMember';
 import OrganisationEditInputs from './organisationEditInputs/organisationEditInputs';
 import OrganisationEditOutputs from './organisationEditOutputs/organisationEditOutputs';
 import OrganisationEditLinks from './organisationEditLinks/organisationEditLinks';
@@ -68,6 +69,7 @@ const commonModule = angular.module('app.common', [
   OrganisationEditLocations,
   OrganisationEditDescription,
   OrganisationEditTeam,
+  OrganisationEditTeamMember,
   OrganisationEditInputs,
   OrganisationEditOutputs,
   OrganisationEditLinks,

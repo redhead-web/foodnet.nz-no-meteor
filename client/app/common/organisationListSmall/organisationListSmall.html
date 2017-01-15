@@ -1,6 +1,9 @@
 <md-list flex>
   <md-subheader class="md-no-sticky" ng-if="!$ctrl.hideHeader">Organisations</md-subheader>
-  <md-list-item class="md-2-line" ng-repeat="organisation in $ctrl.organisations" ui-sref="organisation({organisationId: organisation._id})">
+  <md-list-item
+    class="md-2-line"
+    ng-repeat="organisation in $ctrl.organisations | filter: $ctrl.searchFilter"
+    ui-sref="organisation({organisationId: organisation._id})">
     <organisation-avatar class="md-avatar" size="40"></organisation-avatar>
     <div class="md-list-item-text" layout="column">
       <h3>{{organisation.name}}</h3>
