@@ -10,6 +10,7 @@ const organisationListSmallComponent = {
     hideHeader: '<',
     pageOwned: '<',
     searchFilter: '<',
+    buttonType: '@',
   },
   template,
   controller,

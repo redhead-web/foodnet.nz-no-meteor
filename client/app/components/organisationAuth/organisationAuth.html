@@ -1,0 +1,16 @@
+<navbar
+  title="Food Map"
+  user-current="$root.currentUser"
+  page-owned="true">
+</navbar>
+<main layout="column" flex style="min-height:100vh;" align="center">
+  <md-card flex layout="column" style="outline:none;" align="left">
+    <md-subheader class="md-no-sticky">My Organisations</md-subheader>
+    <organisation-list-small
+      button-type="edit"
+      organisations="$ctrl.organisationsAuth.organisations"
+      hide-header="true"
+      page-owned="true">
+    </organisation-list-small>
+  </md-card>
+</main>

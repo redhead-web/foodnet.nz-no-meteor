@@ -42,7 +42,6 @@ import History from './history/history.factory';
 import QualificationsList from './qualificationList/qualificationList';
 import QualificationsAvatar from './qualificationAvatar/qualificationAvatar';
 import OrganisationEditLocationForm from './organisationEditLocationForm/organisationEditLocationForm';
-import IOAddButton from './iOAddButton/iOAddButton';
 import buttonPopup from './buttonPopup/buttonPopup';
 
 
@@ -90,7 +89,6 @@ const commonModule = angular.module('app.common', [
   QualificationsList,
   QualificationsAvatar,
   OrganisationEditLocationForm,
-  IOAddButton,
   buttonPopup,
 ])
 

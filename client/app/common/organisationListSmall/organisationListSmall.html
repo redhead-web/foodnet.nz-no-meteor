@@ -11,11 +11,19 @@
     </div>
     <span flex></span>
     <md-button
-      ng-if="$ctrl.pageOwned"`
+      ng-if="$ctrl.pageOwned && $ctrl.buttonType !== 'edit'"
       class="md-icon-button md-secondary"
       aria-label="Delete"
       ng-click="$ctrl.delete($index)">
       <md-icon style="color:black;">close</md-icon>
+    </md-button>
+
+    <md-button
+      ng-if="$ctrl.pageOwned && $ctrl.buttonType === 'edit'"
+      class="md-icon-button md-secondary"
+      aria-label="Edit"
+      ui-sref="organisationEdit({organisationId: organisation._id})">
+      <md-icon style="color:black;">mode_edit</md-icon>
     </md-button>
   </md-list-item>
 </md-list>

@@ -20,6 +20,15 @@ router.get('/popular', (req, res) => {
   ] });
 });
 
+router.get('/auth', (req, res) => {
+  res.json({ organisations: [
+    { _id: 'someId', name: 'Super Awesome Company', tags: ['carrots'] },
+    { _id: 'someOtherI', name: 'A Company', tags: ['beans'] },
+    { _id: 'someMoreId', name: 'Another Company', tags: ['HTML'] },
+    { _id: 'someAlternateId', name: 'Yet Another Company', tags: ['Lamb'] },
+  ] });
+});
+
 router.get('/bookmarks', (req, res) => {
   res.json({ organisations: [
     { _id: 'someId', name: 'Super Awesome Company', tags: ['carrots'] },

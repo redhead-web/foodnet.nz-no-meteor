@@ -7,6 +7,7 @@ import Profile from './profile/profile';
 import ProfileEdit from './profileEdit/profileEdit';
 import Organisation from './organisation/organisation';
 import OrganisationEdit from './organisationEdit/organisationEdit';
+import OrganisationAuth from './organisationAuth/organisationAuth';
 import Help from './help/help';
 
 const componentModule = angular.module('app.components', [
@@ -18,6 +19,7 @@ const componentModule = angular.module('app.components', [
   ProfileEdit,
   Organisation,
   OrganisationEdit,
+  OrganisationAuth,
   Help,
 ])
 
