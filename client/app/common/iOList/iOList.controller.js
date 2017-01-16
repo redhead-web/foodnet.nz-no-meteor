@@ -1,4 +1,4 @@
-import template from './newInput.html';
+import template from '../iOAddButton/newIO.html';
 import angular from 'angular';
 
 const dialogOptions = {
@@ -16,13 +16,13 @@ const dialogOptions = {
   },
 };
 
-class IOInputListController {
+class IOListController {
   constructor($state, $mdDialog) {
     'ngInject';
 
     this.go = $state.go;
     this.dialog = $mdDialog;
-    this.name = 'iOInputList';
+    this.name = 'iOList';
   }
 
   click(targetEvent, data, index) {
@@ -31,24 +31,24 @@ class IOInputListController {
       this.dialog.show(angular.extend(dialogOptions, {
         targetEvent,
         bindToController: true,
-        locals: { data, title: 'Edit Input' },
-      })).then((input) => this.update(index, input));
+        locals: { data, title: 'Edit' },
+      })).then((item) => this.update(index, item));
     } else {
-      this.go('search', { q: data.name, input: true });
+      this.go('search', { q: data.name, [this.fieldName]: true });
     }
   }
 
   delete(index) {
-    const modifyDetails = { type: 'remove', field: 'inputs', index };
+    const modifyDetails = { type: 'remove', field: this.fieldName, index };
     const stateChange = false;
     this.onModify({ modifyDetails, stateChange });
   }
 
   update(index, value) {
-    const modifyDetails = { type: 'update', field: 'inputs', index, value };
+    const modifyDetails = { type: 'update', field: this.fieldName, index, value };
     const stateChange = false;
     this.onModify({ modifyDetails, stateChange });
   }
 }
 
-export default IOInputListController;
+export default IOListController;

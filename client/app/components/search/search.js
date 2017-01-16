@@ -12,7 +12,7 @@ export default angular.module('search', [
 
   $stateProvider
     .state('search', {
-      url: '/search?{q:string}{input:bool}{output:bool}',
+      url: '/search?{q:string}{inputs:bool}{outputs:bool}',
       component: 'search',
       params: {
         q: { dynamic: true },

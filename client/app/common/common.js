@@ -28,8 +28,7 @@ import OrganisationEditTeamMember from './organisationEditTeamMember/organisatio
 import OrganisationEditInputs from './organisationEditInputs/organisationEditInputs';
 import OrganisationEditOutputs from './organisationEditOutputs/organisationEditOutputs';
 import OrganisationEditLinks from './organisationEditLinks/organisationEditLinks';
-import IOInputList from './iOInputList/iOInputList';
-import IOOutputList from './iOOutputList/iOOutputList';
+import IOList from './iOList/iOList';
 import IOAvatar from './iOAvatar/iOAvatar';
 import User from './user/user';
 import UserInfo from './userInfo/userInfo';
@@ -42,6 +41,7 @@ import History from './history/history.factory';
 import QualificationsList from './qualificationList/qualificationList';
 import QualificationsAvatar from './qualificationAvatar/qualificationAvatar';
 import OrganisationEditLocationForm from './organisationEditLocationForm/organisationEditLocationForm';
+import IOAddButton from './iOAddButton/iOAddButton';
 
 
 const commonModule = angular.module('app.common', [
@@ -74,8 +74,7 @@ const commonModule = angular.module('app.common', [
   OrganisationEditInputs,
   OrganisationEditOutputs,
   OrganisationEditLinks,
-  IOInputList,
-  IOOutputList,
+  IOList,
   IOAvatar,
   User,
   UserInfo,
@@ -88,6 +87,7 @@ const commonModule = angular.module('app.common', [
   QualificationsList,
   QualificationsAvatar,
   OrganisationEditLocationForm,
+  IOAddButton,
 ])
 
 .name;

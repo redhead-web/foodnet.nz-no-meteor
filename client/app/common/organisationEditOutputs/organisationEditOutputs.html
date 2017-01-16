@@ -1,16 +1,15 @@
 <md-card flex layout="column" style="outline:none;" align="left">
-  <i-o-output-list
+  <i-o-list
     on-modify="$ctrl.modify(modifyDetails, stateChange)"
     organisation="$ctrl.organisation"
-    outputs="$ctrl.outputs"
+    list="$ctrl.outputs"
+    field-name="outputs"
     page-owned="true"
     hide-header="true">
-  </i-o-output-list>
+  </i-o-list>
 </md-card>
 
 <span layout="row">
   <span flex></span>
-  <md-button class="md-fab md-primary" aria-label="Add">
-    <md-icon>add</md-icon>
-  </md-button>
+  <i-o-add-button field-name="outputs" on-add="$ctrl.modify(modifyDetails, stateChange)"></i-o-add-button>
 </span>

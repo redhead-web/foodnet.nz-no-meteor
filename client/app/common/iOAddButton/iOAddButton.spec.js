@@ -1,19 +1,19 @@
 /* global inject, expect */
-import IOInputListModule from './iOInputList';
-import IOInputListController from './iOInputList.controller';
-import IOInputListComponent from './iOInputList.component';
-import IOInputListTemplate from './iOInputList.html';
+import IOAddButtonModule from './iOAddButton';
+import IOAddButtonController from './iOAddButton.controller';
+import IOAddButtonComponent from './iOAddButton.component';
+import IOAddButtonTemplate from './iOAddButton.html';
 
-describe('IOInputList', () => {
+describe('IOAddButton', () => {
   let $rootScope;
   let makeController;
 
-  beforeEach(window.module(IOInputListModule));
+  beforeEach(window.module(IOAddButtonModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
       expect($rootScope).to.exist();
-      return new IOInputListController();
+      return new IOAddButtonController();
     };
   }));
 
@@ -33,20 +33,20 @@ describe('IOInputList', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(IOInputListTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(IOAddButtonTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
     // component/directive specs
-    const component = IOInputListComponent;
+    const component = IOAddButtonComponent;
 
     it('includes the intended template', () => {
-      expect(component.template).to.equal(IOInputListTemplate);
+      expect(component.template).to.equal(IOAddButtonTemplate);
     });
 
     it('invokes the right controller', () => {
-      expect(component.controller).to.equal(IOInputListController);
+      expect(component.controller).to.equal(IOAddButtonController);
     });
   });
 });

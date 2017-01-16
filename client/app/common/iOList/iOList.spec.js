@@ -1,19 +1,19 @@
 /* global inject, expect */
-import IOOutputListModule from './iOOutputList';
-import IOOutputListController from './iOOutputList.controller';
-import IOOutputListComponent from './iOOutputList.component';
-import IOOutputListTemplate from './iOOutputList.html';
+import iOListModule from './iOList';
+import IOListController from './iOList.controller';
+import iOListComponent from './iOList.component';
+import iOListTemplate from './iOList.html';
 
-describe('IOOutputList', () => {
+describe('iOList', () => {
   let $rootScope;
   let makeController;
 
-  beforeEach(window.module(IOOutputListModule));
+  beforeEach(window.module(iOListModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
       expect($rootScope).to.exist();
-      return new IOOutputListController();
+      return new IOListController();
     };
   }));
 
@@ -33,20 +33,20 @@ describe('IOOutputList', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(IOOutputListTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(iOListTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
     // component/directive specs
-    const component = IOOutputListComponent;
+    const component = iOListComponent;
 
     it('includes the intended template', () => {
-      expect(component.template).to.equal(IOOutputListTemplate);
+      expect(component.template).to.equal(iOListTemplate);
     });
 
     it('invokes the right controller', () => {
-      expect(component.controller).to.equal(IOOutputListController);
+      expect(component.controller).to.equal(IOListController);
     });
   });
 });

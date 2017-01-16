@@ -5,10 +5,10 @@
         <h3 class="md-headline">{{$ctrl.title}}</h3>
         <!--  TODO make the fields autocomplete from server side searches  -->
         <md-input-container>
-          <label>Input name</label>
+          <label>{{$ctrl.fieldName}} name</label>
           <input ng-model="$ctrl.data.name">
         </md-input-container>
-        <md-input-container>
+        <md-input-container ng-if="$ctrl.fieldName === 'inputs'">
           <label>Input Provider</label>
           <input ng-model="$ctrl.data.provider">
         </md-input-container>
