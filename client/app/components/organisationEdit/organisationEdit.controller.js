@@ -8,6 +8,53 @@ class OrganisationEditController {
     this.editType = 'organisation';
     this.data = false;
     this.organisationActive = $stateParams.organisationId;
+    this.paths = {
+      organisation: {
+        root: true,
+        title: 'Organisation Settings!',
+      },
+      basic: {
+        title: 'Basic Settings',
+      },
+      branding: {
+        title: 'Organisation Brand',
+      },
+      locations: {
+        title: 'Places of Business',
+      },
+      locationsForm: {
+        title: 'Location Settings',
+        parent: 'locations',
+      },
+      description: {
+        title: 'Organisation Summary',
+      },
+      team: {
+        title: 'The Team',
+      },
+      teamMember: {
+        title: 'Team Member Settings',
+        parent: 'team',
+      },
+      inputs: {
+        title: 'Organisation Inputs',
+      },
+      outputs: {
+        title: 'Organisation Outputs',
+      },
+      links: {
+        title: 'Social Media Links',
+      },
+    };
+  }
+
+  resolveBackArrow() {
+    const path = this.paths[this.editType];
+    if (path.parent) {
+      this.editType = path.parent;
+    } else {
+      this.editType = 'organisation';
+    }
   }
 
   modifyOrganisation(modifyDetails, stateChange) {

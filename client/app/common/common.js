@@ -42,6 +42,7 @@ import QualificationsList from './qualificationList/qualificationList';
 import QualificationsAvatar from './qualificationAvatar/qualificationAvatar';
 import OrganisationEditLocationForm from './organisationEditLocationForm/organisationEditLocationForm';
 import IOAddButton from './iOAddButton/iOAddButton';
+import imgUpload from './imgUpload/imgUpload';
 
 
 const commonModule = angular.module('app.common', [
@@ -88,6 +89,7 @@ const commonModule = angular.module('app.common', [
   QualificationsAvatar,
   OrganisationEditLocationForm,
   IOAddButton,
+  imgUpload,
 ])
 
 .name;

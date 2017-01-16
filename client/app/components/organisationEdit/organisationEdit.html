@@ -1,22 +1,31 @@
 <main layout="column" flex style="min-height:100vh;">
   <!-- list -->
   <div ng-if="$ctrl.editType === 'organisation'">
-    <span layout="row">
-      <md-button aria-label="More" class="md-icon-button" ui-sref="organisation({organisationId: $ctrl.organisationActive})">
-        <md-icon style="color:black;">close</md-icon>
-      </md-button>
-      <h3>{{$ctrl.editType}} setings</h3>
-    </span>
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <md-button aria-label="More" class="md-icon-button" ui-sref="organisation({organisationId: $ctrl.organisationActive})">
+          <md-icon>close</md-icon>
+        </md-button>
+        <h3>{{$ctrl.paths[$ctrl.editType].title}}</h3>
+      </div>
+    </md-toolbar>
     <md-card flex layout="column" style="outline:none;" align="left">
       <md-card-content>
         <md-list>
           <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
+          <md-divider></md-divider>
           <md-list-item ng-click="$ctrl.editType = 'branding'">branding</md-list-item>
+          <md-divider></md-divider>
           <md-list-item ng-click="$ctrl.editType = 'locations'">locations</md-list-item>
+          <md-divider></md-divider>
           <md-list-item ng-click="$ctrl.editType = 'description'">description</md-list-item>
+          <md-divider></md-divider>
           <md-list-item ng-click="$ctrl.editType = 'team'">team</md-list-item>
+          <md-divider></md-divider>
           <md-list-item ng-click="$ctrl.editType = 'inputs'">inputs</md-list-item>
+          <md-divider></md-divider>
           <md-list-item ng-click="$ctrl.editType = 'outputs'">outputs</md-list-item>
+          <md-divider></md-divider>
           <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
         </md-list>
       </md-card-content>
@@ -25,15 +34,17 @@
 
   <!-- detail -->
   <div ng-if="$ctrl.editType !== 'organisation'">
-    <span layout="row">
-      <md-button
-        aria-label="More"
-        class="md-icon-button"
-        ng-click="$ctrl.editType === 'team member' ? $ctrl.editType = 'team' : $ctrl.editType = 'organisation'">
-        <md-icon style="color:black;">keyboard_backspace</md-icon>
-      </md-button>
-      <h3>{{$ctrl.editType}} setings</h3>
-    </span>
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <md-button
+          aria-label="More"
+          class="md-icon-button"
+          ng-click="$ctrl.resolveBackArrow()">
+          <md-icon style="color:black;">keyboard_backspace</md-icon>
+        </md-button>
+        <h3>{{$ctrl.paths[$ctrl.editType].title}}</h3>
+      </div>
+    </md-toolbar>
   </div>
   <div ng-if="$ctrl.editType === 'basic'">
     <organisation-edit-basic
@@ -92,7 +103,7 @@
       modify-organisation="$ctrl.modifyOrganisation(modifyDetails, stateChange)">
     </organisation-edit-links>
   </div>
-  <div ng-if="$ctrl.editType === 'team member'">
+  <div ng-if="$ctrl.editType === 'teamMember'">
     <organisation-edit-team-member
       organisation="$ctrl.organisationData.organisation"
       team-member = "$ctrl.data"

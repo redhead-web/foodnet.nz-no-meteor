@@ -1,7 +1,13 @@
 <md-card flex layout="column" style="outline:none;" align="left">
   <md-card-content>
-    <organisation-avatar size="60"></organisation-avatar> Company Avatar<br/><br/>
-    <organisation-avatar size="60"></organisation-avatar> Company Logo
+    <div layout="row" layout-align="start center" layout-margin>
+      <span flex>Organisation Avatar</span>
+      <img-upload can-edit="true" on-success="$ctrl.saveCompanyAvatar(data)"></img-upload>
+    </div>
+    <div layout="row" layout-align="start center" layout-margin>
+      <span flex>Organisation Logo</span>
+      <img-upload can-edit="true" on-success="$ctrl.saveCompanyLogo(data)"></img-upload>
+    </div>
 
     <md-input-container class="md-block">
       <label>Tagline</label>
