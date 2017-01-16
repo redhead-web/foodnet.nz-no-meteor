@@ -72,13 +72,6 @@ class OrganisationEditController {
     }
   }
 
-  modifyTeamMember(modifyDetails, stateChange) {
-    // modify team member
-    if (stateChange) {
-      this.editType = stateChange;
-    }
-  }
-
   modifyLists(modifyDetails, stateChange) {
     if (modifyDetails.passData) { this.data = modifyDetails.passData; } else { this.data = false; }
     switch (modifyDetails.type) {
@@ -97,6 +90,16 @@ class OrganisationEditController {
     }
     if (stateChange) {
       this.editType = stateChange;
+    }
+  }
+
+  back() {
+    if (this.editType === 'team member') {
+      this.editType = 'team';
+    } else if (this.editType === 'locations form') {
+      this.editType = 'locations';
+    } else {
+      this.editType = 'organisation';
     }
   }
 }

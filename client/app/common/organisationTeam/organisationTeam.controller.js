@@ -7,9 +7,9 @@ class OrganisationTeamController {
     this.go = $state.go;
   }
 
-  teamMemberClick(teamMember, teamMemberId) {
+  teamMemberClick(teamMember, teamMemberId, index) {
     if (this.pageOwned) {
-      const modifyDetails = { type: 'none', passData: teamMember };
+      const modifyDetails = { type: 'none', passData: { teamMember, index } };
       const stateChange = 'teamMember';
       this.onModify({ modifyDetails, stateChange });
     } else {

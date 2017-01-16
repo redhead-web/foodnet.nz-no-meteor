@@ -8,7 +8,7 @@ class OrganisationEditTeamController {
   }
 
   add() {
-    const modifyDetails = { type: 'none', passData: {} };
+    const modifyDetails = { type: 'none', passData: { teamMember: {}, index: false } };
     const stateChange = 'team member';
     this.modifyTeam({ modifyDetails, stateChange });
   }

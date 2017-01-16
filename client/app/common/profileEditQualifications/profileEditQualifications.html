@@ -1,19 +1,19 @@
 <md-card flex layout="column" style="outline:none;" align="left">
-  <skill-list
+  <qualification-list
     on-modify="$ctrl.modify(modifyDetails, stateChange)"
     user="$ctrl.user"
-    skills="$ctrl.skills"
+    qualifications="$ctrl.qualifications"
     hide-header="true"
     page-owned="true">
-  </skill-list>
+  </qualification-list>
 </md-card>
 <span layout="row">
   <span flex></span>
   <button-popup
-    list-name="'skills'"
+    list-name="'qualifications'"
     fields="[
-      {model: 'name', label:'skill', type:'text'},
-      {model: 'level', label:'level', type:'select', options:['Senior', 'Intermediate', 'Junior']}]"
+      {model: 'name', label:'Qualification', type:'text'},
+      {model: 'institute', label:'Institute', type:'text'}]"
     on-complete="$ctrl.modify(modifyDetails, stateChange)">
   </button-popup>
 </span>

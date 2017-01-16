@@ -11,5 +11,10 @@
 
 <span layout="row">
   <span flex></span>
-  <i-o-add-button field-name="outputs" on-add="$ctrl.modify(modifyDetails, stateChange)"></i-o-add-button>
+
+  <button-popup
+    list-name="'outputs'"
+    fields="[{model: 'name', label:'name', type:'text'}]"
+    on-complete="$ctrl.modify(modifyDetails, stateChange)">
+  </button-popup>
 </span>

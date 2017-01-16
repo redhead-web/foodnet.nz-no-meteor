@@ -1,0 +1,33 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div ng-repeat="field in $ctrl.fields">
+          <!-- text input -->
+          <md-input-container class="md-block" ng-if="field.type === 'text'">
+            <label>{{field.label}}</label>
+            <input ng-model="$ctrl.data[field.model]">
+          </md-input-container>
+
+          <md-input-container class="md-block" ng-if="field.type === 'select'">
+            <label>{{field.label}}</label>
+            <md-select ng-model="$ctrl.data[field.model]">
+              <md-option ng-repeat="opt in field.options" ng-value="opt">{{opt}}</md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="$ctrl.cancel()">
+        Cancel
+      </md-button>
+      <md-button ng-click="$ctrl.answer($ctrl.data)" type="submit">
+        Ok
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

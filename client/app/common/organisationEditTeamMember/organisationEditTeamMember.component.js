@@ -6,6 +6,7 @@ const organisationEditTeamMemberComponent = {
   restrict: 'E',
   bindings: {
     teamMember: '<',
+    index: '<',
     organisation: '<',
     modifyTeamMember: '&',
   },

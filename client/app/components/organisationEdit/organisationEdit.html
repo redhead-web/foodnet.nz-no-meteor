@@ -64,7 +64,7 @@
       modify-locations="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-locations>
   </div>
-  <div ng-if="$ctrl.editType === 'locationsForm'">
+  <div ng-if="$ctrl.editType === 'locations form'">
     <organisation-edit-location-form
       location="$ctrl.data"
       modify-location="$ctrl.modifyLists(modifyDetails, stateChange)">
@@ -106,8 +106,9 @@
   <div ng-if="$ctrl.editType === 'teamMember'">
     <organisation-edit-team-member
       organisation="$ctrl.organisationData.organisation"
-      team-member = "$ctrl.data"
-      modify-team-member="$ctrl.modifyTeamMember(modifyDetails, stateChange)">
+      team-member = "$ctrl.data.teamMember"
+      index="$ctrl.data.index"
+      modify-team-member="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-team-member>
   </div>
 </main>

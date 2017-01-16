@@ -1,4 +1,4 @@
-import template from '../iOAddButton/newIO.html';
+import template from '../buttonPopup/template.html';
 import angular from 'angular';
 
 const dialogOptions = {
@@ -20,9 +20,10 @@ class IOListController {
   constructor($state, $mdDialog) {
     'ngInject';
 
-    this.go = $state.go;
-    this.dialog = $mdDialog;
     this.name = 'iOList';
+    this.fields = [{ model: 'name', label: 'name', type: 'text' }];
+    this.dialog = $mdDialog;
+    this.go = $state.go;
   }
 
   click(targetEvent, data, index) {
@@ -31,7 +32,7 @@ class IOListController {
       this.dialog.show(angular.extend(dialogOptions, {
         targetEvent,
         bindToController: true,
-        locals: { data, title: 'Edit' },
+        locals: { fields: this.fields, data, title: 'Edit' },
       })).then((item) => this.update(index, item));
     } else {
       this.go('search', { q: data.name, [this.fieldName]: true });
