@@ -7,6 +7,7 @@ import SearchSuggestions from './searchSuggestions/searchSuggestions';
 import ProfileEditBasic from './profileEditBasic/profileEditBasic';
 import ProfileEditOrganisations from './profileEditOrganisations/profileEditOrganisations';
 import ProfileEditSkills from './profileEditSkills/profileEditSkills';
+import ProfileEditQualifications from './profileEditQualifications/profileEditQualifications';
 import ProfileEditLinks from './profileEditLinks/profileEditLinks';
 import OrganisationList from './organisationList/organisationList';
 import OrganisationListSmall from './organisationListSmall/organisationListSmall';
@@ -42,6 +43,7 @@ import QualificationsList from './qualificationList/qualificationList';
 import QualificationsAvatar from './qualificationAvatar/qualificationAvatar';
 import OrganisationEditLocationForm from './organisationEditLocationForm/organisationEditLocationForm';
 import IOAddButton from './iOAddButton/iOAddButton';
+import buttonPopup from './buttonPopup/buttonPopup';
 
 
 const commonModule = angular.module('app.common', [
@@ -53,6 +55,7 @@ const commonModule = angular.module('app.common', [
   ProfileEditBasic,
   ProfileEditOrganisations,
   ProfileEditSkills,
+  ProfileEditQualifications,
   ProfileEditLinks,
   OrganisationList,
   OrganisationListSmall,
@@ -88,6 +91,7 @@ const commonModule = angular.module('app.common', [
   QualificationsAvatar,
   OrganisationEditLocationForm,
   IOAddButton,
+  buttonPopup,
 ])
 
 .name;

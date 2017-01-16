@@ -1,4 +1,4 @@
-import template from '../iOAddButton/newIO.html';
+import template from './template.html';
 import angular from 'angular';
 
 const dialogOptions = {
@@ -16,13 +16,14 @@ const dialogOptions = {
   },
 };
 
-class IOAddButtonController {
+class ButtonPopupController {
   constructor($mdDialog) {
     'ngInject';
 
+    this.name = 'buttonPopup';
     this.dialog = $mdDialog;
-    this.name = 'iOAddButton';
   }
+
   getId() {
     return Math.random();
   }
@@ -31,15 +32,15 @@ class IOAddButtonController {
     this.dialog.show(angular.extend(dialogOptions, {
       targetEvent,
       bindToController: true,
-      locals: { data, title: `New ${this.fieldName.slice(0, -1)}` }, // get input rather than inputs
+      locals: { fields: this.fields, data, title: `New ${this.listName.slice(0, -1)}` }, // get input rather than inputs
     })).then((input) => this.insert(input));
   }
 
   insert(value) {
-    const modifyDetails = { type: 'insert', field: this.fieldName, value };
+    const modifyDetails = { type: 'insert', field: this.listName, value };
     const stateChange = false;
-    this.onAdd({ modifyDetails, stateChange });
+    this.onComplete({ modifyDetails, stateChange });
   }
 }
 
-export default IOAddButtonController;
+export default ButtonPopupController;
