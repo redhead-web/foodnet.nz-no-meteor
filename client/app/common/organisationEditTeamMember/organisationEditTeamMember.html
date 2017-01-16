@@ -15,9 +15,14 @@
       <input ng-model="$ctrl.teamMember.emails[0].address" type="email">
     </md-input-container>
 
+    <md-select class="md-block" ng-model="$ctrl.teamMember.permission" placeholder="Permissions">
+      <md-option ng-value="'full'">Full Access</md-option>
+      <md-option ng-value="'none'">No Access</md-option>
+    </md-select>
+
     <md-card-actions layout="row" layout-align="end center">
       <md-button ui-sref="profileEdit({userId: $ctrl.teamMember._id})">More Detail</md-button>
-      <md-button ng-click="$ctrl.modify()">Save</md-button>
+      <md-button ng-click="$ctrl.modify($ctrl.teamMember)">Save</md-button>
     </md-card-actions>
   </md-card-content>
 </md-card>
