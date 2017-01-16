@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const RedisStore = require('connect-redis')(session);
 const passport = require('passport');
 const app = express();
+require('./neo4j');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
