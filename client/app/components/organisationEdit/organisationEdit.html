@@ -29,7 +29,7 @@
       <md-button
         aria-label="More"
         class="md-icon-button"
-        ng-click="$ctrl.editType === 'team member' ? $ctrl.editType = 'team' : $ctrl.editType = 'organisation'">
+        ng-click="$ctrl.back()">
         <md-icon style="color:black;">keyboard_backspace</md-icon>
       </md-button>
       <h3>{{$ctrl.editType}} setings</h3>
@@ -53,7 +53,7 @@
       modify-locations="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-locations>
   </div>
-  <div ng-if="$ctrl.editType === 'locationsForm'">
+  <div ng-if="$ctrl.editType === 'locations form'">
     <organisation-edit-location-form
       location="$ctrl.data"
       modify-location="$ctrl.modifyLists(modifyDetails, stateChange)">
@@ -95,8 +95,9 @@
   <div ng-if="$ctrl.editType === 'team member'">
     <organisation-edit-team-member
       organisation="$ctrl.organisationData.organisation"
-      team-member = "$ctrl.data"
-      modify-team-member="$ctrl.modifyTeamMember(modifyDetails, stateChange)">
+      team-member = "$ctrl.data.teamMember"
+      index="$ctrl.data.index"
+      modify-team-member="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-team-member>
   </div>
 </main>
