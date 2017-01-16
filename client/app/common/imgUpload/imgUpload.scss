@@ -1,0 +1,23 @@
+.img-drop-area {
+  position: relative;
+}
+
+.image-replace-library, .image-replace {
+  position: absolute!important;
+  top: 2px;
+  left: 0px;
+
+  md-icon {
+    color: #ddd;
+  }
+}
+
+.image-delete {
+  position: absolute!important;
+  top: 2px;
+  right: 0px;
+
+  md-icon {
+    color: #ddd;
+  }
+}

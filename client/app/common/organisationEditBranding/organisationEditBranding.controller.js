@@ -11,6 +11,9 @@ class OrganisationEditBrandingController {
     const stateChange = 'organisation';
     this.modifyOrganisation({ modifyDetails, stateChange });
   }
+  saveCompanyAvatar(data) {
+    console.log(data); // http response from cloudinary
+  }
 }
 
 export default OrganisationEditBrandingController;

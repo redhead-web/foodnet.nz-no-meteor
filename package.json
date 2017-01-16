@@ -45,12 +45,14 @@
     "angular-ui-router": "^1.0.0-beta.1",
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
+    "cloudinary-angular": "^1.0.0",
     "compression": "^1.6.2",
     "connect-redis": "^3.2.0",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
     "ip": "^1.1.4",
     "minimist": "^1.2.0",
+    "ng-file-upload": "^12.2.13",
     "ng-focus-if": "^1.0.7",
     "normalize.css": "^3.0.3",
     "passport": "^0.3.2",
@@ -187,7 +189,14 @@
       "max-len": 0,
       "newline-per-chained-call": 0,
       "no-console": 1,
-      "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_id"
+          ]
+        }
+      ],
       "no-use-before-define": 0,
       "prefer-template": 2,
       "class-methods-use-this": 0,
