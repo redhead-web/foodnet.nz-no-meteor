@@ -1,6 +1,45 @@
-class SkillListController {
-  constructor() {
-    this.name = 'skillList';
+import template from '../buttonPopup/template.html';
+import angular from 'angular';
+
+const dialogOptions = {
+  template,
+  controllerAs: '$ctrl',
+  controller($mdDialog) {
+    'ngInject';
+
+    this.answer = (answer) => {
+      $mdDialog.hide(answer);
+    };
+    this.cancel = () => {
+      $mdDialog.cancel();
+    };
+  },
+};
+
+class QualificationListController {
+  constructor($state, $mdDialog) {
+    'ngInject';
+
+    this.name = 'qualificationList';
+    this.fields = [
+      { model: 'name', label: 'Qualification', type: 'text' },
+      { model: 'institute', label: 'Institute', type: 'text' },
+    ];
+    this.dialog = $mdDialog;
+    this.go = $state.go;
+  }
+
+  click(targetEvent, data, index) {
+    if (this.pageOwned) {
+      // TODO modify data in popup
+      this.dialog.show(angular.extend(dialogOptions, {
+        targetEvent,
+        bindToController: true,
+        locals: { fields: this.fields, data, title: 'Edit' },
+      })).then((item) => this.update(index, item));
+    } else {
+      this.go('search', { q: data.name, [this.fieldName]: true });
+    }
   }
 
   delete(index) {
@@ -22,4 +61,4 @@ class SkillListController {
   }
 }
 
-export default SkillListController;
+export default QualificationListController;
