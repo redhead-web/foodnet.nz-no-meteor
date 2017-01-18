@@ -14,17 +14,9 @@ class ProfileEditController {
     for (let index = 0; index < modifyDetails.length; index += 1) {
       const modify = modifyDetails[index];
       if (modify.type === 'remove') {
-        if (modify.fieldPlacement === 'profile') {
-          this.profileData.person.profile[modify.field] = '';
-        } else {
-          this.profileData.person = '';
-        }
+        this.profileData.person[modify.field] = '';
       } else if (modify.type === 'update') {
-        if (modify.fieldPlacement === 'profile') {
-          this.profileData.person.profile[modify.field] = modify.value;
-        } else {
-          this.profileData.person[modify.field] = modify.value;
-        }
+        this.profileData.person[modify.field] = modify.value;
       }
     }
     if (stateChange) {

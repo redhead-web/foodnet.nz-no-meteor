@@ -10,6 +10,7 @@ const iOListComponent = {
     fieldName: '@', // inputs or outputs only please
     pageOwned: '<',
     hideHeader: '<',
+    header: '@',
   },
   template,
   controller,

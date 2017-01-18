@@ -6,7 +6,7 @@ class OrganisationEditBrandingController {
   modify() {
     const modifyDetails = [
       { type: 'update', field: 'tagLine', value: this.organisation.tagLine },
-      { type: 'update', field: 'description', value: this.organisation.description },
+      { type: 'update', field: 'description', value: this.organisation.shortDescription },
     ];
     const stateChange = 'organisation';
     this.modifyOrganisation({ modifyDetails, stateChange });

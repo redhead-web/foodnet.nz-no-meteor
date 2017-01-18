@@ -9,6 +9,7 @@ const organisationTeamComponent = {
     organisation: '<',
     team: '<',
     pageOwned: '<',
+    hideHeader: '<',
   },
   template,
   controller,

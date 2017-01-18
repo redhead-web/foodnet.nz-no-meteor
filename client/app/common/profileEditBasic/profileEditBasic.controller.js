@@ -5,10 +5,10 @@ class ProfileEditBasicController {
 
   modify() {
     const modifyDetails = [
-      { type: 'update', field: 'name', fieldPlacement: 'profile', value: this.user.profile.name },
-      { type: 'update', field: 'emails', fieldPlacement: 'base', value: this.user.emails },
-      { type: 'update', field: 'phone', fieldPlacement: 'profile', value: this.user.profile.phone },
-      { type: 'update', field: 'address', fieldPlacement: 'profile', value: this.user.profile.address },
+      { type: 'update', field: 'name', value: this.user.name },
+      { type: 'update', field: 'emails', value: this.user.email },
+      { type: 'update', field: 'phone', value: this.user.phone },
+      { type: 'update', field: 'address', value: this.user.address },
     ];
     const stateChange = 'profile';
     this.modifyProfile({ modifyDetails, stateChange });

@@ -3,18 +3,18 @@
     <md-list-item class="md-2-line">
       <user-avatar class="md-avatar" size="40"></user-avatar>
       <div class="md-list-item-text" layout="column">
-        <h3>{{$ctrl.user.profile.name}}</h3>
-        <p>{{$ctrl.user.profile.description.short}}</p>
+        <h3>{{$ctrl.user.name}}</h3>
+        <p>{{$ctrl.user.description}}</p>
       </div>
     </md-list-item>
     <md-list-item class="md-1-line" ng-href="tel:{{$ctrl.user.profile.phone}}">
-      <span><md-icon>phone</md-icon> {{$ctrl.user.profile.phone}}</span>
+      <span><md-icon>phone</md-icon> {{$ctrl.user.phone}}</span>
     </md-list-item>
     <md-list-item class="md-1-line" ng-href="mailto:{{$ctrl.user.emails[0].address}}">
-      <span><md-icon>email</md-icon> {{$ctrl.user.emails[0].address}}</span>
+      <span><md-icon>email</md-icon> {{$ctrl.user.email}}</span>
     </md-list-item>
     <md-list-item class="md-1-line">
-      <span><md-icon>location_on</md-icon> {{$ctrl.user.profile.address.vacinity}}</span>
+      <span><md-icon>location_on</md-icon> {{$ctrl.user.address}}</span>
     </md-list-item>
   </md-list>
 </md-card>

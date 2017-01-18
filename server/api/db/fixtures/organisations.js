@@ -1,6 +1,6 @@
-const organisationsFixtures = require('./organisations');
+const organisationsFixtures = require('../organisations');
 
-const driver = require('../neo4j');
+const driver = require('../../neo4j');
 
 const session = driver.session();
 

@@ -12,7 +12,7 @@
   <organisation-splash flex layout="column" organisation="$ctrl.organisation" hide-title="true"></organisation-splash>
 
   <md-card-content flex layout="row">
-    <p>{{$ctrl.organisation.description.short}}</p>
+    <p>{{$ctrl.organisation.shortDescription}}</p>
   </md-card-content>
 
   <md-card-actions layout="row" layout-align="end center">
@@ -28,6 +28,6 @@
 <md-card flex layout="column" align="left">
   <md-card-content flex layout="column">
     <h3>Description</h3>
-    {{$ctrl.organisation.description.long}}
+    {{$ctrl.organisation.description}}
   </md-card-content>
 </md-card>
