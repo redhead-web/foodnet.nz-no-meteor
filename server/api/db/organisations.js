@@ -25,9 +25,9 @@ module.exports = [{
   ],
   outputs: [{ _id: 'someId', name: faker.commerce.productName() }, { _id: 'someOtherId', name: faker.commerce.productName() }],
   team: [
-    { _id: 'someId', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId1', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId2', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId1', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId2', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
   ],
 }, {
   organisation: {
@@ -54,9 +54,9 @@ module.exports = [{
   ],
   outputs: [{ _id: 'someId', name: faker.commerce.productName() }, { _id: 'someOtherId', name: faker.commerce.productName() }],
   team: [
-    { _id: 'someId', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId1', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId2', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId1', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId2', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
   ],
 }, {
   organisation: {
@@ -83,9 +83,9 @@ module.exports = [{
   ],
   outputs: [{ _id: 'someId', name: faker.commerce.productName() }, { _id: 'someOtherId', name: faker.commerce.productName() }],
   team: [
-    { _id: 'someId', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId1', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId2', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId1', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId2', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
   ],
 }, {
   organisation: {
@@ -112,8 +112,8 @@ module.exports = [{
   ],
   outputs: [{ _id: 'someId', name: faker.commerce.productName() }, { _id: 'someOtherId', name: faker.commerce.productName() }],
   team: [
-    { _id: 'someId', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId1', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
-    { _id: 'someId2', name: faker.name.fullName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId1', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
+    { _id: 'someId2', name: faker.name.findName(), jobTitle: faker.random.word(), emails: [{ address: faker.internet.email() }] },
   ],
 }];
