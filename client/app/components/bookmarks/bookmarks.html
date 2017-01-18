@@ -3,17 +3,20 @@
   user-current="$root.currentUser"
   page-owned="true">
 </navbar>
-<search-bar
-  hide-back="true"
-  on-search="$ctrl.search(query)">
-</search-bar>
-<md-card flex layout="column" style="outline:none;" align="left">
-  <md-subheader class="md-no-sticky">Bookmarks</md-subheader>
-  <organisation-list-small
-    on-modify="$ctrl.modifyLists(modifyDetails, stateChange)"
-    organisations="$ctrl.bookmarksData.organisations"
-    hide-header="true"
-    page-owned="true"
-    search-filter="$ctrl.searchFilter">
-  </organisation-list-small>
-</md-card>
+<main>
+  <navbar-adjust></navbar-adjust>
+  <search-bar
+    hide-back="true"
+    on-search="$ctrl.search(query)">
+  </search-bar>
+  <md-card flex layout="column" style="outline:none;" align="left">
+    <md-subheader class="md-no-sticky">Bookmarks</md-subheader>
+    <organisation-list-small
+      on-modify="$ctrl.modifyLists(modifyDetails, stateChange)"
+      organisations="$ctrl.bookmarksData.organisations"
+      hide-header="true"
+      page-owned="true"
+      search-filter="$ctrl.searchFilter">
+    </organisation-list-small>
+  </md-card>
+</main>

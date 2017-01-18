@@ -1,5 +1,6 @@
 import angular from 'angular';
 import Navbar from './navbar/navbar';
+import NavbarAdjust from './navbarAdjust/navbarAdjust';
 import PromoSplash from './promoSplash/promoSplash';
 import SearchBar from './searchBar/searchBar';
 import SearchCommon from './searchCommon/searchCommon';
@@ -48,6 +49,7 @@ import buttonPopup from './buttonPopup/buttonPopup';
 
 const commonModule = angular.module('app.common', [
   Navbar,
+  NavbarAdjust,
   PromoSplash,
   SearchBar,
   SearchCommon,
