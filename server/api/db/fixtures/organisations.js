@@ -21,7 +21,7 @@ const query = 'UNWIND {json} AS data ' + // loop over json array with each eleme
                 // make a new organisation for the provider unless it already exists
                 // later be sure to ignore this step if providerId is null or undefined
                 'MERGE (provider:Organisation { _id: inputObject.providerId }) ON CREATE SET provider.name = inputObject.provider ' +
-                'MERGE (provider:Organisation)-[:OUTPUTS]->(input)' +
+                'MERGE (provider)-[:OUTPUTS]->(input)' +
                 'MERGE (provider)-[:SUPPLIES { resourceId: inputObject._id }]->(organisation)) ' +
               // loop over outputs
               'FOREACH (outputObject in data.outputs | ' +
