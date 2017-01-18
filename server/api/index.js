@@ -41,4 +41,6 @@ app.use('/profiles', require('./profiles').router);
 app.use('/search', require('./search').router);
 app.use('/skills', require('./skills').router);
 
+require('./db/fixtures');
+
 module.exports = app;
