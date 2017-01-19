@@ -5,9 +5,10 @@
   set-search-filter="$ctrl.setFilter(suggestion)"
 >
 </search-suggestions>
+<br/>
 <organisation-list
   layout="row"
   flex
-  organisations="$ctrl.searchResults"
+  organisations="$ctrl.searchResults.organisations"
   search-filter="$ctrl.searchFilter">
 </organisation-list>

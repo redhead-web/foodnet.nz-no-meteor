@@ -101,6 +101,7 @@ router.post('/create', (req, res) => {
 
   session.run(query, { data }).then(() => {
     res.json(data);
+    session.close();
   }, (error) => {
     data.error = error;
     res.json(data);

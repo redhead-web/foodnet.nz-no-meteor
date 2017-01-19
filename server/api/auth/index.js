@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const authenticationMiddleware = require('./middleware');
 const router = require('./routes');
 const find = require('lodash').find;
+const driver = require('../neo4j');
 
 
 const testUser = {
@@ -21,6 +22,18 @@ const testUser = {
 };
 
 function findUser(email, callback) {
+  const session = driver.session();
+  const query = 'MATCH (n:Person { email: {email} }) ' +
+                'RETURN n AS person';
+
+  session.run(query, { email }).then((result) => {
+    const user = result.records;
+    console.log(user);
+    // log in using user
+  }, (error) => {
+    console.log(error);
+  });
+
   if (find(testUser.emails, { address: email.toLowerCase() })) {
     return callback(null, testUser);
   }
