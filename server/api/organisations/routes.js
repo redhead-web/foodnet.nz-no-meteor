@@ -74,18 +74,42 @@ router.get('/bookmarks', (req, res, next) => {
 });
 
 router.get('/one/:organisationId', (req, res, next) => {
+  const _id = req.params.organisationId;
   const session = driver.session();
-  const query = 'MATCH (n:Organisation { _id: {_id} }), ' +
-  '(l:Location)<-[:OCCUPIES]-(n), ' +
-  '(i:Resource)-[:INPUTS]->(n), ' +
-  '(o:Resource)<-[:OUTPUTS]-(n), ' +
-  '(p:Person)-[t:TEAM_OF]->(n) ' +
-  'RETURN n as organisation, l as locations, i as inputs, o as outputs, { _id: p._id, name: p.name, jobTitle: t.jobTitle } as team';
-  session.run(query, { _id: req.params.organisationId }).then((result) => {
-    const data = utils.toCollection(result.records)[0];
+  const getOrganisation = 'MATCH (n:Organisation { _id: {_id} }) ' +
+  'RETURN properties(n) AS organisation';
+
+  const getLocations = 'MATCH (l:Location)<-[:OCCUPIES]-(:Organisation { _id: {_id} }) ' +
+  'RETURN l.address AS address';
+
+  const getInputs = 'MATCH (i:Resource)-[:INPUTS]->(:Organisation { _id: {_id} }) ' +
+  'RETURN i.name AS name, i._id AS _id';
+
+  const getOutputs = 'MATCH (o:Resource)<-[:OUTPUTS]-(:Organisation { _id: {_id} }) ' +
+  'RETURN o.name AS name, o._id AS _id';
+
+  const getTeam = 'MATCH (p:Person)-[t:TEAM_OF]->(:Organisation { _id: {_id} }) ' +
+  'RETURN p._id as _id, p.name as name, t.jobTitle as jobTitle';
+  Promise.all([
+    session.run(getOrganisation, { _id }),
+    session.run(getLocations, { _id }),
+    session.run(getInputs, { _id }),
+    session.run(getOutputs, { _id }),
+    session.run(getTeam, { _id }),
+  ])
+  .then((result) => {
+    const data = {
+      organisation: utils.toCollection(result[0].records)[0].organisation,
+      locations: utils.toCollection(result[1].records),
+      inputs: utils.toCollection(result[2].records),
+      outputs: utils.toCollection(result[3].records),
+      team: utils.toCollection(result[4].records),
+    };
     res.json(data);
     session.close();
-  }, (error) => {
+  })
+  .catch((error) => {
+    console.log(error);
     next(error);
   });
   // res.json(organisationsFixture[0]);
