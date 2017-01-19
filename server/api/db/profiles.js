@@ -1,4 +1,7 @@
 const faker = require('faker');
+const bcrypt = require('bcrypt');
+
+const passwordSetup = bcrypt.hashSync('test-password', 2);
 
 module.exports = [
   {
@@ -9,11 +12,11 @@ module.exports = [
       address: faker.address.streetAddress(),
       description: faker.company.bs(),
       email: 'sean@maplekiwi.com',
+      hashedPassword: passwordSetup,
       facebook: faker.internet.url(),
       twitter: faker.internet.url(),
       instagram: faker.internet.url(),
       youtube: faker.internet.url(),
-      password: 'test-password',
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },

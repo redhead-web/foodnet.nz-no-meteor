@@ -43,13 +43,13 @@
     <md-content layout-padding style="background:grey;" ng-if="$ctrl.userCurrent" align="left">
       <user-avatar size="75"></user-avatar>
       <br/>
-      <span style="color:white;">{{$ctrl.userCurrent.emails[0].address || ''}}</span>
+      <span style="color:white;">{{$ctrl.userCurrent.email || ''}}</span>
     </md-content>
     <md-list layout-align="space-around" layout="column">
       <!-- pages -->
       <md-list-item ui-sref="logIn" ng-click="$ctrl.toggle()" ng-if="!$ctrl.userCurrent"><span><md-icon>account_box</md-icon> Log In</span></md-list-item>
       <md-list-item ui-sref="home" ng-click="$ctrl.toggle()"><span><md-icon>home</md-icon> Home</span></md-list-item>
-      <md-list-item ui-sref="profile({userId: $ctrl.userCurrent.id})" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>account_box</md-icon> My Profile</span></md-list-item>
+      <md-list-item ui-sref="profile({userId: $ctrl.userCurrent._id})" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>account_box</md-icon> My Profile</span></md-list-item>
       <md-list-item ui-sref="organisationAuth" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>send</md-icon> My Organisations</span></md-list-item>
       <md-list-item ui-sref="organisationCreate" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>forum</md-icon> Create Organisation</span></md-list-item>
       <md-list-item ui-sref="bookmarks" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>bookmark</md-icon> Bookmarks</span></md-list-item>

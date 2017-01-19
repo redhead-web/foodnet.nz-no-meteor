@@ -11,16 +11,16 @@ function findUser(emailAddress, callback) {
   const email = emailAddress.toLowerCase();
   const query = 'MATCH (n:Person { email: {email} }) ' +
                 'RETURN n._id as _id, n.name as name, n.email as email, n.hashedPassword as hashedPassword';
-
   session.run(query, { email }).then((result) => {
-    const user = utils.getCollection(result.records)[0];
+    const user = utils.toCollection(result.records)[0];
+    console.log(user);
     session.close();
 
     if (user) {
       return callback(null, user);
     }
     return callback(null);
-  });
+  }).catch((err) => callback(err));
 }
 
 passport.serializeUser((user, cb) => {
@@ -49,7 +49,7 @@ function initPassport(app) {
             return done(null, u);
           }
           return done(null, false);
-        });
+        }).catch((error) => done(error));
       });
     }
   ));
