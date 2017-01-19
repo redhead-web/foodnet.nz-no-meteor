@@ -5,6 +5,7 @@ const router = express.Router();
 
 const driver = require('../neo4j');
 const utils = require('../db/utils');
+const faker = require('faker');
 
 router.get('/newest', (req, res, next) => {
   const session = driver.session();
@@ -91,13 +92,18 @@ router.get('/one/:organisationId', (req, res, next) => {
 });
 
 router.post('/create', (req, res) => {
-  console.log(req.data);
-  // const session = driver.session();
-  // const query = 'MATCH (n:Organisation) RETURN n.name AS name, n._id AS _id LIMIT 10';
+  const data = req.body;
+  data._id = faker.random.uuid();
 
+  const session = driver.session();
+  const query = 'MERGE (organisation:Organisation {_id: {data}._id}) ' +
+                'ON CREATE SET organisation = {data} ';
 
-  res.json({
-    error: 'No data',
+  session.run(query, { data }).then(() => {
+    res.json(data);
+  }, (error) => {
+    data.error = error;
+    res.json(data);
   });
 });
 

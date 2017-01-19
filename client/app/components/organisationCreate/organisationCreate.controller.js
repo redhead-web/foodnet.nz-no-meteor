@@ -16,10 +16,10 @@ class OrganisationCreateController {
 
   createOrganisation() {
     this.http.post('/api/organisations/create', this.organisationData).then((response) => {
-      if (response.data.error !== false) {
-        console.log(response.data.error);
-      } else {
+      if (!response.data.error) {
         this.go('organisationEdit', { organisationId: response.data._id });
+      } else {
+        console.log('error');
       }
     }, (err) => console.log(err));
   }
