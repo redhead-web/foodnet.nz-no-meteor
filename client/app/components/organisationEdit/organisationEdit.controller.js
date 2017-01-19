@@ -89,7 +89,7 @@ class OrganisationEditController {
         break;
       case 'remove':
         this.organisationData[modifyDetails.field].splice(modifyDetails.index, 1);
-        databaseObject = { _id: this.organisationActive, operation: 'remove', type: 'relationship', listName: modifyDetails.field, index: modifyDetails.index };
+        databaseObject = { _id: this.organisationActive, operation: 'remove', type: 'relationship', listName: modifyDetails.field, update: modifyDetails.value };
         break;
       case 'none':
         break;
