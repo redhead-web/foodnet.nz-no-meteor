@@ -16,13 +16,6 @@ router.get('/newest', (req, res, next) => {
   }, (error) => {
     next(error);
   });
-
-  // res.json({ organisations: [
-  //   { _id: 'someId', name: 'Super Awesome Company', tags: ['carrots'] },
-  //   { _id: 'someOtherId', name: 'A Company', tags: ['beans'] },
-  //   { _id: 'someMoreId', name: 'Another Company', tags: ['HTML'] },
-  //   { _id: 'someAlternateId', name: 'Yet Another Company', tags: ['Lamb'] },
-  // ] });
 });
 
 router.get('/popular', (req, res, next) => {
@@ -90,6 +83,17 @@ router.get('/one/:organisationId', (req, res, next) => {
     next(error);
   });
   // res.json(organisationsFixture[0]);
+});
+
+router.post('/create', (req, res) => {
+  console.log(req.data);
+  // const session = driver.session();
+  // const query = 'MATCH (n:Organisation) RETURN n.name AS name, n._id AS _id LIMIT 10';
+
+
+  res.json({
+    error: 'No data',
+  });
 });
 
 module.exports = router;

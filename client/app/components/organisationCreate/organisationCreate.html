@@ -1,0 +1,36 @@
+<navbar
+  title="Create Organisation"
+  user-current="$root.currentUser">
+</navbar>
+<main>
+  <navbar-adjust></navbar-adjust>
+  <md-card flex layout="column" style="outline:none;" align="left">
+
+    <md-card-content>
+      <md-input-container class="md-block">
+        <label>Name</label>
+        <input ng-model="$ctrl.organisationData.name">
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Type</label>
+        <input ng-model="$ctrl.organisationData.type">
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Registration</label>
+        <input ng-model="$ctrl.organisationData.registration">
+      </md-input-container>
+
+      <md-switch ng-model="$ctrl.organisationData.gstReg">{{$ctrl.organisation.gstReg ? "GST Registered" : "Not GST Registered"}}</md-switch>
+      <md-input-container class="md-block" ng-if="$ctrl.organisationData.gstReg">
+        <label>GST Number</label>
+        <input ng-model="$ctrl.organisationData.gstNum">
+      </md-input-container>
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="$ctrl.createOrganisation()">Create</md-button>
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
+</main>
