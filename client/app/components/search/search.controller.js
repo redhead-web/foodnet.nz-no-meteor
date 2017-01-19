@@ -18,12 +18,10 @@ class SearchController {
   search(query) {
     this.searchFilter = query;
     this.loading = true;
-    // simulate long search
-    this.$timeout(() => this.get('/api/search', { params: { q: query } })
+    this.get('/api/search', { params: { q: query } })
     .then((response) => {
       this.searchResults = response.data;
-    }),
-    300 + (Math.random() * (3000 - 300)));
+    });
   }
 }
 

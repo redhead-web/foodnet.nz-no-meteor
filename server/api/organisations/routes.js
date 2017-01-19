@@ -132,4 +132,41 @@ router.post('/create', (req, res) => {
   });
 });
 
+router.post('/update', (req, res, next) => {
+  const data = req.body;
+
+  const session = driver.session();
+  let query = '';
+  console.log(data);
+  if (data.type === 'property') {
+    console.log('-----------------update-----------------------');
+    query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+            'SET organisation += {data}.update ' +
+            'RETURN organisation';
+    console.log(query);
+    // MATCH (organisation:Organisation { _id: "c8a8f113-5d8d-45b7-b526-2f05e2a8a80b"} )
+    // SET organisation.name =  "spoon"
+  } else if (data.type === 'relationship') {
+    if (data.operation === 'insert') {
+      query = '';
+    } else if (data.operation === 'remove') {
+      query = '';
+    } else if (data.operation === 'update') {
+      query = '';
+    }
+  }
+
+  session.run(query, { data }).then((result) => {
+    console.log('-----------------update end-----------------------');
+    console.log(result.records);
+    session.close();
+    res.json({});
+  }, (error) => {
+    console.log('-----------------update error-----------------------');
+    console.log(error);
+    next(error);
+  });
+});
+
+
 module.exports = router;

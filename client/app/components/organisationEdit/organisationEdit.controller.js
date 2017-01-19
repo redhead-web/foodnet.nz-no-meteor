@@ -1,5 +1,5 @@
 class OrganisationEditController {
-  constructor($stateParams) {
+  constructor($stateParams, $http) {
     'ngInject';
 
     this.name = 'organisationEdit';
@@ -7,6 +7,7 @@ class OrganisationEditController {
     // set up variables for organisationEdit page
     this.editType = 'organisation';
     this.data = false;
+    this.http = $http;
     this.organisationActive = $stateParams.organisationId;
     this.paths = {
       organisation: {
@@ -59,13 +60,14 @@ class OrganisationEditController {
 
   modifyOrganisation(modifyDetails, stateChange) {
     for (let index = 0; index < modifyDetails.length; index += 1) {
-      if (modify.data) { this.passData = modify.passData; } else { this.data = false; }
       const modify = modifyDetails[index];
-      if (modify.type === 'remove') {
-        this.organisationData.organisation[modify.field] = '';
-      } else if (modify.type === 'update') {
-        this.organisationData.organisation[modify.field] = modify.value;
-      }
+      if (modify.data) { this.passData = modify.passData; } else { this.data = false; }
+      this.organisationData.organisation[modify.field] = modify.value;
+
+      const databaseObject = { _id: this.organisationActive, update: { [modify.field]: modify.value }, type: 'property' };
+      this.http.post('/api/organisations/update', databaseObject).then(() => {
+        console.log('update success');
+      }, (err) => console.log(err));
     }
     if (stateChange) {
       this.editType = stateChange;
