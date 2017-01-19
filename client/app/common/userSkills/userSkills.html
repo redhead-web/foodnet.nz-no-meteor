@@ -2,10 +2,10 @@
   <md-card-content>
     <h4>Skills</h4>
     <!-- no idea why this is not working-->
-    {{$ctrl.skillsSummary.seniorSkills}} Senior Skills<br/>
-    {{$ctrl.skillsSummary.intermediateSkills}} Intermediate Skills <br/>
-    {{$ctrl.skillsSummary.juniorSkills}} Junior Skills <br/>
-    {{$ctrl.skillsSummary.qualifications}} Qualifications <br/>
+    {{$ctrl.skillsSummary.seniorSkills.low}} Senior Skills<br/>
+    {{$ctrl.skillsSummary.intermediateSkills.low}} Intermediate Skills <br/>
+    {{$ctrl.skillsSummary.juniorSkills.low}} Junior Skills <br/>
+    {{$ctrl.skillsSummary.qualifications.low}} Qualifications <br/>
   </md-card-content>
   <skill-list user="$ctrl.user" skills="$ctrl.skills"></skill-list>
   <qualification-list user="$ctrl.user" qualifications="$ctrl.qualifications"></qualification-list>

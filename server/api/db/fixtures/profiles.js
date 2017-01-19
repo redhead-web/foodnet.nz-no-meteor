@@ -10,8 +10,8 @@ const query = 'UNWIND {json} AS data ' +
 
               'FOREACH (skillObject in data.skills | ' +
                 'MERGE (skill:Skill { _id: skillObject._id }) ' +
-                'ON CREATE SET skill = skillObject ' +
-                'MERGE (person)<-[:SKILLED]-(skill) ' +
+                'ON CREATE SET skill.name = skillObject.name, skill.description = skillObject.description ' +
+                'MERGE (person)<-[:SKILLED { level: skillObject.level }]-(skill) ' +
               ') ' +
 
               'FOREACH (qualificationObject in data.qualifications | ' +
@@ -26,9 +26,8 @@ const query = 'UNWIND {json} AS data ' +
                 'MERGE (person)-[:TEAM_OF {jobTitle: organisationObject.jobTitle}]->(organisation) ' +
               ') ';
 
-session.run(query, { json: profilesFixtures }).then((result) => {
+session.run(query, { json: profilesFixtures }).then(() => {
   console.log('neo4j Success!');
-  console.log(result);
 }, (error) => {
   console.log('oops!');
   console.log(error);

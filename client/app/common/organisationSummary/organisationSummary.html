@@ -2,9 +2,9 @@
   <a ui-sref="organisation" class="hoverLink">
     <organisation-splash flex layout="column" organisation="$ctrl.organisation"></organisation-splash>
     <md-card-content flex layout="row">
-      <span>{{$ctrl.organisation.inputsCount}}<md-icon>input</md-icon></span>
+      <span>{{$ctrl.organisation.inputsCount.low}}<md-icon>input</md-icon></span>
       <span flex></span>
-      <span>{{$ctrl.organisation.outputsCount}}<md-icon>input</md-icon></span> <!-- cant find output icon -->
+      <span>{{$ctrl.organisation.outputsCount.low}}<md-icon>input</md-icon></span> <!-- cant find output icon -->
     </md-card-content>
   </a>
 </md-card>

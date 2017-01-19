@@ -2,46 +2,29 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const authenticationMiddleware = require('./middleware');
 const router = require('./routes');
-const find = require('lodash').find;
 const driver = require('../neo4j');
+const utils = require('../db/utils');
+const bcrypt = require('bcrypt');
 
-
-const testUser = {
-  id: 1,
-  emails: [{ address: 'sean@maplekiwi.com', verified: false }],
-  password: 'test-password',
-  profile: {
-    name: 'Sean Stanley',
-    phone: '0210409066',
-    address: { vacinity: 'Whangarei, Northland' },
-    description: { short: 'I am good at everything' },
-    social: { email: 'email@email.com', facebook: 'facebook link', twitter: 'twitter link', instagram: 'instagram link', youtube: 'youtube link' },
-    bookmarks: ['someId', 'someOtherId'],
-    searchHistory: ['carrots', 'apples', 'Alex Mason', 'Redhead Web', 'Chicken'],
-  },
-};
-
-function findUser(email, callback) {
+function findUser(emailAddress, callback) {
   const session = driver.session();
+  const email = emailAddress.toLowerCase();
   const query = 'MATCH (n:Person { email: {email} }) ' +
-                'RETURN n AS person';
+                'RETURN n._id as _id, n.name as name, n.email as email, n.hashedPassword as hashedPassword';
 
   session.run(query, { email }).then((result) => {
-    const user = result.records;
-    console.log(user);
-    // log in using user
-  }, (error) => {
-    console.log(error);
-  });
+    const user = utils.getCollection(result.records)[0];
+    session.close();
 
-  if (find(testUser.emails, { address: email.toLowerCase() })) {
-    return callback(null, testUser);
-  }
-  return callback(null);
+    if (user) {
+      return callback(null, user);
+    }
+    return callback(null);
+  });
 }
 
 passport.serializeUser((user, cb) => {
-  cb(null, user.emails[0].address);
+  cb(null, user.email);
 });
 
 passport.deserializeUser((username, cb) => {
@@ -51,7 +34,7 @@ passport.deserializeUser((username, cb) => {
 
 function initPassport(app) {
   passport.use(new LocalStrategy(
-    (username, password, done) => {
+    (username, plainTextPassword, done) => {
       findUser(username, (err, user) => {
         if (err) {
           return done(err);
@@ -59,10 +42,14 @@ function initPassport(app) {
         if (!user) {
           return done(null, false);
         }
-        if (password !== user.password) {
+        return bcrypt.compare(plainTextPassword, user.hashedPassword).then((result) => {
+          if (result) {
+            const u = user;
+            delete u.hashedPassword;
+            return done(null, u);
+          }
           return done(null, false);
-        }
-        return done(null, user);
+        });
       });
     }
   ));

@@ -9,7 +9,8 @@ const faker = require('faker');
 
 router.get('/newest', (req, res, next) => {
   const session = driver.session();
-  const query = 'MATCH (n:Organisation) RETURN n.name AS name, n._id AS _id LIMIT 10';
+  const query = 'MATCH (:Resource)-[i:INPUTS]->(n:Organisation)-[o:OUTPUTS]->(:Resource)' +
+  'RETURN n.name as name, n._id as _id, count(DISTINCT i) as inputsCount, count(DISTINCT o) as outputsCount LIMIT 10';
   session.run(query).then((result) => {
     const data = { organisations: utils.toCollection(result.records) };
     res.json(data);
@@ -21,7 +22,8 @@ router.get('/newest', (req, res, next) => {
 
 router.get('/popular', (req, res, next) => {
   const session = driver.session();
-  const query = 'MATCH (n:Organisation) RETURN n.name AS name, n._id AS _id LIMIT 10';
+  const query = 'MATCH (:Resource)-[i:INPUTS]->(n:Organisation)-[o:OUTPUTS]->(:Resource) ' +
+  'RETURN n.name as name, n._id as _id, count(DISTINCT i) as inputsCount, count(DISTINCT o) as outputsCount LIMIT 10';
   session.run(query).then((result) => {
     const data = { organisations: utils.toCollection(result.records) };
     res.json(data);
@@ -109,13 +111,14 @@ router.get('/one/:organisationId', (req, res, next) => {
     session.close();
   })
   .catch((error) => {
+    session.close();
     console.log(error);
     next(error);
   });
   // res.json(organisationsFixture[0]);
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', (req, res, next) => {
   const data = req.body;
   data._id = faker.random.uuid();
 
@@ -127,8 +130,8 @@ router.post('/create', (req, res) => {
     res.json(data);
     session.close();
   }, (error) => {
-    data.error = error;
-    res.json(data);
+    next(error);
+    session.close();
   });
 });
 

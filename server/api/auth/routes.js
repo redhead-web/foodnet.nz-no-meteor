@@ -3,18 +3,8 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const authMiddleware = require('./middleware');
-
-router.get('/test', (req, res) => {
-  res.send('test success');
-});
-
-router.get('/test-auth', authMiddleware(), (req, res) => {
-  res.send('test success');
-});
-
-router.get('/test-req-user', (req, res) => {
-  res.send(req.user);
-});
+// const bcrypt = require('bcrypt');
+// const driver = require('../neo4j');
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   const user = req.user;
@@ -23,8 +13,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
     error.status = 401;
     res.status(401).send(error);
   } else {
-    delete user.salt;
-    delete user.hash;
+    delete user.hashedPassword;
     res.send(user);
   }
 });
@@ -37,5 +26,11 @@ router.get('/logout', (req, res) => {
 router.get('/is-signed-in', authMiddleware(), (req, res) => {
   res.send(req.user);
 });
+
+// router.post('/register', (req, res) => {
+//   const session = driver.session();
+//   const user = req.body;
+//
+// });
 
 module.exports = router;

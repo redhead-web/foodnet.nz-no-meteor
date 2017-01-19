@@ -37,9 +37,8 @@ const query = 'UNWIND {json} AS data ' + // loop over json array with each eleme
                 'MERGE (person)-[:TEAM_OF {jobTitle: teamObject.jobTitle}]->(organisation)) '
               ;
 
-session.run(query, { json: organisationsFixtures }).then((result) => {
+session.run(query, { json: organisationsFixtures }).then(() => {
   console.log('neo4j Success!');
-  console.log(result);
 }, (error) => {
   console.log('oops!');
   console.log(error);
