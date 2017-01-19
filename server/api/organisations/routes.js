@@ -74,9 +74,14 @@ router.get('/bookmarks', (req, res, next) => {
 
 router.get('/one/:organisationId', (req, res, next) => {
   const session = driver.session();
-  const query = 'MATCH (n:Organisation { _id: {_id} }) RETURN n';
-  session.run(query, { _id: req.query.organisationId }).then((result) => {
-    const data = { organisations: utils.toCollection(result.records) };
+  const query = 'MATCH (n:Organisation { _id: {_id} }), ' +
+  '(l:Location)<-[:OCCUPIES]-(n), ' +
+  '(i:Resource)-[:INPUTS]->(n), ' +
+  '(o:Resource)<-[:OUTPUTS]-(n), ' +
+  '(p:Person)-[t:TEAM_OF]->(n) ' +
+  'RETURN n as organisation, l as locations, i as inputs, o as outputs, { _id: p._id, name: p.name, jobTitle: t.jobTitle } as team';
+  session.run(query, { _id: req.params.organisationId }).then((result) => {
+    const data = utils.toCollection(result.records)[0];
     res.json(data);
     session.close();
   }, (error) => {
