@@ -137,35 +137,42 @@ router.post('/create', (req, res, next) => {
 
 router.post('/update', (req, res, next) => {
   const data = req.body;
-
+  console.log(data);
   const session = driver.session();
   let query = '';
-  console.log(data);
   if (data.type === 'property') {
-    console.log('-----------------update-----------------------');
     query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
-            'SET organisation += {data}.update ' +
-            'RETURN organisation';
-    console.log(query);
-    // MATCH (organisation:Organisation { _id: "c8a8f113-5d8d-45b7-b526-2f05e2a8a80b"} )
-    // SET organisation.name =  "spoon"
+            'SET organisation += {data}.update ';
   } else if (data.type === 'relationship') {
     if (data.operation === 'insert') {
-      query = '';
+      if (data.listName === 'team') {
+        query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+                'MERGE (person:Person { _id: {data}.update._id } ) ' +
+                'ON CREATE SET person = {data}.update ' +
+                'MERGE ((person)-[:TEAM_OF {jobTitle: data.jobTitle}]->(organisation)) ';
+      } else if (data.listName === 'inputs') {
+        query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+                'MERGE (resource:Resource { name: lower({data}.update.name) } ) ' +
+                'ON CREATE SET resource._id = {data}.update._id, resource.name = lower({data}.update.name) ' +
+                'MERGE ((organisation)<-[:INPUTS]-(resource)) ';
+      } else if (data.listName === 'outputs') {
+        query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+                'MERGE (resource:Resource { name: lower({data}.update.name) } ) ' +
+                'ON CREATE SET resource._id = {data}.update._id, resource.name = lower({data}.update.name) ' +
+                'MERGE ((organisation)<-[:OUTPUTS]-(resource)) ';
+      }
     } else if (data.operation === 'remove') {
       query = '';
     } else if (data.operation === 'update') {
+      // should not be updating remove relationship then create new object
       query = '';
     }
   }
 
-  session.run(query, { data }).then((result) => {
-    console.log('-----------------update end-----------------------');
-    console.log(result.records);
+  session.run(query, { data }).then(() => {
     session.close();
     res.json({});
   }, (error) => {
-    console.log('-----------------update error-----------------------');
     console.log(error);
     next(error);
   });

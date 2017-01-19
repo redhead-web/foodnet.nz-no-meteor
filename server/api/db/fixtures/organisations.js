@@ -15,7 +15,7 @@ const query = 'UNWIND {json} AS data ' + // loop over json array with each eleme
               // loop over inputs the same way
               'FOREACH (inputObject in data.inputs | ' +
                 // create the input if it doesn't already exist
-                'MERGE (input:Resource { _id: inputObject._id }) ON CREATE SET input.name = inputObject.name ' +
+                'MERGE (input:Resource { _id: inputObject._id }) ON CREATE SET input.name = lower(inputObject.name) ' +
                 // make a relationship between the input and organisation
                 'MERGE (input)-[:INPUTS]->(organisation) ' +
                 // make a new organisation for the provider unless it already exists
@@ -26,7 +26,7 @@ const query = 'UNWIND {json} AS data ' + // loop over json array with each eleme
               // loop over outputs
               'FOREACH (outputObject in data.outputs | ' +
                 // create the output if it doesn't already exist
-                'MERGE (output:Resource { _id: outputObject._id }) ON CREATE SET output.name = outputObject.name ' +
+                'MERGE (output:Resource { _id: outputObject._id }) ON CREATE SET output.name = lower(outputObject.name) ' +
                 // make a relationship between the output and organisation
                 'MERGE (organisation)-[:OUTPUTS]->(output)) ' +
               // loop over outputs

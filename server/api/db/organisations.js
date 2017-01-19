@@ -27,7 +27,9 @@ module.exports = [{
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
   ],
-  outputs: [{ _id: faker.random.uuid(), name: faker.commerce.productName() }, { _id: faker.random.uuid(), name: faker.commerce.productName() }],
+  outputs: [
+    { _id: faker.random.uuid(), name: faker.commerce.productName() },
+    { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
     { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
     { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },

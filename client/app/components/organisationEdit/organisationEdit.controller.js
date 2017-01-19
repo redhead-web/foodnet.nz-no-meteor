@@ -12,7 +12,7 @@ class OrganisationEditController {
     this.paths = {
       organisation: {
         root: true,
-        title: 'Organisation Settings!',
+        title: 'Organisation Settings',
       },
       basic: {
         title: 'Basic Settings',
@@ -63,33 +63,44 @@ class OrganisationEditController {
       const modify = modifyDetails[index];
       if (modify.data) { this.passData = modify.passData; } else { this.data = false; }
       this.organisationData.organisation[modify.field] = modify.value;
-
       const databaseObject = { _id: this.organisationActive, update: { [modify.field]: modify.value }, type: 'property' };
       this.http.post('/api/organisations/update', databaseObject).then(() => {
         console.log('update success');
       }, (err) => console.log(err));
     }
+
     if (stateChange) {
       this.editType = stateChange;
     }
   }
 
   modifyLists(modifyDetails, stateChange) {
+    let databaseObject = {};
     if (modifyDetails.passData) { this.data = modifyDetails.passData; } else { this.data = false; }
     switch (modifyDetails.type) {
       case 'insert':
         this.organisationData[modifyDetails.field].push(modifyDetails.value);
+        databaseObject = { _id: this.organisationActive, operation: 'insert', type: 'relationship', listName: modifyDetails.field, update: modifyDetails.value };
         break;
       case 'update':
-        this.organisationData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
+        // this should not be called remove relationship then create new object
+        // this.organisationData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
+        // databaseObject = { _id: this.organisationActive, operation: 'update', update: modifyDetails.value, index: modifyDetails.index, type: 'relationship', listName: modifyDetails.field };
         break;
       case 'remove':
         this.organisationData[modifyDetails.field].splice(modifyDetails.index, 1);
+        databaseObject = { _id: this.organisationActive, operation: 'remove', type: 'relationship', listName: modifyDetails.field, index: modifyDetails.index };
         break;
       case 'none':
         break;
       default:
     }
+
+    console.log(databaseObject);
+    this.http.post('/api/organisations/update', databaseObject).then(() => {
+      console.log('update success');
+    }, (err) => console.log(err));
+
     if (stateChange) {
       this.editType = stateChange;
     }
