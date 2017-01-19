@@ -31,9 +31,9 @@ module.exports = [{
     { _id: faker.random.uuid(), name: faker.commerce.productName() },
     { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
   ],
 }, {
   organisation: {
@@ -64,9 +64,9 @@ module.exports = [{
   ],
   outputs: [{ _id: faker.random.uuid(), name: faker.commerce.productName() }, { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
   ],
 }, {
   organisation: {
@@ -97,9 +97,9 @@ module.exports = [{
   ],
   outputs: [{ _id: faker.random.uuid(), name: faker.commerce.productName() }, { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
   ],
 }, {
   organisation: {
@@ -130,8 +130,8 @@ module.exports = [{
   ],
   outputs: [{ _id: faker.random.uuid(), name: faker.commerce.productName() }, { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), emails: [{ address: faker.internet.email() }] },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
   ],
 }];

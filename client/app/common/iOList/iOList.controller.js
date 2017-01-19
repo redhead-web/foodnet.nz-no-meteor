@@ -39,8 +39,8 @@ class IOListController {
     }
   }
 
-  delete(index) {
-    const modifyDetails = { type: 'remove', field: this.fieldName, index };
+  delete(index, value) {
+    const modifyDetails = { type: 'remove', field: this.fieldName, index, value };
     const stateChange = false;
     this.onModify({ modifyDetails, stateChange });
   }

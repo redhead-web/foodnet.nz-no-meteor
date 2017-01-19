@@ -137,7 +137,6 @@ router.post('/create', (req, res, next) => {
 
 router.post('/update', (req, res, next) => {
   const data = req.body;
-  console.log(data);
   const session = driver.session();
   let query = '';
   if (data.type === 'property') {
@@ -149,7 +148,7 @@ router.post('/update', (req, res, next) => {
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (person:Person { _id: {data}.update._id } ) ' +
                 'ON CREATE SET person = {data}.update ' +
-                'MERGE ((person)-[:TEAM_OF {jobTitle: data.jobTitle}]->(organisation)) ';
+                'MERGE ((organisation)<-[:TEAM_OF {jobTitle: {data}.update.jobTitle}]-(person)) ';
       } else if (data.listName === 'inputs') {
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (resource:Resource { name: lower({data}.update.name) } ) ' +
@@ -159,13 +158,26 @@ router.post('/update', (req, res, next) => {
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (resource:Resource { name: lower({data}.update.name) } ) ' +
                 'ON CREATE SET resource._id = {data}.update._id, resource.name = lower({data}.update.name) ' +
-                'MERGE ((organisation)<-[:OUTPUTS]-(resource)) ';
+                'MERGE ((resource)<-[:OUTPUTS]-(organisation)) ';
       }
     } else if (data.operation === 'remove') {
-      query = '';
+      if (data.listName === 'team') {
+        query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:TEAM_OF]-(:Person { _id: {data}.update._id } )' +
+                'DELETE r';
+      } else if (data.listName === 'inputs') {
+        query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:INPUTS]-(:Resource { name: lower({data}.update.name) } )' +
+                'DELETE r';
+      } else if (data.listName === 'outputs') {
+        query = 'MATCH (:Organisation { _id: {data}._id } )-[r:OUTPUTS]->(:Resource { name: lower({data}.update.name) } )' +
+                'DELETE r';
+      }
     } else if (data.operation === 'update') {
-      // should not be updating remove relationship then create new object
-      query = '';
+      if (data.listName === 'team') {
+        query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+                'MERGE (person:Person { _id: {data}.update._id } ) ' +
+                'ON MATCH SET person = {data}.update ' +
+                'MERGE ((organisation)<-[:TEAM_OF {jobTitle: {data}.update.jobTitle}]-(person)) ';
+      }
     }
   }
 

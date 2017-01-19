@@ -17,8 +17,8 @@ class OrganisationTeamController {
     }
   }
 
-  delete(index) {
-    const modifyDetails = { type: 'remove', field: 'team', index };
+  delete(index, value) {
+    const modifyDetails = { type: 'remove', field: 'team', index, value };
     const stateChange = false;
     this.onModify({ modifyDetails, stateChange });
   }

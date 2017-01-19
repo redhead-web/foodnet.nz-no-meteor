@@ -75,31 +75,27 @@ class OrganisationEditController {
   }
 
   modifyLists(modifyDetails, stateChange) {
-    let databaseObject = {};
     if (modifyDetails.passData) { this.data = modifyDetails.passData; } else { this.data = false; }
     switch (modifyDetails.type) {
       case 'insert':
         this.organisationData[modifyDetails.field].push(modifyDetails.value);
-        databaseObject = { _id: this.organisationActive, operation: 'insert', type: 'relationship', listName: modifyDetails.field, update: modifyDetails.value };
         break;
       case 'update':
-        // this should not be called remove relationship then create new object
-        // this.organisationData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
-        // databaseObject = { _id: this.organisationActive, operation: 'update', update: modifyDetails.value, index: modifyDetails.index, type: 'relationship', listName: modifyDetails.field };
+        this.organisationData[modifyDetails.field][modifyDetails.index] = modifyDetails.value;
         break;
       case 'remove':
         this.organisationData[modifyDetails.field].splice(modifyDetails.index, 1);
-        databaseObject = { _id: this.organisationActive, operation: 'remove', type: 'relationship', listName: modifyDetails.field, update: modifyDetails.value };
         break;
       case 'none':
         break;
       default:
     }
 
-    console.log(databaseObject);
-    this.http.post('/api/organisations/update', databaseObject).then(() => {
-      console.log('update success');
-    }, (err) => console.log(err));
+    if (modifyDetails.type !== 'none') {
+      const databaseObject = { _id: this.organisationActive, operation: modifyDetails.type, type: 'relationship', listName: modifyDetails.field, update: modifyDetails.value };
+      this.http.post('/api/organisations/update', databaseObject).then(() => {
+      }, (err) => console.log(err));
+    }
 
     if (stateChange) {
       this.editType = stateChange;

@@ -11,7 +11,7 @@
       ng-if="$ctrl.pageOwned"
       class="md-icon-button md-secondary"
       aria-label="Delete"
-      ng-click="$ctrl.delete($index)">
+      ng-click="$ctrl.delete($index, {_id: item._id, name: item.name})">
       <md-icon style="color:black;">close</md-icon>
     </md-button>
   </md-list-item>

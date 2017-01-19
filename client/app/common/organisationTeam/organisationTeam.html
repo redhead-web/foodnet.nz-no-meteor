@@ -4,14 +4,13 @@
     <user-avatar class="md-avatar" size="40"></user-avatar>
     <div class="md-list-item-text" layout="column">
       <h3>{{person.name}}</h3>
-      <p>{{person.roles[0]}}</p>
     </div>
     <span flex></span>
     <md-button
       ng-if="$ctrl.pageOwned"
       class="md-icon-button md-secondary"
       aria-label="Delete"
-      ng-click="$ctrl.delete($index)">
+      ng-click="$ctrl.delete($index, {_id: person._id, name: person.name})">
       <md-icon style="color:black;">close</md-icon>
     </md-button>
   </md-list-item>
