@@ -2,7 +2,7 @@
   <div ng-if="$ctrl.editType === 'profile'">
     <span layout="row">
       <md-button aria-label="More" class="md-icon-button" ui-sref="profile({userId: $ctrl.userActive})">
-        <md-icon style="color:black;">close</md-icon>
+        <md-icon >close</md-icon>
       </md-button>
       <h3>{{$ctrl.editType}} setings</h3>
     </span>
@@ -23,7 +23,7 @@
   <div ng-if="$ctrl.editType !== 'profile'">
     <span layout="row">
       <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.editType = 'profile'">
-        <md-icon style="color:black;">keyboard_backspace</md-icon>
+        <md-icon >keyboard_backspace</md-icon>
       </md-button>
       <h3>{{$ctrl.editType}} setings</h3>
     </span>
