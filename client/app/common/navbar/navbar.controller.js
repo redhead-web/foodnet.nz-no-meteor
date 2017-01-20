@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign*/
 import template from './bottom-sheet-list-template.html';
 import { includes } from 'lodash';
 
@@ -14,11 +15,6 @@ class NavbarController {
       $mdSidenav('menu').toggle();
     };
 
-    // watch for state changes
-    // $scope.$watch($state.current.name, () => {
-    //  $scope.currentNavItem = $state.current.name;
-    // });
-
     this.openMenu = ($mdOpenMenu, ev) => {
       $mdOpenMenu(ev);
     };
@@ -32,9 +28,11 @@ class NavbarController {
       if ($rootScope.currentUser && $rootScope.currentUser.bookmarks) {
         this.bookmarked = includes($rootScope.currentUser.bookmarks || [], { organisationId: this.organisationId });
       }
+      this.pageOwned = true;
     });
     $transitions.onSuccess({ from: 'organisation' }, () => {
       this.organisationId = undefined;
+      this.pageOwned = false;
     });
 
     $transitions.onSuccess({ to: 'profile' }, (transition) => {
@@ -47,10 +45,10 @@ class NavbarController {
     });
 
     $transitions.onSuccess({ to: 'organisationEdit' || 'profileEdit' }, () => {
-      this.hide = true;
+      $rootScope.hideNav = true;
     });
     $transitions.onSuccess({ from: 'organisationEdit' || 'profileEdit' }, () => {
-      this.hide = undefined;
+      $rootScope.hideNav = undefined;
     });
   }
 

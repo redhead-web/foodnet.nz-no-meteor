@@ -5,13 +5,13 @@
     <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.toggle()">
       <md-icon>menu</md-icon>
     </md-button>
-    {{$ctrl.title}}
+    {{::$ctrl.title}}
     <span flex></span>
-    <md-button aria-label="bookmark" class="md-icon-button" ng-click="$ctrl.toggleBookmark()" ng-if="$ctrl.pageType === 'organisation'">
+    <md-button aria-label="bookmark" class="md-icon-button" ng-click="$ctrl.toggleBookmark()" ng-if="$ctrl.organisationId">
       <md-icon>{{$ctrl.bookmarked ? 'bookmark' : 'bookmark_border'}}</md-icon>
     </md-button>
 
-    <md-button aria-label="login" class="md-icon-button" ui-sref="search({searchFilter: ''})" ng-if="!$ctrl.searchDisabled">
+    <md-button aria-label="login" class="md-icon-button" ui-sref="search({searchFilter: ''})">
       <md-icon>search</md-icon>
     </md-button>
 
@@ -30,10 +30,10 @@
           <md-list-item
             ui-sref="organisationEdit({organisationId: $ctrl.organisationId})"
             ng-if="$ctrl.pageOwned && $ctrl.organisationId">
-              <md-icon>print</md-icon>
-              Edit this {{$ctrl.pageType}}
+              <md-icon>settings</md-icon>
+              Edit this Organisation}
             </md-list-item>
-          <md-list-item ui-sref="profileEdit({userId: $ctrl.userId})" ng-if="$ctrl.pageOwned && $ctrl.userId"><span><md-icon>settings</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
+          <md-list-item ui-sref="profileEdit({userId: $ctrl.userId})" ng-if="$ctrl.pageOwned && $ctrl.userId"><span><md-icon>settings</md-icon> Edit this Profile</span></md-list-item>
         </md-list>
       </md-menu-content>
     </md-menu>
