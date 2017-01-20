@@ -15,6 +15,10 @@
         <md-grid-tile-footer>
           <h3>{{organisation.name}}</h3>
         </md-grid-tile-footer>
-        <img src="{{organisation.banner || $ctrl.img}}" width="100%">
+        <img src="{{organisation.banner || $ctrl.img}}" style="width:100%;" ng-if="!organisation.bannerPublicId">
+
+        <cl-image secure="true" public-id="{{organisation.bannerPublicId}}" ng-if="organisation.bannerPublicId" style="width:100%;" >
+          <cl-transformation width="300" height="300" crop="thumb" gravity="center"></cl-transformation>
+        </cl-image>
   </md-grid-tile>
 </md-grid-list>

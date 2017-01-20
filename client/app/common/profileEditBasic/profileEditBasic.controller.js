@@ -15,7 +15,7 @@ class ProfileEditBasicController {
   }
 
   imageSave(data, field) {
-    const fieldPublicId = `${field}publicId`;
+    const fieldPublicId = `${field}PublicId`;
     const modifyDetails = [
       { type: 'update', field, value: data.data.secure_url },
       { type: 'update', field: fieldPublicId, value: data.data.public_id },
@@ -25,7 +25,7 @@ class ProfileEditBasicController {
   }
 
   imageDelete(field) {
-    const fieldPublicId = `${field}publicId`;
+    const fieldPublicId = `${field}PublicId`;
     const modifyDetails = [
       { type: 'remove', field, value: false },
       { type: 'remove', field: fieldPublicId, value: false },

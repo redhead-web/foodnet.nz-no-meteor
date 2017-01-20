@@ -8,7 +8,7 @@ const faker = require('faker');
 router.get('/newest', (req, res, next) => {
   const session = driver.session();
   const query = 'MATCH (:Resource)-[i:INPUTS]->(n:Organisation)-[o:OUTPUTS]->(:Resource)' +
-  'RETURN n.name as name, n._id as _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner, count(DISTINCT i) as inputsCount, count(DISTINCT o) as outputsCount LIMIT 10';
+  'RETURN n.name as name, n._id as _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner, n.bannerPublicId AS bannerPublicId, count(DISTINCT i) as inputsCount, count(DISTINCT o) as outputsCount LIMIT 10';
   session.run(query).then((result) => {
     const data = { organisations: utils.toCollection(result.records) };
     res.json(data);
@@ -21,7 +21,7 @@ router.get('/newest', (req, res, next) => {
 router.get('/popular', (req, res, next) => {
   const session = driver.session();
   const query = 'MATCH (:Resource)-[i:INPUTS]->(n:Organisation)-[o:OUTPUTS]->(:Resource) ' +
-  'RETURN n.name as name, n._id as _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner, count(DISTINCT i) as inputsCount, count(DISTINCT o) as outputsCount LIMIT 10';
+  'RETURN n.name as name, n._id as _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner, n.bannerPublicId AS bannerPublicId, count(DISTINCT i) as inputsCount, count(DISTINCT o) as outputsCount LIMIT 10';
   session.run(query).then((result) => {
     const data = { organisations: utils.toCollection(result.records) };
     res.json(data);
@@ -34,7 +34,7 @@ router.get('/popular', (req, res, next) => {
 router.get('/auth', (req, res, next) => {
   const session = driver.session();
   const query = 'MATCH (n:Organisation) ' +
-                'RETURN n.name AS name, n._id AS _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner LIMIT 10';
+                'RETURN n.name AS name, n._id AS _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner, n.bannerPublicId AS bannerPublicId LIMIT 10';
   session.run(query).then((result) => {
     const data = { organisations: utils.toCollection(result.records) };
     res.json(data);
@@ -47,7 +47,7 @@ router.get('/auth', (req, res, next) => {
 router.get('/bookmarks', (req, res, next) => {
   const session = driver.session();
   const query = 'MATCH (n:Organisation) ' +
-                'RETURN n.name AS name, n._id AS _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner LIMIT 10';
+                'RETURN n.name AS name, n._id AS _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner, n.bannerPublicId AS bannerPublicId LIMIT 10';
   session.run(query).then((result) => {
     const data = { organisations: utils.toCollection(result.records) };
     res.json(data);
