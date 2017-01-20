@@ -30,7 +30,8 @@ router.get('/:profileId', (req, res, next) => {
   'RETURN q._id as _id, q.name as name, q.institute as institute';
 
   // TODO personalise this query once users are attached to organisations
-  const getOrganisations = 'MATCH (o:Organisation)--(n:Person {_id: {_id}}) RETURN o._id as _id, o.name as name';
+  const getOrganisations = 'MATCH (o:Organisation)--(n:Person {_id: {_id}}) ' +
+  'RETURN o._id as _id, o.name as name, o.tagLine as tagLine, o.avatar as avatar ';
 
   Promise.all([
     session.run(getPerson, { _id }),

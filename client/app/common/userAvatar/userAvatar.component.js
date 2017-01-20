@@ -6,6 +6,7 @@ const userAvatarComponent = {
   restrict: 'E',
   bindings: {
     size: '<',
+    image: '<',
   },
   template,
   controller,

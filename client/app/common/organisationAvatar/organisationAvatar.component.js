@@ -6,6 +6,7 @@ const organisationAvatarComponent = {
   restrict: 'E',
   bindings: {
     size: '<',
+    image: '<',
   },
   template,
   controller,

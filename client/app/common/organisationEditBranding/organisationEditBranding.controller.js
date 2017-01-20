@@ -1,3 +1,4 @@
+
 class OrganisationEditBrandingController {
   constructor() {
     this.name = 'organisationEditBranding';
@@ -11,8 +12,29 @@ class OrganisationEditBrandingController {
     const stateChange = 'organisation';
     this.modifyOrganisation({ modifyDetails, stateChange });
   }
-  saveCompanyAvatar(data) {
-    console.log(data); // http response from cloudinary
+
+  imageSave(data, field) {
+    const fieldPublicId = `${field}publicId`;
+    const modifyDetails = [
+      { type: 'update', field, value: data.data.secure_url },
+      { type: 'update', field: fieldPublicId, value: data.data.public_id },
+    ];
+    const stateChange = false;
+    this.modifyOrganisation({ modifyDetails, stateChange });
+  }
+
+  imageDelete(field) {
+    const fieldPublicId = `${field}publicId`;
+    const modifyDetails = [
+      { type: 'remove', field, value: false },
+      { type: 'remove', field: fieldPublicId, value: false },
+    ];
+    const stateChange = false;
+    this.modifyOrganisation({ modifyDetails, stateChange });
+  }
+
+  imageError(error) {
+    console.log(error);
   }
 }
 

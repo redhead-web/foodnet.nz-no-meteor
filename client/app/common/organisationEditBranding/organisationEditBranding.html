@@ -2,11 +2,35 @@
   <md-card-content>
     <div layout="row" layout-align="start center" layout-margin>
       <span flex>Organisation Avatar</span>
-      <img-upload can-edit="true" on-success="$ctrl.saveCompanyAvatar(data)"></img-upload>
+      <img-upload
+        can-edit="true"
+        on-success="$ctrl.imageSave(data, 'avatar')"
+        on-delete="$ctrl.imageDelete('avatar')"
+        on-error="$ctrl.imageError(error)"
+        cl-img="$ctrl.organisation.avatar">
+      </img-upload>
     </div>
+
     <div layout="row" layout-align="start center" layout-margin>
       <span flex>Organisation Logo</span>
-      <img-upload can-edit="true" on-success="$ctrl.saveCompanyLogo(data)"></img-upload>
+      <img-upload
+        can-edit="true"
+        on-success="$ctrl.imageSave(data, 'logo')"
+        on-delete="$ctrl.imageDelete('logo')"
+        on-error="$ctrl.imageError(error)"
+        cl-img="$ctrl.organisation.logo">
+      </img-upload>
+    </div>
+
+    <div layout="row" layout-align="start center" layout-margin>
+      <span flex>Organisation Banner</span>
+      <img-upload
+        can-edit="true"
+        on-success="$ctrl.imageSave(data, 'banner')"
+        on-delete="$ctrl.imageDelete('banner')"
+        on-error="$ctrl.imageError(error)"
+        cl-img="$ctrl.organisation.logo">
+      </img-upload>
     </div>
 
     <md-input-container class="md-block">

@@ -1,7 +1,11 @@
 <md-card flex layout="column" align="left">
   <md-list flex>
     <md-list-item class="md-2-line">
-      <organisation-avatar class="md-avatar" size="40"></organisation-avatar>
+      <organisation-avatar
+        class="md-avatar"
+        size="40"
+        image="$ctrl.organisation.avatar">
+        </organisation-avatar>
       <div class="md-list-item-text" layout="column">
         <h3>{{$ctrl.organisation.name}}</h3>
         <p>{{$ctrl.organisation.tagLine}}</p>

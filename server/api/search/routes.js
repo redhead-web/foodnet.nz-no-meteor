@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   const session = driver.session();
   const query = 'MATCH (n:Organisation) ' +
                 'WHERE lower(n.name) CONTAINS lower({ q }) ' +
-                'RETURN n.name AS name, n._id AS _id LIMIT 10 ';
+                'RETURN n.name AS name, n._id AS _id, n.tagLine AS tagLine, n.avatar AS avatar, n.banner AS banner LIMIT 10 ';
 
   session.run(query, { q: req.query.q }).then((result) => {
     const data = { organisations: utils.toCollection(result.records) };

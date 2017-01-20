@@ -4,10 +4,13 @@
     class="md-2-line"
     ng-repeat="organisation in $ctrl.organisations | filter: $ctrl.searchFilter"
     ui-sref="organisation({organisationId: organisation._id})">
-    <organisation-avatar class="md-avatar" size="40"></organisation-avatar>
+    <organisation-avatar
+      class="md-avatar"
+      size="40"
+      image="organisation.avatar"></organisation-avatar>
     <div class="md-list-item-text" layout="column">
       <h3>{{organisation.name}}</h3>
-      <p>{{organisation.tagLine}} {{organisation._id}}</p>
+      <p>{{organisation.tagLine}}</p>
     </div>
     <span flex></span>
     <md-button

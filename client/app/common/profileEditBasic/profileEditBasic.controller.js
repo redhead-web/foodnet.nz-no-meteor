@@ -13,6 +13,30 @@ class ProfileEditBasicController {
     const stateChange = 'profile';
     this.modifyProfile({ modifyDetails, stateChange });
   }
+
+  imageSave(data, field) {
+    const fieldPublicId = `${field}publicId`;
+    const modifyDetails = [
+      { type: 'update', field, value: data.data.secure_url },
+      { type: 'update', field: fieldPublicId, value: data.data.public_id },
+    ];
+    const stateChange = false;
+    this.modifyProfile({ modifyDetails, stateChange });
+  }
+
+  imageDelete(field) {
+    const fieldPublicId = `${field}publicId`;
+    const modifyDetails = [
+      { type: 'remove', field, value: false },
+      { type: 'remove', field: fieldPublicId, value: false },
+    ];
+    const stateChange = false;
+    this.modifyProfile({ modifyDetails, stateChange });
+  }
+
+  imageError(error) {
+    console.log(error);
+  }
 }
 
 export default ProfileEditBasicController;

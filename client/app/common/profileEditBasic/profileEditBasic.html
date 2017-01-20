@@ -1,5 +1,16 @@
 <md-card flex layout="column" style="outline:none;" align="left">
   <md-card-content>
+    <div layout="row" layout-align="start center" layout-margin>
+      <span flex>Avatar</span>
+      <img-upload
+        can-edit="true"
+        on-success="$ctrl.imageSave(data, 'avatar')"
+        on-delete="$ctrl.imageDelete('avatar')"
+        on-error="$ctrl.imageError(error)"
+        cl-img="$ctrl.user.avatar">
+      </img-upload>
+    </div>
+
     <md-input-container class="md-block">
       <label>Name</label>
       <input ng-model="$ctrl.user.name">

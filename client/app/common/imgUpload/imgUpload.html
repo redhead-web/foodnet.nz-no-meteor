@@ -6,25 +6,27 @@
   ngf-min-width="150"
   accept="image/*"
   ngf-min-height="150">
+
+  <span ng-if="$ctrl.invalidFiles.length">Error: {{$ctrl.invalidFiles[0].$error}} : {{$ctrl.invalidFiles[0].$errorParam}}</span>
+  <span ng-if="$ctrl.status">{{$ctrl.status}}</span>
+  <md-progress-linear ng-if="$ctrl.progress && $ctrl.progress !== 100" md-mode="determinate" value="{{$ctrl.progress}}"></md-progress-linear>
+  <img ng-if="$ctrl.blobPreview" ngf-src="$ctrl.blobPreview" style="max-width:150px;">
+  <cl-image secure="true" style="max-width:150px;" ng-if="$ctrl.clImg" public-id="{{$ctrl.clImg}}">
+    <cl-transformation width="800" crop="thumb" gravity="center"></cl-transformation>
+  </cl-image>
+
   <md-button
-    ng-if="!$ctrl.clImg"
+    ng-if="!$ctrl.clImg && !$ctrl.blobPreview"
     class="md-fab"
     accept="image/*"
     aria-label="upload image"
     ngf-select="$ctrl.uploadFiles($file, $invalidFiles)"
     ngf-max-size="'4MB'"
     ngf-min-width="150"
-    ngf-min-height="150"
-  >
+    ngf-min-height="150">
     <md-icon>image</md-icon>
   </md-button>
-  <span ng-if="$ctrl.invalidFiles.length">Error: {{$ctrl.invalidFiles[0].$error}} : {{$ctrl.invalidFiles[0].$errorParam}}</span>
-  <span ng-if="$ctrl.status">{{$ctrl.status}}</span>
-  <md-progress-linear ng-if="$ctrl.progress && $ctrl.progress !== 100" md-mode="determinate" value="{{$ctrl.progress}}"></md-progress-linear>
-  <img ng-if="$ctrl.blobPreview" ngf-src="$ctrl.blobPreview" flex="100">
-  <cl-image secure="true" flex="100" ng-if="$ctrl.clImg" public-id="{{$ctrl.clImg}}">
-    <cl-transformation width="800" crop="thumb" gravity="center"></cl-transformation>
-  </cl-image>
+
   <md-button
     ng-if="!!$ctrl.clImg && $ctrl.canEdit"
     class="md-icon-button image-replace-library"
@@ -33,11 +35,15 @@
     ngf-select="$ctrl.uploadFiles($file, $invalidFiles)"
     ngf-max-size="'4MB'"
     ngf-min-width="150"
-    ngf-min-height="150"
-  >
+    ngf-min-height="150">
     <md-icon>image</md-icon>
   </md-button>
-  <md-button ng-if="!!$ctrl.clImg && $ctrl.canEdit" aria-label="remove picture" class="md-icon-button image-delete" ng-click="$ctrl.onDelete()">
+
+  <md-button
+    ng-if="!!$ctrl.clImg && $ctrl.canEdit"
+    aria-label="remove picture"
+    class="md-icon-button image-delete"
+    ng-click="$ctrl.onDelete()">
     <md-icon>close</md-icon>
   </md-button>
 </div>
