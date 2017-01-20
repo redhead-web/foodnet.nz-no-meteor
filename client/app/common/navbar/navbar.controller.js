@@ -44,10 +44,10 @@ class NavbarController {
       this.pageOwned = false;
     });
 
-    $transitions.onSuccess({ to: 'organisationEdit' || 'profileEdit' }, () => {
+    $transitions.onSuccess({ to: 'organisationEdit' || 'profileEdit' || 'search' }, () => {
       $rootScope.hideNav = true;
     });
-    $transitions.onSuccess({ from: 'organisationEdit' || 'profileEdit' }, () => {
+    $transitions.onSuccess({ from: 'organisationEdit' || 'profileEdit' || 'search' }, () => {
       $rootScope.hideNav = undefined;
     });
   }
