@@ -12,7 +12,7 @@ class OrganisationEditController {
     this.paths = {
       organisation: {
         root: true,
-        title: 'Organisation Settings!',
+        title: 'Organisation Settings',
       },
       basic: {
         title: 'Basic Settings',
