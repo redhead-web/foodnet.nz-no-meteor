@@ -36,8 +36,8 @@ class NavbarController {
     });
 
     $transitions.onSuccess({ to: 'profile' }, (transition) => {
-      this.userId = transition.params('to').organisationId;
-      this.pageOwned = $rootScope.currentUser === this.userId; // disable to edit any profile
+      this.userId = transition.params('to').userId;
+      this.pageOwned = $rootScope.currentUser._id === this.userId; // disable to edit any profile
     });
     $transitions.onSuccess({ from: 'profile' }, () => {
       this.userId = undefined;
