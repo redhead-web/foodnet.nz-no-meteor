@@ -1,9 +1,4 @@
-<navbar
-  title="Food Map"
-  user-current="$root.currentUser">
-</navbar>
-<main>
-  <navbar-adjust></navbar-adjust>
+
   <md-card flex layout="column" align="left">
     <md-card-content>
       <span ng-if="$ctrl.state === 'logIn'">
@@ -60,4 +55,3 @@
     <a href="#" ng-click="$ctrl.state = 'recover'" ng-if="$ctrl.state !== 'recover'">forgot password?</a>
     <a href="#" ng-click="$ctrl.state = 'logIn'" ng-if="$ctrl.state === 'recover'">Log in</a>
   </div>
-</main>

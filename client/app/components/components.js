@@ -10,6 +10,7 @@ import OrganisationEdit from './organisationEdit/organisationEdit';
 import OrganisationAuth from './organisationAuth/organisationAuth';
 import OrganisationCreate from './organisationCreate/organisationCreate';
 import Help from './help/help';
+import sidebar from './sidebar/sidebar';
 
 const componentModule = angular.module('app.components', [
   Home,
@@ -23,6 +24,7 @@ const componentModule = angular.module('app.components', [
   OrganisationAuth,
   OrganisationCreate,
   Help,
+  sidebar,
 ])
 
 .name;

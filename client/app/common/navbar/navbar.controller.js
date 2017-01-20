@@ -1,34 +1,23 @@
 import template from './bottom-sheet-list-template.html';
+import { includes } from 'lodash';
 
 class NavbarController {
-  constructor($state, $scope, $mdSidenav, $mdBottomSheet, User) {
+  constructor($state, $scope, $rootScope, $mdSidenav, $mdBottomSheet, $transitions, User) {
     'ngInject';
 
     this.go = $state.go;
-    this.name = 'navbar';
     this.bookmarked = false;
     this.$mdBottomSheet = $mdBottomSheet;
-
-    if (this.pageId && this.pageType === 'organisation') {
-      if (this.userCurrent && this.userCurrent.profile && this.userCurrent.profile.bookmarks) {
-        for (let index = 0; index < this.userCurrent.profile.bookmarks.length; index += 1) {
-          if (this.userCurrent.profile.bookmarks[index] === this.pageId) {
-            this.bookmarked = true;
-            break;
-          }
-        }
-      }
-    }
-
-    // watch for state changes
-    // $scope.$watch($state.current.name, () => {
-    //  $scope.currentNavItem = $state.current.name;
-    // });
 
     // toggle side menu
     this.toggle = () => {
       $mdSidenav('menu').toggle();
     };
+
+    // watch for state changes
+    // $scope.$watch($state.current.name, () => {
+    //  $scope.currentNavItem = $state.current.name;
+    // });
 
     this.openMenu = ($mdOpenMenu, ev) => {
       $mdOpenMenu(ev);
@@ -37,6 +26,32 @@ class NavbarController {
     this.logOut = () => {
       User.logOut();
     };
+
+    $transitions.onSuccess({ to: 'organisation' }, (transition) => {
+      this.organisationId = transition.params('to').organisationId;
+      if ($rootScope.currentUser && $rootScope.currentUser.bookmarks) {
+        this.bookmarked = includes($rootScope.currentUser.bookmarks || [], { organisationId: this.organisationId });
+      }
+    });
+    $transitions.onSuccess({ from: 'organisation' }, () => {
+      this.organisationId = undefined;
+    });
+
+    $transitions.onSuccess({ to: 'profile' }, (transition) => {
+      this.userId = transition.params('to').organisationId;
+      this.pageOwned = $rootScope.currentUser === this.userId; // disable to edit any profile
+    });
+    $transitions.onSuccess({ from: 'profile' }, () => {
+      this.userId = undefined;
+      this.pageOwned = false;
+    });
+
+    $transitions.onSuccess({ to: 'organisationEdit' || 'profileEdit' }, () => {
+      this.hide = true;
+    });
+    $transitions.onSuccess({ from: 'organisationEdit' || 'profileEdit' }, () => {
+      this.hide = undefined;
+    });
   }
 
   goTo(location) {
@@ -52,8 +67,8 @@ class NavbarController {
     this.$mdBottomSheet.show({
       template,
       locals: {
-        pageType: this.pageType,
-        pageId: this.pageId,
+        organisationId: this.organisationId,
+        userId: this.userId,
         pageOwned: this.pageOwned,
       },
       controllerAs: '$ctrl',
