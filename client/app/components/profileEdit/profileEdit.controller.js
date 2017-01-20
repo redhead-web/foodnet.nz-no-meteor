@@ -8,6 +8,37 @@ class ProfileEditController {
     this.editType = 'profile';
     this.mdDialog = $mdDialog;
     this.userActive = $stateParams.userId;
+
+    this.paths = {
+      profile: {
+        root: true,
+        title: 'Profile Settings',
+      },
+      basic: {
+        title: 'Basic Details',
+      },
+      organisations: {
+        title: 'Organisations',
+      },
+      skills: {
+        title: 'Your Skills',
+      },
+      qualifications: {
+        title: 'Your Qualifications',
+      },
+      links: {
+        title: 'Social Media Links',
+      },
+    };
+  }
+
+  resolveBackArrow() {
+    const path = this.paths[this.editType];
+    if (path.parent) {
+      this.editType = path.parent;
+    } else {
+      this.editType = 'profile';
+    }
   }
 
   modifyProfile(modifyDetails, stateChange) {

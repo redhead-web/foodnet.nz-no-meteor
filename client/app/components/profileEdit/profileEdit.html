@@ -1,32 +1,41 @@
   <!-- list -->
   <div ng-if="$ctrl.editType === 'profile'">
-    <span layout="row">
-      <md-button aria-label="More" class="md-icon-button" ui-sref="profile({userId: $ctrl.userActive})">
-        <md-icon >close</md-icon>
-      </md-button>
-      <h3>{{$ctrl.editType}} setings</h3>
-    </span>
-    <md-card flex layout="column" style="outline:none;" align="left">
-      <md-card-content>
-        <md-list>
-          <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
-          <md-list-item ng-click="$ctrl.editType = 'organisations'">organisations</md-list-item>
-          <md-list-item ng-click="$ctrl.editType = 'skills'">skills</md-list-item>
-          <md-list-item ng-click="$ctrl.editType = 'qualifications'">qualifications</md-list-item>
-          <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
-        </md-list>
-      </md-card-content>
-    </md-card>
+    <md-toolbar layout="row" class="md-whiteframe-3dp">
+      <div class="md-toolbar-tools">
+        <md-button aria-label="More" class="md-icon-button" ui-sref="profile({userId: $ctrl.userActive})">
+          <md-icon>close</md-icon>
+        </md-button>
+        <h3>{{$ctrl.paths[$ctrl.editType].title}}</h3>
+      </div>
+    </md-toolbar>
+
+    <md-list>
+      <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'organisations'">organisations</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'skills'">skills</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'qualifications'">qualifications</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
+      <md-divider></md-divider>
+    </md-list>
   </div>
 
   <!-- detail -->
   <div ng-if="$ctrl.editType !== 'profile'">
-    <span layout="row">
-      <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.editType = 'profile'">
-        <md-icon >arrow_back</md-icon>
-      </md-button>
-      <h3>{{$ctrl.editType}} setings</h3>
-    </span>
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <md-button
+          aria-label="More"
+          class="md-icon-button"
+          ng-click="$ctrl.resolveBackArrow()">
+          <md-icon>arrow_back</md-icon>
+        </md-button>
+        <h3>{{$ctrl.paths[$ctrl.editType].title}}</h3>
+      </div>
+    </md-toolbar>
   </div>
   <div ng-if="$ctrl.editType === 'basic'">
     <profile-edit-basic
