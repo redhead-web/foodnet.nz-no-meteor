@@ -1,3 +1,4 @@
+{{$ctrl.organisation}}
 <md-card flex layout="column" style="outline:none;" align="left">
   <md-card-content>
     <div layout="row" layout-align="start center" layout-margin>
@@ -29,7 +30,7 @@
         on-success="$ctrl.imageSave(data, 'banner')"
         on-delete="$ctrl.imageDelete('banner')"
         on-error="$ctrl.imageError(error)"
-        cl-img="$ctrl.organisation.logo">
+        cl-img="$ctrl.organisation.banner">
       </img-upload>
     </div>
 

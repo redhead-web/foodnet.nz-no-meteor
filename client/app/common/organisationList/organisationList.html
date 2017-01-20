@@ -15,7 +15,6 @@
         <md-grid-tile-footer>
           <h3>{{organisation.name}}</h3>
         </md-grid-tile-footer>
-        <img src="http://lorempixel.com/400/400/nature" width="100%">
-        <!-- <organisation-summary organisation="organisation" flex layout="column"></organisation-summary> -->
+        <img src="{{organisation.banner || $ctrl.img}}" width="100%">
   </md-grid-tile>
 </md-grid-list>

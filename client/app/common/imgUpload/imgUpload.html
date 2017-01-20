@@ -11,7 +11,7 @@
   <span ng-if="$ctrl.status">{{$ctrl.status}}</span>
   <md-progress-linear ng-if="$ctrl.progress && $ctrl.progress !== 100" md-mode="determinate" value="{{$ctrl.progress}}"></md-progress-linear>
   <img ng-if="$ctrl.blobPreview" ngf-src="$ctrl.blobPreview" style="max-width:150px;">
-  <cl-image secure="true" style="max-width:150px;" ng-if="$ctrl.clImg" public-id="{{$ctrl.clImg}}">
+  <cl-image secure="true" style="max-width:150px;" ng-if="$ctrl.clImg && !$ctrl.blobPreview" public-id="{{$ctrl.clImg}}">
     <cl-transformation width="800" crop="thumb" gravity="center"></cl-transformation>
   </cl-image>
 
