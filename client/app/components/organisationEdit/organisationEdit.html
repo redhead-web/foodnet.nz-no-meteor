@@ -1,7 +1,7 @@
-<main layout="column" flex style="min-height:100vh;">
+
   <!-- list -->
   <div ng-if="$ctrl.editType === 'organisation'">
-    <md-toolbar layout="row">
+    <md-toolbar layout="row" class="md-whiteframe-3dp">
       <div class="md-toolbar-tools">
         <md-button aria-label="More" class="md-icon-button" ui-sref="organisation({organisationId: $ctrl.organisationActive})">
           <md-icon>close</md-icon>
@@ -9,27 +9,24 @@
         <h3>{{$ctrl.paths[$ctrl.editType].title}}</h3>
       </div>
     </md-toolbar>
-    <md-card flex layout="column" style="outline:none;" align="left">
-      <md-card-content>
-        <md-list>
-          <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-click="$ctrl.editType = 'branding'">branding</md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-click="$ctrl.editType = 'locations'">locations</md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-click="$ctrl.editType = 'description'">description</md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-click="$ctrl.editType = 'team'">team</md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-click="$ctrl.editType = 'inputs'">inputs</md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-click="$ctrl.editType = 'outputs'">outputs</md-list-item>
-          <md-divider></md-divider>
-          <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
-        </md-list>
-      </md-card-content>
-    </md-card>
+    <md-list>
+      <md-list-item ng-click="$ctrl.editType = 'basic'">basic</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'branding'">branding</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'locations'">locations</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'description'">description</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'team'">team</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'inputs'">inputs</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'outputs'">outputs</md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ng-click="$ctrl.editType = 'links'">links</md-list-item>
+      <md-divider></md-divider>
+    </md-list>
   </div>
 
   <!-- detail -->
@@ -40,7 +37,7 @@
           aria-label="More"
           class="md-icon-button"
           ng-click="$ctrl.resolveBackArrow()">
-          <md-icon style="color:black;">keyboard_backspace</md-icon>
+          <md-icon>arrow_back</md-icon>
         </md-button>
         <h3>{{$ctrl.paths[$ctrl.editType].title}}</h3>
       </div>
@@ -64,7 +61,7 @@
       modify-locations="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-locations>
   </div>
-  <div ng-if="$ctrl.editType === 'locations form'">
+  <div ng-if="$ctrl.editType === 'locationsForm'">
     <organisation-edit-location-form
       location="$ctrl.data"
       modify-location="$ctrl.modifyLists(modifyDetails, stateChange)">
@@ -111,4 +108,3 @@
       modify-organisation="$ctrl.modifyOrganisation(modifyDetails, stateChange)">
     </organisation-edit-links>
   </div>
-</main>

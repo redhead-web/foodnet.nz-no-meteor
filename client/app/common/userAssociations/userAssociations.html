@@ -6,7 +6,11 @@
     {{$ctrl.organisationsSummary.workedAt}} Previously worked at <br/>
   </md-card-content>
 
-  <organisation-list-small
+  <organisation-list-small hide-gt-xs
     organisations="$ctrl.organisations">
   </organisation-list-small>
 </md-card>
+
+<div layout-margin>
+  <organisation-list hide-xs organisations="$ctrl.organisations"></organisation-list>
+</div>

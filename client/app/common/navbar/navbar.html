@@ -1,58 +1,46 @@
 <!-- side menu -->
-<md-toolbar class="md-primary md-whiteframe-5dp" style="position: fixed;">
+
   <div class="md-toolbar-tools">
     <!-- menu button -->
     <md-button aria-label="login" class="md-icon-button" ng-click="$ctrl.toggle()">
-      <md-icon style="color:black;">menu</md-icon>
+      <md-icon>menu</md-icon>
     </md-button>
-    {{$ctrl.title}}
+    {{::$ctrl.title}}
     <span flex></span>
-    <md-button aria-label="bookmark" class="md-icon-button" ng-click="$ctrl.toggleBookmark()" ng-if="$ctrl.pageType === 'organisation'">
-      <md-icon style="color:black;">{{$ctrl.bookmarked ? 'bookmark' : 'bookmark_border'}}</md-icon>
+    <md-button aria-label="bookmark" class="md-icon-button" ng-click="$ctrl.toggleBookmark()" ng-if="$ctrl.organisationId">
+      <md-icon>{{$ctrl.bookmarked ? 'bookmark' : 'bookmark_border'}}</md-icon>
     </md-button>
 
-    <md-button aria-label="login" class="md-icon-button" ui-sref="search({searchFilter: ''})" ng-if="!$ctrl.searchDisabled">
-      <md-icon style="color:black;">search</md-icon>
+    <md-button aria-label="login" class="md-icon-button" ui-sref="search({searchFilter: ''})">
+      <md-icon>search</md-icon>
     </md-button>
 
     <md-button hide-gt-xs aria-label="More" class="md-icon-button" ng-click="$ctrl.openBottomSheet()">
-      <md-icon style="color:black;">more_vert</md-icon>
+      <md-icon>more_vert</md-icon>
     </md-button>
 
     <md-menu hide-xs>
       <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
-        <md-icon style="color:black;">more_vert</md-icon>
+        <md-icon>more_vert</md-icon>
       </md-button>
       <md-menu-content width="4">
-        <md-list>
-          <md-list-item class="md-2-line" ui-sref="help"><span><md-icon style="color:black;">help_outline</md-icon> Help</span></md-list-item>
-          <md-list-item class="md-2-line" ui-sref="home"><span><md-icon style="color:black;">share</md-icon> Share</span></md-list-item>
-          <md-list-item class="md-2-line" ui-sref="home"><span><md-icon style="color:black;">cloud_upload</md-icon> Analytics</span></md-list-item>
-          <md-list-item class="md-2-line" ui-sref="home" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon style="color:black;">content_copy</md-icon> Copy</span></md-list-item>
-          <md-list-item class="md-2-line" ui-sref="organisationEdit({organisationId: $ctrl.pageId})" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'organisation'"><span><md-icon style="color:black;">print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
-          <md-list-item class="md-2-line" ui-sref="profileEdit({userId: $ctrl.pageId})" ng-if="$ctrl.pageOwned && $ctrl.pageType === 'profile'"><span><md-icon style="color:black;">print</md-icon> Edit this {{$ctrl.pageType}}</span></md-list-item>
-        </md-list>
+        <md-menu-item>
+          <md-button ui-sref="help"><md-icon>help_outline</md-icon> Help</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ui-sref="home">
+            <md-icon>share</md-icon> Share
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="$ctrl.pageOwned && $ctrl.organisationId">
+          <md-button
+            ui-sref="organisationEdit({organisationId: $ctrl.organisationId})">
+            <md-icon>settings</md-icon> Edit this Organisation
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="$ctrl.pageOwned && $ctrl.userId">
+          <md-button ui-sref="profileEdit({userId: $ctrl.userId})"><md-icon>settings</md-icon> Edit this Profile</md-button>
+        </md-menu-item>
       </md-menu-content>
     </md-menu>
   </div>
-</md-toolbar>
-<md-sidenav
-  class="md-sidenav-left"
-  md-component-id="menu"
-  md-whiteframe="4">
-    <md-content layout-padding style="background:grey;" ng-if="$ctrl.userCurrent" align="left">
-      <user-avatar size="75"></user-avatar>
-      <br/>
-      <span style="color:white;">{{$ctrl.userCurrent.email || ''}}</span>
-    </md-content>
-    <md-list layout-align="space-around" layout="column">
-      <!-- pages -->
-      <md-list-item ui-sref="logIn" ng-click="$ctrl.toggle()" ng-if="!$ctrl.userCurrent"><span><md-icon>account_box</md-icon> Log In</span></md-list-item>
-      <md-list-item ui-sref="home" ng-click="$ctrl.toggle()"><span><md-icon>home</md-icon> Home</span></md-list-item>
-      <md-list-item ui-sref="profile({userId: $ctrl.userCurrent._id})" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>account_box</md-icon> My Profile</span></md-list-item>
-      <md-list-item ui-sref="organisationAuth" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>send</md-icon> My Organisations</span></md-list-item>
-      <md-list-item ui-sref="organisationCreate" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>forum</md-icon> Create Organisation</span></md-list-item>
-      <md-list-item ui-sref="bookmarks" ng-click="$ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>bookmark</md-icon> Bookmarks</span></md-list-item>
-      <md-list-item ui-sref="home" ng-click="$ctrl.logOut(); $ctrl.toggle()" ng-if="$ctrl.userCurrent"><span><md-icon>people</md-icon> Log out</span></md-list-item>
-    </md-list>
-</md-sidenav>

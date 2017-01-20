@@ -1,29 +1,30 @@
-<navbar
-  title="Food Map"
-  user-current="$root.currentUser">
-</navbar>
 <main>
-  <navbar-adjust></navbar-adjust>
   <promo-splash
     text="$ctrl.promoText">
   </promo-splash>
-  <search-common
-    layout="column"
-    common-searches="$ctrl.commonSearches"
-    search-filter="$ctrl.searchFilter"
-    search-active="$ctrl.searchActive">
-  </search-common>
-  <h4>Newest Organisations</h4>
-  <organisation-list ng-if="$ctrl.organisationsNewest"
-    layout="row"
-    organisations="$ctrl.organisationsNewest.organisations"
-    limit-to="2">
-  </organisation-list>
+  <div layout layout-xs="column">
+    <span flex hide-xs></span>
+    <div flex-gt-xs="90" flex-gt-sm="70" flex-lg="60">
+      <search-common
+        layout="column"
+        common-searches="$ctrl.commonSearches"
+        search-filter="$ctrl.searchFilter"
+        search-active="$ctrl.searchActive">
+      </search-common>
+      <h4 class="md-title text-center">Newest Organisations</h4>
+      <organisation-list ng-if="$ctrl.organisationsNewest"
+        layout="row"
+        organisations="$ctrl.organisationsNewest.organisations"
+        limit-to="2">
+      </organisation-list>
 
-  <h4>Popular Organisations</h4>
-  <organisation-list ng-if="$ctrl.organisationsPopular"
-    layout="row"
-    organisations="$ctrl.organisationsPopular.organisations"
-    limit-to="2">
-  </organisation-list>
+      <h4 class="md-title text-center">Popular Organisations</h4>
+      <organisation-list ng-if="$ctrl.organisationsPopular"
+        layout="row"
+        organisations="$ctrl.organisationsPopular.organisations"
+        limit-to="2">
+      </organisation-list>
+    </div>
+    <span flex hide-xs></span>
+  </div>
 </main>

@@ -1,4 +1,15 @@
 <!-- Place all UI elements intended to be present across all routes in this file -->
-<div class="app">
-  <div ui-view></div>
-</div>
+<md-toolbar md-scroll-shrink="" class="md-primary md-whiteframe-3dp" ng-hide="$root.hideNav">
+  <navbar
+    title="Food Net"
+    user-current="$root.currentUser">
+  </navbar>
+</md-toolbar>
+
+<sidebar></sidebar>
+
+<md-content flex>
+  <div class="app">
+    <div ui-view layout="column"></div>
+  </div>
+</md-content>

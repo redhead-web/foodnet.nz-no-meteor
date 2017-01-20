@@ -5,7 +5,6 @@ import './navbar.scss';
 const navbarComponent = {
   restrict: 'E',
   bindings: {
-    userCurrent: '<',
     userData: '<',
     title: '@',
     searchFilter: '=',

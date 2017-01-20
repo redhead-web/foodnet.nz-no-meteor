@@ -10,6 +10,41 @@ class ProfileEditController {
     this.http = $http;
     this.userActive = $stateParams.userId;
     this.data = false;
+
+    this.paths = {
+      profile: {
+        root: true,
+        title: 'Profile Settings',
+      },
+      basic: {
+        title: 'Basic Details',
+      },
+      organisations: {
+        title: 'Organisations',
+      },
+      organisation: {
+        title: 'Organisation Settings',
+        parent: 'organisations',
+      },
+      skills: {
+        title: 'Your Skills',
+      },
+      qualifications: {
+        title: 'Your Qualifications',
+      },
+      links: {
+        title: 'Social Media Links',
+      },
+    };
+  }
+
+  resolveBackArrow() {
+    const path = this.paths[this.editType];
+    if (path.parent) {
+      this.editType = path.parent;
+    } else {
+      this.editType = 'profile';
+    }
   }
 
   modifyProfile(modifyDetails, stateChange) {

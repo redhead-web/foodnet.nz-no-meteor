@@ -4,7 +4,7 @@
       <md-list-item ng-repeat="location in $ctrl.locations" layout="row" ng-click="$ctrl.edit(location, $index)">
         <span>{{location.address}}</span><span flex></span>
         <md-button class="md-icon-button" aria-label="Delete" ng-click="$ctrl.delete($index)">
-          <md-icon style="color:black;">close</md-icon>
+          <md-icon >close</md-icon>
         </md-button>
       </md-list-item>
     </md-list>
