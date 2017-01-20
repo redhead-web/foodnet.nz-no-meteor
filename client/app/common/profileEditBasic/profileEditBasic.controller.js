@@ -6,7 +6,7 @@ class ProfileEditBasicController {
   modify() {
     const modifyDetails = [
       { type: 'update', field: 'name', value: this.user.name },
-      { type: 'update', field: 'emails', value: this.user.email },
+      { type: 'update', field: 'email', value: this.user.email },
       { type: 'update', field: 'phone', value: this.user.phone },
       { type: 'update', field: 'address', value: this.user.address },
     ];

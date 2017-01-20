@@ -26,7 +26,7 @@
       <md-button aria-label="More" class="md-icon-button" ng-click="$ctrl.editType = 'profile'">
         <md-icon style="color:black;">keyboard_backspace</md-icon>
       </md-button>
-      <h3>{{$ctrl.editType}} setings</h3>
+      <h3>{{$ctrl.editType}} setings {{$ctrl.editType}}</h3>
     </span>
   </div>
   <div ng-if="$ctrl.editType === 'basic'">
@@ -40,7 +40,15 @@
       user="$ctrl.profileData.person"
       organisations="$ctrl.profileData.organisations"
       modify-organisations="$ctrl.modifyLists(modifyDetails, stateChange)">
-    </profile-edit-branding-organisations>
+    </profile-edit-organisations>
+  </div>
+  <div ng-if="$ctrl.editType === 'organisation'">
+    <profile-edit-organisation
+      user="$ctrl.profileData.person"
+      organisation="$ctrl.data.organisation"
+      index="$ctrl.data.index"
+      modify-organisation="$ctrl.modifyLists(modifyDetails, stateChange)">
+    </profile-edit-organisation>
   </div>
   <div ng-if="$ctrl.editType === 'skills'">
     <profile-edit-skills

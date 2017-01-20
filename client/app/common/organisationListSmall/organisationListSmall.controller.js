@@ -3,8 +3,8 @@ class OrganisationListSmallController {
     this.name = 'organisationListSmall';
   }
 
-  delete(index) {
-    const modifyDetails = { type: 'remove', field: 'organisations', index };
+  delete(index, value) {
+    const modifyDetails = { type: 'remove', field: 'organisations', index, value };
     const stateChange = false;
     this.onModify({ modifyDetails, stateChange });
   }

@@ -42,8 +42,8 @@ class SkillListController {
     }
   }
 
-  delete(index) {
-    const modifyDetails = { type: 'remove', field: 'skills', index };
+  delete(index, value) {
+    const modifyDetails = { type: 'remove', field: 'skills', index, value };
     const stateChange = false;
     this.onModify({ modifyDetails, stateChange });
   }

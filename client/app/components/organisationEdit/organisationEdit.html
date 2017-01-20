@@ -83,6 +83,14 @@
       modify-team="$ctrl.modifyLists(modifyDetails, stateChange)">
     </organisation-edit-team>
   </div>
+  <div ng-if="$ctrl.editType === 'teamMember'">
+    <organisation-edit-team-member
+      organisation="$ctrl.organisationData.organisation"
+      team-member = "$ctrl.data.teamMember"
+      index="$ctrl.data.index"
+      modify-team-member="$ctrl.modifyLists(modifyDetails, stateChange)">
+    </organisation-edit-team-member>
+  </div>
   <div ng-if="$ctrl.editType === 'inputs'">
     <organisation-edit-inputs
       organisation="$ctrl.organisationData.organisation"
@@ -102,13 +110,5 @@
       organisation="$ctrl.organisationData.organisation"
       modify-organisation="$ctrl.modifyOrganisation(modifyDetails, stateChange)">
     </organisation-edit-links>
-  </div>
-  <div ng-if="$ctrl.editType === 'teamMember'">
-    <organisation-edit-team-member
-      organisation="$ctrl.organisationData.organisation"
-      team-member = "$ctrl.data.teamMember"
-      index="$ctrl.data.index"
-      modify-team-member="$ctrl.modifyLists(modifyDetails, stateChange)">
-    </organisation-edit-team-member>
   </div>
 </main>

@@ -7,14 +7,14 @@
     <organisation-avatar class="md-avatar" size="40"></organisation-avatar>
     <div class="md-list-item-text" layout="column">
       <h3>{{organisation.name}}</h3>
-      <p>{{organisation.tagLine}}</p>
+      <p>{{organisation.tagLine}} {{organisation._id}}</p>
     </div>
     <span flex></span>
     <md-button
       ng-if="$ctrl.pageOwned && $ctrl.buttonType !== 'edit'"
       class="md-icon-button md-secondary"
       aria-label="Delete"
-      ng-click="$ctrl.delete($index)">
+      ng-click="$ctrl.delete($index, {_id: organisation._id })">
       <md-icon style="color:black;">close</md-icon>
     </md-button>
 

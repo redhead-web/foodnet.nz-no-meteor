@@ -1,5 +1,5 @@
 class ProfileEditController {
-  constructor($stateParams, $mdDialog) {
+  constructor($stateParams, $mdDialog, $http) {
     'ngInject';
 
     this.name = 'profileEdit';
@@ -7,17 +7,19 @@ class ProfileEditController {
     // set up variables for profileEdit page
     this.editType = 'profile';
     this.mdDialog = $mdDialog;
+    this.http = $http;
     this.userActive = $stateParams.userId;
+    this.data = false;
   }
 
   modifyProfile(modifyDetails, stateChange) {
     for (let index = 0; index < modifyDetails.length; index += 1) {
       const modify = modifyDetails[index];
-      if (modify.type === 'remove') {
-        this.profileData.person[modify.field] = '';
-      } else if (modify.type === 'update') {
-        this.profileData.person[modify.field] = modify.value;
-      }
+      this.profileData.person[modify.field] = modify.value;
+      const databaseObject = { _id: this.userActive, update: { [modify.field]: modify.value }, type: 'property' };
+      this.http.post('/api/profiles/update', databaseObject).then(() => {
+        console.log('update success');
+      }, (err) => console.log(err));
     }
     if (stateChange) {
       this.editType = stateChange;
@@ -25,6 +27,7 @@ class ProfileEditController {
   }
 
   modifyLists(modifyDetails, stateChange) {
+    if (modifyDetails.passData) { this.data = modifyDetails.passData; } else { this.data = false; }
     switch (modifyDetails.type) {
       case 'insert':
         this.profileData[modifyDetails.field].push(modifyDetails.value);
@@ -52,6 +55,14 @@ class ProfileEditController {
         break;
       default:
     }
+
+    if (modifyDetails.type !== 'none') {
+      const databaseObject = { _id: this.userActive, operation: modifyDetails.type, type: 'relationship', listName: modifyDetails.field, update: modifyDetails.value };
+      this.http.post('/api/profiles/update', databaseObject).then(() => {
+        console.log('success');
+      }, (err) => console.log(err));
+    }
+
     if (stateChange) {
       this.editType = stateChange;
     }

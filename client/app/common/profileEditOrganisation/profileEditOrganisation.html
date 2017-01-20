@@ -1,0 +1,23 @@
+<md-card flex layout="column" style="outline:none;" align="left">
+  <md-card-content>
+    <md-input-container class="md-block">
+      <label>Organisation Name</label>
+      <input ng-model="$ctrl.organisation.name">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Your Job title</label>
+      <input ng-model="$ctrl.organisation.jobTitle">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Organisation Email</label>
+      <input ng-model="$ctrl.organisation.emails" type="email">
+    </md-input-container>
+
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ui-sref="profileEdit({userId: $ctrl.organisation._id})">More Detail</md-button>
+      <md-button ng-click="$ctrl.modify($ctrl.organisation)">Save</md-button>
+    </md-card-actions>
+  </md-card-content>
+</md-card>

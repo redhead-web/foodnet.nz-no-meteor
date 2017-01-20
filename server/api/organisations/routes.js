@@ -1,8 +1,6 @@
 /* eslint-disable new-cap, prefer-arrow-callback, no-plusplus, no-underscore-dangle */
 const express = require('express');
 const router = express.Router();
-// const organisationsFixture = require('../db/organisations');
-
 const driver = require('../neo4j');
 const utils = require('../db/utils');
 const faker = require('faker');
@@ -31,12 +29,6 @@ router.get('/popular', (req, res, next) => {
   }, (error) => {
     next(error);
   });
-  // res.json({ organisations: [
-  //   { _id: 'someId', name: 'Super Awesome Company', tags: ['carrots'] },
-  //   { _id: 'someOtherI', name: 'A Company', tags: ['beans'] },
-  //   { _id: 'someMoreId', name: 'Another Company', tags: ['HTML'] },
-  //   { _id: 'someAlternateId', name: 'Yet Another Company', tags: ['Lamb'] },
-  // ] });
 });
 
 router.get('/auth', (req, res, next) => {
@@ -49,12 +41,6 @@ router.get('/auth', (req, res, next) => {
   }, (error) => {
     next(error);
   });
-  // res.json({ organisations: [
-  //   { _id: 'someId', name: 'Super Awesome Company', tags: ['carrots'] },
-  //   { _id: 'someOtherI', name: 'A Company', tags: ['beans'] },
-  //   { _id: 'someMoreId', name: 'Another Company', tags: ['HTML'] },
-  //   { _id: 'someAlternateId', name: 'Yet Another Company', tags: ['Lamb'] },
-  // ] });
 });
 
 router.get('/bookmarks', (req, res, next) => {
@@ -67,12 +53,6 @@ router.get('/bookmarks', (req, res, next) => {
   }, (error) => {
     next(error);
   });
-  // res.json({ organisations: [
-  //   { _id: 'someId', name: 'Super Awesome Company', tags: ['carrots'] },
-  //   { _id: 'someOtherId', name: 'A Company', tags: ['beans'] },
-  //   { _id: 'someMoreId', name: 'Another Company', tags: ['HTML'] },
-  //   { _id: 'someAlternateId', name: 'Yet Another Company', tags: ['Lamb'] },
-  // ] });
 });
 
 router.get('/one/:organisationId', (req, res, next) => {
@@ -145,6 +125,7 @@ router.post('/update', (req, res, next) => {
   } else if (data.type === 'relationship') {
     if (data.operation === 'insert') {
       if (data.listName === 'team') {
+        if (!data.update._id) { data.update._id = faker.random.uuid(); }
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (person:Person { _id: {data}.update._id } ) ' +
                 'ON CREATE SET person = {data}.update ' +
@@ -162,13 +143,13 @@ router.post('/update', (req, res, next) => {
       }
     } else if (data.operation === 'remove') {
       if (data.listName === 'team') {
-        query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:TEAM_OF]-(:Person { _id: {data}.update._id } )' +
+        query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:TEAM_OF]-(:Person { _id: {data}.update._id } ) ' +
                 'DELETE r';
       } else if (data.listName === 'inputs') {
-        query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:INPUTS]-(:Resource { name: lower({data}.update.name) } )' +
+        query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:INPUTS]-(:Resource { name: lower({data}.update.name) } ) ' +
                 'DELETE r';
       } else if (data.listName === 'outputs') {
-        query = 'MATCH (:Organisation { _id: {data}._id } )-[r:OUTPUTS]->(:Resource { name: lower({data}.update.name) } )' +
+        query = 'MATCH (:Organisation { _id: {data}._id } )-[r:OUTPUTS]->(:Resource { name: lower({data}.update.name) } ) ' +
                 'DELETE r';
       }
     } else if (data.operation === 'update') {

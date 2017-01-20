@@ -7,6 +7,7 @@ import SearchCommon from './searchCommon/searchCommon';
 import SearchSuggestions from './searchSuggestions/searchSuggestions';
 import ProfileEditBasic from './profileEditBasic/profileEditBasic';
 import ProfileEditOrganisations from './profileEditOrganisations/profileEditOrganisations';
+import ProfileEditOrganisation from './profileEditOrganisation/profileEditOrganisation';
 import ProfileEditSkills from './profileEditSkills/profileEditSkills';
 import ProfileEditQualifications from './profileEditQualifications/profileEditQualifications';
 import ProfileEditLinks from './profileEditLinks/profileEditLinks';
@@ -56,6 +57,7 @@ const commonModule = angular.module('app.common', [
   SearchSuggestions,
   ProfileEditBasic,
   ProfileEditOrganisations,
+  ProfileEditOrganisation,
   ProfileEditSkills,
   ProfileEditQualifications,
   ProfileEditLinks,

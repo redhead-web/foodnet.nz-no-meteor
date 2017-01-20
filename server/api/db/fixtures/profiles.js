@@ -10,13 +10,13 @@ const query = 'UNWIND {json} AS data ' +
 
               'FOREACH (skillObject in data.skills | ' +
                 'MERGE (skill:Skill { _id: skillObject._id }) ' +
-                'ON CREATE SET skill.name = skillObject.name, skill.description = skillObject.description ' +
+                'ON CREATE SET skill.name = lower(skillObject.name), skill.description = skillObject.description ' +
                 'MERGE (person)<-[:SKILLED { level: skillObject.level }]-(skill) ' +
               ') ' +
 
               'FOREACH (qualificationObject in data.qualifications | ' +
                 'MERGE (qualification:Qualification { _id: qualificationObject._id }) ' +
-                'ON CREATE SET qualification = qualificationObject ' +
+                'ON CREATE SET qualification.name = lower(qualificationObject.name), qualification.institute =  qualificationObject.institute ' +
                 'MERGE (person)<-[:TRAINED_IN]-(qualification) ' +
               ') ' +
 

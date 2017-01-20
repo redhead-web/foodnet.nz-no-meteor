@@ -16,7 +16,7 @@ class OrganisationEditTeamMemberController {
   modify(value) {
     const stateChange = 'team';
     if (this.isNew) {
-      const modifyDetails = { type: 'insert', field: 'team', value: { _id: this.getId(), name: this.teamMember.name, jobTitle: this.teamMember.jobTitle, email: this.teamMember.email } };
+      const modifyDetails = { type: 'insert', field: 'team', value: { name: this.teamMember.name, jobTitle: this.teamMember.jobTitle, email: this.teamMember.email } };
       this.modifyTeamMember({ modifyDetails, stateChange });
     } else {
       const modifyDetails = { type: 'update', field: 'team', index: this.index, value };

@@ -42,8 +42,8 @@ class QualificationListController {
     }
   }
 
-  delete(index) {
-    const modifyDetails = { type: 'remove', field: 'qualifications', index };
+  delete(index, value) {
+    const modifyDetails = { type: 'remove', field: 'qualifications', index, value };
     const stateChange = false;
     this.onModify({ modifyDetails, stateChange });
   }
