@@ -1,10 +1,11 @@
-<md-tabs md-dynamic-height>
+<md-tabs md-dynamic-height hide-gt-xs>
   <md-tab label="Home">
     <div layout="column" style="max-height: 100%">
       <md-content flex>
         <organisation-dashboard-home
           organisation="$ctrl.organisationData.organisation">
         </organisation-dashboard-home>
+        <organisation-location organisation="$ctrl.organisationData.organisation"></organisation-location>
       </md-content>
     </div>
   </md-tab>
@@ -22,3 +23,27 @@
     </organisation-dashboard-i-o>
   </md-tab>
 </md-tabs>
+
+<div layout hide-xs>
+  <div layout layout-sm="column" flex="33" flex-gt-sm="50">
+    <div class="section1" flex-gt-sm="50">
+      <organisation-dashboard-home
+        organisation="$ctrl.organisationData.organisation">
+      </organisation-dashboard-home>
+    </div>
+    <div class="section2" flex-gt-sm="50">
+      <organisation-location organisation="$ctrl.organisationData.organisation"></organisation-location>
+      <organisation-info organisation="$ctrl.organisationData.organisation"></organisation-info>
+    </div>
+  </div>
+  <div class="section3" flex>
+    <organisation-dashboard-i-o
+      organisation="$ctrl.organisationData.organisation"
+      inputs="$ctrl.organisationData.inputs"
+      outputs="$ctrl.organisationData.outputs">
+    </organisation-dashboard-i-o>
+  </div>
+  <div class="section4" flex>
+    <organisation-team organisation="$ctrl.organisationData.organisation" team="$ctrl.organisationData.team"></organisation-team>
+  </div>
+</div>
