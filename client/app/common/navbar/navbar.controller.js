@@ -72,12 +72,12 @@ class NavbarController {
         pageOwned: this.pageOwned,
       },
       controllerAs: '$ctrl',
-      controller($mdBottomSheet, pageType, pageId, pageOwned) {
+      controller($mdBottomSheet, organisationId, userId, pageOwned) {
         'ngInject';
 
         this.hide = $mdBottomSheet.hide;
-        this.pageType = pageType;
-        this.pageId = pageId;
+        this.organisationId = organisationId;
+        this.userId = userId;
         this.pageOwned = pageOwned;
       },
     });
