@@ -24,17 +24,23 @@
         <md-icon>more_vert</md-icon>
       </md-button>
       <md-menu-content width="4">
-        <md-list>
-          <md-list-item ui-sref="help"><md-icon>help_outline</md-icon> Help</md-list-item>
-          <md-list-item ui-sref="home"><md-icon>share</md-icon> Share</md-list-item>
-          <md-list-item
-            ui-sref="organisationEdit({organisationId: $ctrl.organisationId})"
-            ng-if="$ctrl.pageOwned && $ctrl.organisationId">
-              <md-icon>settings</md-icon>
-              Edit this Organisation}
-            </md-list-item>
-          <md-list-item ui-sref="profileEdit({userId: $ctrl.userId})" ng-if="$ctrl.pageOwned && $ctrl.userId"><span><md-icon>settings</md-icon> Edit this Profile</span></md-list-item>
-        </md-list>
+        <md-menu-item>
+          <md-button ui-sref="help"><md-icon>help_outline</md-icon> Help</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ui-sref="home">
+            <md-icon>share</md-icon> Share
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="$ctrl.pageOwned && $ctrl.organisationId">
+          <md-button
+            ui-sref="organisationEdit({organisationId: $ctrl.organisationId})">
+            <md-icon>settings</md-icon> Edit this Organisation
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="$ctrl.pageOwned && $ctrl.userId">
+          <md-button ui-sref="profileEdit({userId: $ctrl.userId})"><md-icon>settings</md-icon> Edit this Profile</md-button>
+        </md-menu-item>
       </md-menu-content>
     </md-menu>
   </div>

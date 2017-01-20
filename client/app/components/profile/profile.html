@@ -1,14 +1,31 @@
-  <user-info
+<div layout layout-xs="column" layout-wrap>
+  <span flex hide-xs></span>
+  <user-info hide-gt-xs
     user="$ctrl.profileData.person">
   </user-info>
-  <user-associations
+
+  <div flex-gt-xs="33" hide-xs>
+    <user-info
+      user="$ctrl.profileData.person">
+    </user-info>
+    <user-skills flex-gt-xs="33"
+      user="$ctrl.profileData.person"
+      skills="$ctrl.profileData.skills"
+      qualifications="$ctrl.profileData.qualifications"
+      skills-summary="$ctrl.profileData.skillsSummary">
+    </user-skills>
+  </div>
+
+  <user-associations flex-gt-xs="66"
     user="$ctrl.profileData.person"
     organisations="$ctrl.profileData.organisations"
     organisations-summary="$ctrl.profileData.organisationsSummary">
   </user-associations>
-  <user-skills
+  <user-skills hide-gt-xs
     user="$ctrl.profileData.person"
     skills="$ctrl.profileData.skills"
     qualifications="$ctrl.profileData.qualifications"
     skills-summary="$ctrl.profileData.skillsSummary">
   </user-skills>
+  <span flex hide-xs></span>
+</div>
