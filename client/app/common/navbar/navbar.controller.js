@@ -30,7 +30,7 @@ class NavbarController {
       }
       this.pageOwned = true;
     });
-    $transitions.onSuccess({ from: 'organisation' }, () => {
+    $transitions.onExit({ exiting: 'organisation' }, () => {
       this.organisationId = undefined;
       this.pageOwned = false;
     });
@@ -39,15 +39,29 @@ class NavbarController {
       this.userId = transition.params('to').userId;
       this.pageOwned = $rootScope.currentUser._id === this.userId; // disable to edit any profile
     });
-    $transitions.onSuccess({ from: 'profile' }, () => {
+    $transitions.onExit({ exiting: 'profile' }, () => {
       this.userId = undefined;
       this.pageOwned = false;
     });
 
-    $transitions.onSuccess({ to: 'organisationEdit' || 'profileEdit' || 'search' }, () => {
+    $transitions.onSuccess({ to: 'organisationEdit' }, () => {
       $rootScope.hideNav = true;
     });
-    $transitions.onSuccess({ from: 'organisationEdit' || 'profileEdit' || 'search' }, () => {
+    $transitions.onExit({ exiting: 'organisationEdit' }, () => {
+      $rootScope.hideNav = undefined;
+    });
+
+    $transitions.onSuccess({ to: 'profileEdit' }, () => {
+      $rootScope.hideNav = true;
+    });
+    $transitions.onExit({ exiting: 'profileEdit' }, () => {
+      $rootScope.hideNav = undefined;
+    });
+
+    $transitions.onSuccess({ to: 'search' }, () => {
+      $rootScope.hideNav = true;
+    });
+    $transitions.onExit({ exiting: 'search' }, () => {
       $rootScope.hideNav = undefined;
     });
   }
