@@ -27,14 +27,6 @@ const gaAutocompleteComponent = () => (
             lng: place.geometry.location.lng(),
             mapLink: place.url,
           };
-
-          /*
-          scope.details = place;
-          scope.details.coords = {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng(),
-          };
-          */
           model.$setViewValue(element.val());
         });
       });
