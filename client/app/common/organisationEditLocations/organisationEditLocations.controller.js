@@ -11,12 +11,12 @@ class OrganisationEditLocationsController {
 
   edit(location, index) {
     const modifyDetails = { type: 'none', passData: { location, index } };
-    const stateChange = 'locations form';
+    const stateChange = 'locationsForm';
     this.modifyLocations({ modifyDetails, stateChange });
   }
   add() {
     const modifyDetails = { type: 'none', passData: { location: {} } };
-    const stateChange = 'locations form';
+    const stateChange = 'locationsForm';
     this.modifyLocations({ modifyDetails, stateChange });
   }
 }
