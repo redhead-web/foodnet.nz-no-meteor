@@ -2,6 +2,7 @@ const faker = require('faker');
 const bcrypt = require('bcrypt');
 
 const passwordSetup = bcrypt.hashSync('test-password', 2);
+const now = new Date().getTime();
 
 module.exports = [
   {
@@ -17,6 +18,7 @@ module.exports = [
       twitter: faker.internet.url(),
       instagram: faker.internet.url(),
       youtube: faker.internet.url(),
+      created: now,
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
@@ -28,10 +30,10 @@ module.exports = [
       { _id: '145-542', name: 'Certificate of Awesome', institute: 'Waikato University' },
     ],
     organisations: [
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
     ],
   },
   {
@@ -47,6 +49,7 @@ module.exports = [
       instagram: faker.internet.url(),
       youtube: faker.internet.url(),
       password: faker.random.word(),
+      created: now,
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
@@ -58,10 +61,10 @@ module.exports = [
       { _id: '145-542', name: 'Certificate of Awesome', institute: 'Waikato University' },
     ],
     organisations: [
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
     ],
   },
   {
@@ -77,6 +80,7 @@ module.exports = [
       instagram: faker.internet.url(),
       youtube: faker.internet.url(),
       password: faker.random.word(),
+      created: now,
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
@@ -88,10 +92,10 @@ module.exports = [
       { _id: '145-542', name: 'Certificate of Awesome', institute: 'Waikato University' },
     ],
     organisations: [
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
     ],
   },
   {
@@ -107,6 +111,7 @@ module.exports = [
       instagram: faker.internet.url(),
       youtube: faker.internet.url(),
       password: faker.random.word(),
+      created: now,
     },
     skillsSummary: { seniorSkills: 6, intermediateSkills: 3, juniorSkills: 2, qualifications: 2 },
     organisationsSummary: { workingAt: 1, workedAt: 4, owned: 1 },
@@ -118,10 +123,10 @@ module.exports = [
       { _id: '145-542', name: 'Certificate of Awesome', institute: 'Waikato University' },
     ],
     organisations: [
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
-      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle() },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
+      { _id: faker.random.uuid(), name: faker.company.companyName(), tags: faker.random.word(), jobTitle: faker.name.jobTitle(), created: now },
     ],
   },
 ];

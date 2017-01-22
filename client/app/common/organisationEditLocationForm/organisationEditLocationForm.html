@@ -3,7 +3,10 @@
     <md-card-content layout="column">
       <md-input-container>
         <label>Address</label>
-        <input ng-model="$ctrl.location.location.address">
+        <input
+          ga-autocomplete
+          ng-model="$ctrl.location.location.address"
+          details="$ctrl.newAddress">
       </md-input-container>
       <md-input-container>
         <label>Phone Number</label>

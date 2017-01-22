@@ -46,6 +46,7 @@ import QualificationsAvatar from './qualificationAvatar/qualificationAvatar';
 import OrganisationEditLocationForm from './organisationEditLocationForm/organisationEditLocationForm';
 import imgUpload from './imgUpload/imgUpload';
 import buttonPopup from './buttonPopup/buttonPopup';
+import gaAutocomplete from './gaAutocomplete/gaAutocomplete';
 
 
 const commonModule = angular.module('app.common', [
@@ -96,6 +97,7 @@ const commonModule = angular.module('app.common', [
   OrganisationEditLocationForm,
   imgUpload,
   buttonPopup,
+  gaAutocomplete,
 ])
 
 .name;

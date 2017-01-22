@@ -8,6 +8,22 @@ router.get('/common', (req, res) => {
   res.json(['Carrots', 'Organic Fertilizer', 'Lamb Mince', 'Tomatoes', 'Websites', 'Packaging', 'HTML', 'Lettuce', 'Organic Sweeteners']);
 });
 
+// {person: 'name of person searching', organisation: 'organisation searched for', searchTerm: 'search term used', timestamp: 'time of search'}
+router.post('/save', (req, res, next) => {
+  const data = req.body;
+  const session = driver.session();
+  const query = 'MERGE (:Person { _id: {data}.person } )-[search:SEARCHED_FOR { searchTerm: {data}.searchTerm }]->(:Organisation { _id: {data}.organisation }) ' +
+                'ON CREATE SET search.timestamp = {data}.timestamp ' +
+                'ON MATCH SET search.timestamp = {data}.timestamp';
+  session.run(query, { data }).then(() => {
+    session.close();
+    res.json({});
+  }, (error) => {
+    console.log(error);
+    next(error);
+  });
+});
+
 router.get('/', (req, res) => {
   const session = driver.session();
   const query = 'MATCH (n:Organisation) ' +

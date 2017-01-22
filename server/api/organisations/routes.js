@@ -103,6 +103,7 @@ router.get('/one/:organisationId', (req, res, next) => {
 router.post('/create', (req, res, next) => {
   const data = req.body;
   data._id = faker.random.uuid();
+  data.created = new Date().getTime();
 
   const session = driver.session();
   const query = 'MERGE (organisation:Organisation {_id: {data}._id}) ' +

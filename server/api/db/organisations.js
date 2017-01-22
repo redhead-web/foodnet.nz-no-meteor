@@ -1,5 +1,7 @@
 const faker = require('faker');
 
+const now = new Date().getTime();
+
 module.exports = [{
   organisation: {
     _id: faker.random.uuid(),
@@ -20,6 +22,7 @@ module.exports = [{
     twitter: faker.internet.url(),
     instagram: faker.internet.url(),
     youtube: faker.internet.url(),
+    created: now,
   },
   locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
   inputs: [
@@ -31,9 +34,9 @@ module.exports = [{
     { _id: faker.random.uuid(), name: faker.commerce.productName() },
     { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
   ],
 }, {
   organisation: {
@@ -55,6 +58,7 @@ module.exports = [{
     twitter: faker.internet.url(),
     instagram: faker.internet.url(),
     youtube: faker.internet.url(),
+    created: now,
   },
   locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
   inputs: [
@@ -64,9 +68,9 @@ module.exports = [{
   ],
   outputs: [{ _id: faker.random.uuid(), name: faker.commerce.productName() }, { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
   ],
 }, {
   organisation: {
@@ -88,6 +92,7 @@ module.exports = [{
     twitter: faker.internet.url(),
     instagram: faker.internet.url(),
     youtube: faker.internet.url(),
+    created: now,
   },
   locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
   inputs: [
@@ -97,9 +102,9 @@ module.exports = [{
   ],
   outputs: [{ _id: faker.random.uuid(), name: faker.commerce.productName() }, { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
   ],
 }, {
   organisation: {
@@ -121,6 +126,7 @@ module.exports = [{
     twitter: faker.internet.url(),
     instagram: faker.internet.url(),
     youtube: faker.internet.url(),
+    created: now,
   },
   locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
   inputs: [
@@ -130,8 +136,8 @@ module.exports = [{
   ],
   outputs: [{ _id: faker.random.uuid(), name: faker.commerce.productName() }, { _id: faker.random.uuid(), name: faker.commerce.productName() }],
   team: [
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
-    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email() },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
+    { _id: faker.random.uuid(), name: faker.name.findName(), jobTitle: faker.name.jobTitle(), email: faker.internet.email(), created: now },
   ],
 }];

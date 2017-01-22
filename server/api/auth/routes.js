@@ -40,6 +40,7 @@ router.post('/register', (req, res, next) => {
     delete user.password;
     user._id = faker.random.uuid();
     user.hashedPassword = result;
+    user.created = new Date().getTime();
     const query = 'MERGE (p:Person {_id: {user}._id }) ON CREATE SET p += {user} RETURN p._id as _id, p.name as name, p.email as email';
     session.run(query, { user }).then((results) => {
       const data = utils.toCollection(results.records)[0];

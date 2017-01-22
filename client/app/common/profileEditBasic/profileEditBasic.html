@@ -1,3 +1,4 @@
+{{$ctrl.newAddress}}
 <md-card flex layout="column" style="outline:none;" align="left">
   <md-card-content>
     <div layout="row" layout-align="start center" layout-margin>
@@ -28,7 +29,11 @@
 
     <md-input-container class="md-block">
       <label>Address</label>
-      <input ng-model="$ctrl.user.address"></input>
+      <input
+        ga-autocomplete
+        ng-model="$ctrl.user.address"
+        details="$ctrl.newAddress">
+      </input>
     </md-input-container>
 
     <md-card-actions layout="row" layout-align="end center">
