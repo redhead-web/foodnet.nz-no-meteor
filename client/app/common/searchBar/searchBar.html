@@ -1,7 +1,7 @@
-<md-toolbar layout="row">
+<md-toolbar layout="row" class="search-bar">
   <div class="md-toolbar-tools">
     <md-button ng-if="!$ctrl.hideBack" class="md-icon-button" ng-click="$ctrl.back()"><md-icon >arrow_back</md-icon></md-button>
-    <md-input-container class="smallInput" md-no-float flex>
+    <md-input-container class="small-input" md-no-float flex>
         <input focus-if
         ng-model="$ctrl.searchFilter"
         ng-change="$ctrl.search($ctrl.searchFilter)"
