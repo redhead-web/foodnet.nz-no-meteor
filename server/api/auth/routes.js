@@ -49,4 +49,32 @@ router.post('/register', (req, res, next) => {
   }).catch((err) => next(err));
 });
 
+router.post('/update', (req, res, next) => {
+  const data = req.body;
+  const session = driver.session();
+  const authorisation = true;  // check here if you are allowed to edit permissions
+  let query = '';
+
+  if (authorisation) {
+    if (data.operation === 'insert' || data.operation === 'update') {
+      query = 'MATCH (person:Person { _id: {data}.person._id } ) ' +
+              'MATCH (organisation:Organisation { _id: {data}.organisation._id } ) ' +
+              'MERGE ((person)-[r:PERMISSIONS]->(organisation)) ' +
+              'ON CREATE SET r.auth = {data}.auth ' +
+              'ON MATCH SET r.auth = {data}.auth ';
+    } else if (data.operation === 'remove') {
+      query = 'MATCH ( :Person { _id: {data}.person._id })-[r:PERMISSIONS]->( :Organisation { _id: {data}.organisation._id } ) ' +
+              'DELETE r';
+    }
+
+    session.run(query, { data }).then(() => {
+      session.close();
+      res.json({});
+    }, (error) => {
+      console.log(error);
+      next(error);
+    });
+  }
+});
+
 module.exports = router;

@@ -118,6 +118,21 @@ router.post('/create', (req, res, next) => {
   });
 });
 
+router.post('/view/:organisationId', (req, res, next) => {
+  const data = { _id: req.params.organisationId, timestamp: new Date().getTime() };
+  const session = driver.session();
+  const query = 'MERGE (organisation:Organisation { _id: {data}._id }) ' +
+                'ON MATCH SET organisation.views = coalesce(organisation.views, 0) + 1, organisation.lastViewd = {data}.timestamp';
+
+  session.run(query, { data }).then(() => {
+    session.close();
+    res.json({});
+  }, (error) => {
+    console.log(error);
+    next(error);
+  });
+});
+
 router.post('/update', (req, res, next) => {
   const data = req.body;
   const session = driver.session();
