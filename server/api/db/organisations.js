@@ -24,7 +24,10 @@ module.exports = [{
     youtube: faker.internet.url(),
     created: now,
   },
-  locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
+  locations: [
+    { address: faker.address.streetAddress(), headOffice: true, placeId: faker.random.uuid() },
+    { address: faker.address.streetAddress(), placeId: faker.random.uuid() },
+  ],
   inputs: [
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
@@ -60,7 +63,10 @@ module.exports = [{
     youtube: faker.internet.url(),
     created: now,
   },
-  locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
+  locations: [
+    { address: faker.address.streetAddress(), headOffice: true, placeId: faker.random.uuid() },
+    { address: faker.address.streetAddress(), placeId: faker.random.uuid() },
+  ],
   inputs: [
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
@@ -94,7 +100,10 @@ module.exports = [{
     youtube: faker.internet.url(),
     created: now,
   },
-  locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
+  locations: [
+    { address: faker.address.streetAddress(), headOffice: true, placeId: faker.random.uuid() },
+    { address: faker.address.streetAddress(), placeId: faker.random.uuid() },
+  ],
   inputs: [
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
@@ -128,7 +137,10 @@ module.exports = [{
     youtube: faker.internet.url(),
     created: now,
   },
-  locations: [{ address: faker.address.streetAddress(), headOffice: true }, { address: faker.address.streetAddress() }],
+  locations: [
+    { address: faker.address.streetAddress(), headOffice: true, placeId: faker.random.uuid() },
+    { address: faker.address.streetAddress(), placeId: faker.random.uuid() },
+  ],
   inputs: [
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },
     { _id: faker.random.uuid(), providerId: faker.random.uuid(), name: faker.commerce.productName(), provider: faker.company.companyName() },

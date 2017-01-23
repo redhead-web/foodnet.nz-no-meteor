@@ -3,8 +3,8 @@ class OrganisationEditLocationsController {
     this.name = 'organisationEditLocations';
   }
 
-  delete(index) {
-    const modifyDetails = { type: 'remove', field: 'locations', index };
+  delete(location, index) {
+    const modifyDetails = { type: 'remove', field: 'locations', index, value: location };
     const stateChange = false;
     this.modifyLocations({ modifyDetails, stateChange });
   }
@@ -14,6 +14,7 @@ class OrganisationEditLocationsController {
     const stateChange = 'locationsForm';
     this.modifyLocations({ modifyDetails, stateChange });
   }
+
   add() {
     const modifyDetails = { type: 'none', passData: { location: {} } };
     const stateChange = 'locationsForm';

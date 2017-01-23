@@ -64,7 +64,7 @@ router.get('/one/:organisationId', (req, res, next) => {
   'RETURN properties(n) AS organisation';
 
   const getLocations = 'MATCH (l:Location)<-[:OCCUPIES]-(:Organisation { _id: {_id} }) ' +
-  'RETURN l.address AS address';
+  'RETURN l.address AS address, l._id AS _id';
 
   const getInputs = 'MATCH (i:Resource)-[:INPUTS]->(:Organisation { _id: {_id} }) ' +
   'RETURN i.name AS name, i._id AS _id';
@@ -133,6 +133,11 @@ router.post('/update', (req, res, next) => {
                 'MERGE (person:Person { _id: {data}.update._id } ) ' +
                 'ON CREATE SET person = {data}.update ' +
                 'MERGE ((organisation)<-[:TEAM_OF {jobTitle: {data}.update.jobTitle}]-(person)) ';
+      } else if (data.listName === 'locations') {
+        query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+                'MERGE (location:Location { _id: {data}.update.placeId } ) ' +
+                'ON CREATE SET location.address = {data}.update.address, location.lat = {data}.update.lat, location.lng = {data}.update.lng, location.mapLink = {data}.update.mapLink ' +
+                'MERGE (organisation)-[r:OCCUPIES]->(location) ';
       } else if (data.listName === 'inputs') {
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (resource:Resource { name: lower({data}.update.name) } ) ' +
@@ -148,6 +153,9 @@ router.post('/update', (req, res, next) => {
       if (data.listName === 'team') {
         query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:TEAM_OF]-(:Person { _id: {data}.update._id } ) ' +
                 'DELETE r';
+      } else if (data.listName === 'locations') {
+        query = 'MATCH (:Organisation { _id: {data}._id } )-[r:OCCUPIES]->(:Location { _id: {data}.update._id } ) ' +
+                'DELETE r';
       } else if (data.listName === 'inputs') {
         query = 'MATCH (:Organisation { _id: {data}._id } )<-[r:INPUTS]-(:Resource { name: lower({data}.update.name) } ) ' +
                 'DELETE r';
@@ -161,6 +169,22 @@ router.post('/update', (req, res, next) => {
                 'MERGE (person:Person { _id: {data}.update._id } ) ' +
                 'ON MATCH SET person = {data}.update ' +
                 'MERGE ((organisation)<-[:TEAM_OF {jobTitle: {data}.update.jobTitle}]-(person)) ';
+      } else if (data.listName === 'locations') {
+        if (data.update._id !== data.update.placeId) {
+          query = 'MATCH (:Organisation { _id: {data}._id } )-[oldr:OCCUPIES]->(:Location { _id: {data}.update._id } ) ' +
+                  'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+                  'MERGE (location:Location { _id: {data}.update.placeId } ) ' +
+                  'ON CREATE SET location.address = {data}.update.address, location.lat = {data}.update.lat, location.lng = {data}.update.lng, location.mapLink = {data}.update.mapLink ' +
+                  'ON MATCH SET location.address = {data}.update.address, location.lat = {data}.update.lat, location.lng = {data}.update.lng, location.mapLink = {data}.update.mapLink ' +
+                  'MERGE (organisation)-[r:OCCUPIES]->(location) ' +
+                  'DELETE oldr ';
+        } else {
+          query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
+                  'MERGE (location:Location { _id: {data}.update.placeId } ) ' +
+                  'ON CREATE SET location.address = {data}.update.address, location.lat = {data}.update.lat, location.lng = {data}.update.lng, location.mapLink = {data}.update.mapLink ' +
+                  'ON MATCH SET location.address = {data}.update.address, location.lat = {data}.update.lat, location.lng = {data}.update.lng, location.mapLink = {data}.update.mapLink ' +
+                  'MERGE (organisation)-[r:OCCUPIES]->(location) ';
+        }
       }
     }
   }

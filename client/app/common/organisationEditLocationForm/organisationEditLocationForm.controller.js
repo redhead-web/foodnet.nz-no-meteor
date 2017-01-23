@@ -6,7 +6,7 @@ class OrganisationEditLocationFormController {
   }
 
   $onInit() {
-    if (!this.location.index) {
+    if (this.location.index === undefined || this.location.index === null) {
       this.isNew = true;
     }
   }
@@ -15,10 +15,13 @@ class OrganisationEditLocationFormController {
     const stateChange = 'locations';
     const newLocation = location;
 
-    newLocation.placeId = this.newAddress.placeId;
-    newLocation.address = this.newAddress.address;
-    newLocation.lat = this.newAddress.lat;
-    newLocation.lng = this.newAddres.lng;
+    if (this.newAddress.placeId !== '') {
+      newLocation.placeId = this.newAddress.placeId;
+      newLocation.address = this.newAddress.address;
+      newLocation.lat = this.newAddress.lat;
+      newLocation.lng = this.newAddress.lng;
+      newLocation.mapLink = this.newAddress.mapLink;
+    }
 
     if (this.isNew) {
       const modifyDetails = { type: 'insert', field: 'locations', value: newLocation };

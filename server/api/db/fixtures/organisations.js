@@ -11,7 +11,9 @@ const query = 'UNWIND {json} AS data ' + // loop over json array with each eleme
               // undefined properties should resolve to null which is neo4j talk for undefined.
               'ON CREATE SET organisation = data.organisation ' +
               // loop over locations and create or find location nodes, then create relationship between organisation and locations
-              'FOREACH (locationData in data.locations | MERGE (location:Location {address: locationData.address }) MERGE (organisation)-[:OCCUPIES]->(location) ) ' +
+              'FOREACH (locationData in data.locations | ' +
+                'MERGE (location:Location {_id: locationData.placeId, address: locationData.address }) ' +
+                'MERGE (organisation)-[:OCCUPIES]->(location) ) ' +
               // loop over inputs the same way
               'FOREACH (inputObject in data.inputs | ' +
                 // create the input if it doesn't already exist
