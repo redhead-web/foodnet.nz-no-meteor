@@ -3,7 +3,7 @@ import template from './bottom-sheet-list-template.html';
 import { includes } from 'lodash';
 
 class NavbarController {
-  constructor($state, $scope, $rootScope, $mdSidenav, $mdBottomSheet, $transitions, User) {
+  constructor($state, $scope, $rootScope, $mdSidenav, $mdBottomSheet, $transitions) {
     'ngInject';
 
     this.go = $state.go;
@@ -17,10 +17,6 @@ class NavbarController {
 
     this.openMenu = ($mdOpenMenu, ev) => {
       $mdOpenMenu(ev);
-    };
-
-    this.logOut = () => {
-      User.logOut();
     };
 
     $transitions.onSuccess({ to: 'organisation' }, (transition) => {

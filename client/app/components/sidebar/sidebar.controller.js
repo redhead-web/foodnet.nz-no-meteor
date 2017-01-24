@@ -1,10 +1,14 @@
 class SidebarController {
-  constructor($mdSidenav) {
+  constructor($mdSidenav, User) {
     'ngInject';
 
     // toggle side menu
     this.toggle = () => {
       $mdSidenav('menu').toggle();
+    };
+
+    this.logOut = () => {
+      User.logOut();
     };
   }
 }
