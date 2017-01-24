@@ -25,12 +25,13 @@ class LogInController {
 
   recoveryEmail() {
     // send reovery email
-    this.message = 'Recovery email sent';
+    this.message = 'Recovery emails can\'t be sent yet sorry.';
   }
 
   createAccount() {
     // create account
-    this.message = 'Account created';
+    // User.createAccount()
+    this.message = 'Accounts cannot be created right now sorry.';
   }
 }
 

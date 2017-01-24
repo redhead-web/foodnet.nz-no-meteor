@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const driver = require('../neo4j');
 const utils = require('../db/utils');
+const getAutocomplete = require('./controllers').getAutocomplete;
 
 router.get('/common', (req, res) => {
   res.json(['Carrots', 'Organic Fertilizer', 'Lamb Mince', 'Tomatoes', 'Websites', 'Packaging', 'HTML', 'Lettuce', 'Organic Sweeteners']);
@@ -18,13 +19,10 @@ router.post('/save', (req, res, next) => {
   session.run(query, { data }).then(() => {
     session.close();
     res.json({});
-  }, (error) => {
-    console.log(error);
-    next(error);
-  });
+  }, next);
 });
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   const session = driver.session();
   const query = 'MATCH (n:Organisation) ' +
                 'WHERE lower(n.name) CONTAINS lower({ q }) ' +
@@ -34,10 +32,9 @@ router.get('/', (req, res) => {
     const data = { organisations: utils.toCollection(result.records) };
     res.json(data);
     session.close();
-  }, (error) => {
-    const data = { error };
-    res.json(data);
-  });
+  }, next);
 });
+
+router.get('/inputs', getAutocomplete);
 
 module.exports = router;

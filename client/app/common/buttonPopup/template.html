@@ -4,9 +4,23 @@
       <div class="md-dialog-content">
         <div ng-repeat="field in $ctrl.fields">
           <!-- text input -->
-          <md-input-container class="md-block" ng-if="field.type === 'text'">
-            <label>{{field.label}}</label>
-            <input ng-model="$ctrl.data[field.model]">
+          <md-input-container class="md-block" ng-if="field.type === 'autocomplete'">
+            <md-autocomplete
+            md-input-name="autocompleteField"
+            md-input-minlength="3"
+            md-input-maxlength="24"
+            md-selected-item="field.selectedItem"
+            md-search-text="$ctrl.data[field.model]"
+            md-items="item in $ctrl.querySearch(field, $ctrl.data[field.model])"
+            md-item-text="item.name"
+            md-floating-label="{{field.label}}"
+            md-match-case-insensitive
+            md-delay="400"
+            >
+              <md-item-template>
+                <span md-highlight-text="$ctrl.data[field.model]">{{item.name}}</span>
+              </md-item-template>
+            </md-autocomplete>
           </md-input-container>
 
           <md-input-container class="md-block" ng-if="field.type === 'select'">
