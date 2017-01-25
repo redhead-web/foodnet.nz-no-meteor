@@ -1,21 +1,34 @@
 class OrganisationEditTeamMemberController {
-  constructor() {
+  constructor(Search) {
+    'ngInject';
+
     this.name = 'organisationEditTeamMember';
+
+    this.querySearch = (field, query) => Search.autocomplete(field, query);
   }
 
   $onInit() {
-    if (!this.teamMember._id) {
-      this.isNew = true;
-    }
+    this.searchText = this.teamMember.name;
   }
 
-  getId() {
-    return Math.random();
+  updateFields(newInfo) {
+    if (newInfo.name) {
+      this.teamMember.name = newInfo.name;
+    }
+    if (newInfo.jobTitle) {
+      this.teamMember.jobTitle = newInfo.jobTitle;
+    }
+    if (newInfo.email) {
+      this.teamMember.email = newInfo.email;
+    }
+    if (newInfo.permission) {
+      this.teamMember.permission = newInfo.permission;
+    }
   }
 
   modify(value) {
     const stateChange = 'team';
-    if (this.isNew) {
+    if (!this.teamMember._id) {
       const modifyDetails = { type: 'insert', field: 'team', value: { name: this.teamMember.name, jobTitle: this.teamMember.jobTitle, email: this.teamMember.email } };
       this.modifyTeamMember({ modifyDetails, stateChange });
     } else {

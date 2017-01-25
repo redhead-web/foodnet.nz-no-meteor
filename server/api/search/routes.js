@@ -36,5 +36,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/inputs', getAutocomplete);
+router.get('/outputs', getAutocomplete);
+router.get('/organisations', getAutocomplete);
+router.get('/people', getAutocomplete);
 
 module.exports = router;

@@ -11,10 +11,9 @@
 
 <span layout="row">
   <span flex></span>
-
   <button-popup
     list-name="'outputs'"
-    fields="[{model: 'name', label:'name', type:'text'}]"
+    fields="[{model: 'name', label:'name', type:'autocomplete', searchAPI: 'outputs', dbLabel: 'Resource'}]"
     on-complete="$ctrl.modify(modifyDetails, stateChange)">
   </button-popup>
 </span>

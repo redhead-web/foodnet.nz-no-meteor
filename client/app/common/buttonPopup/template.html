@@ -3,7 +3,13 @@
     <md-dialog-content>
       <div class="md-dialog-content">
         <div ng-repeat="field in $ctrl.fields">
-          <!-- text input -->
+          <!-- text -->
+          <md-input-container class="md-block" ng-if="field.type === 'text'">
+            <label>{{field.label}}</label>
+            <md-input ng-model="$ctrl.data[field.model]"></md-input>
+          </md-input-container>
+
+          <!-- autocomplete -->
           <md-input-container class="md-block" ng-if="field.type === 'autocomplete'">
             <md-autocomplete
             md-input-name="autocompleteField"
@@ -23,12 +29,14 @@
             </md-autocomplete>
           </md-input-container>
 
+          <!-- select -->
           <md-input-container class="md-block" ng-if="field.type === 'select'">
             <label>{{field.label}}</label>
             <md-select ng-model="$ctrl.data[field.model]">
               <md-option ng-repeat="opt in field.options" ng-value="opt">{{opt}}</md-option>
             </md-select>
           </md-input-container>
+
         </div>
         </md-input-container>
       </div>
