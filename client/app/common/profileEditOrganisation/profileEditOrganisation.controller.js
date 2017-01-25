@@ -1,23 +1,34 @@
 class ProfileEditOrganisationController {
-  constructor() {
+  constructor(Search) {
+    'ngInject';
+
     this.name = 'profileEditOrganisation';
+
+    this.querySearch = (field, query) => Search.autocomplete(field, query);
   }
 
   $onInit() {
-    console.log(this.organisation);
-    if (!this.organisation._id) {
-      this.isNew = true;
-    }
+    this.searchText = this.organisation.name;
   }
 
-  getId() {
-    return Math.random();
+  updateFields(newInfo) {
+    this.organisation._id = newInfo._id;
+
+    if (newInfo.name) {
+      this.organisation.name = newInfo.name;
+    }
+    if (newInfo.jobTitle) {
+      this.organisation.jobTitle = newInfo.jobTitle;
+    }
+    if (newInfo.emails) {
+      this.organisation.emails = newInfo.emails;
+    }
   }
 
   modify(value) {
     const stateChange = 'organisations';
-    if (this.isNew) {
-      const modifyDetails = { type: 'insert', field: 'organisations', value: { name: this.organisation.name, jobTitle: this.organisation.jobTitle, emails: this.organisation.email } };
+    if (!this.organisation._id) {
+      const modifyDetails = { type: 'insert', field: 'organisations', value: { name: this.organisation.name, jobTitle: this.organisation.jobTitle, emails: this.organisation.emails } };
       this.modifyOrganisation({ modifyDetails, stateChange });
     } else {
       const modifyDetails = { type: 'update', field: 'organisations', index: this.index, value };

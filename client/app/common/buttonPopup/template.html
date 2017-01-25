@@ -10,8 +10,8 @@
           </md-input-container>
 
           <!-- autocomplete -->
-          <md-input-container class="md-block" ng-if="field.type === 'autocomplete'">
-            <md-autocomplete
+          <md-autocomplete
+            ng-if="field.type === 'autocomplete'"
             md-input-name="autocompleteField"
             md-input-minlength="3"
             md-input-maxlength="24"
@@ -26,8 +26,7 @@
               <md-item-template>
                 <span md-highlight-text="$ctrl.data[field.model]">{{item.name}}</span>
               </md-item-template>
-            </md-autocomplete>
-          </md-input-container>
+          </md-autocomplete>
 
           <!-- select -->
           <md-input-container class="md-block" ng-if="field.type === 'select'">

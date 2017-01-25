@@ -4,7 +4,7 @@ class OrganisationEditTeamMemberController {
 
     this.name = 'organisationEditTeamMember';
 
-    this.querySearch = (field, query) => Search.autocomplete(field, query);
+    this.querySearch = (field, query, organisationId) => Search.autocomplete(field, query, organisationId);
   }
 
   $onInit() {
@@ -12,6 +12,8 @@ class OrganisationEditTeamMemberController {
   }
 
   updateFields(newInfo) {
+    this.teamMember._id = newInfo._id;
+
     if (newInfo.name) {
       this.teamMember.name = newInfo.name;
     }

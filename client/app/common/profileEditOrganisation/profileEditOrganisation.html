@@ -1,9 +1,33 @@
 <md-card flex layout="column" style="outline:none;" align="left">
   <md-card-content>
+    {{$ctrl.organisationFound}}
+    <md-autocomplete
+      md-selected-item="$ctrl.organisationFound"
+      md-search-text="$ctrl.searchText"
+      md-item-text="item.name"
+      md-floating-label="Name"
+
+      md-selected-item-change="$ctrl.updateFields($ctrl.organisationFound)"
+      md-items="item in $ctrl.querySearch({searchAPI: 'organisations', dbLabel: 'Organisation'}, $ctrl.searchText)"
+      md-match-case-insensitive
+
+      md-input-name="autocompleteField"
+      md-input-minlength="3"
+      md-input-maxlength="24"
+      md-delay="400"
+      >
+        <md-item-template>
+          <span md-highlight-text="$ctrl.searchText">{{item.name}}</span>
+        </md-item-template>
+    </md-autocomplete>
+
+
+    <!--
     <md-input-container class="md-block">
       <label>Organisation Name</label>
       <input ng-model="$ctrl.organisation.name">
     </md-input-container>
+    -->
 
     <md-input-container class="md-block">
       <label>Your Job title</label>
@@ -16,7 +40,7 @@
     </md-input-container>
 
     <md-card-actions layout="row" layout-align="end center">
-      <md-button ui-sref="profileEdit({userId: $ctrl.organisation._id})">More Detail</md-button>
+      <!--md-button ui-sref="organisationCreate">More Detail</md-button-->
       <md-button ng-click="$ctrl.modify($ctrl.organisation)">Save</md-button>
     </md-card-actions>
   </md-card-content>

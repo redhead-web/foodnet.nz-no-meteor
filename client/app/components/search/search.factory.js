@@ -3,8 +3,8 @@ const SearchFactory = ($http) => {
 
   const getCommonData = (id, options = {}) => $http.get('/api/search/common', options).then((response) => response.data);
 
-  const autocomplete = ({ searchAPI, dbLabel }, query) =>
-    $http.get(`/api/search/${searchAPI}`, { params: { query, label: dbLabel } })
+  const autocomplete = ({ searchAPI, dbLabel }, query, organisationId) =>
+    $http.get(`/api/search/${searchAPI}`, { params: { query, label: dbLabel, organisationId } })
     .then((response) => response.data);
 
   return { getCommonData, autocomplete };
