@@ -27,6 +27,9 @@ class ProfileEditOrganisationController {
 
   modify(value) {
     const stateChange = 'organisations';
+    if (!this.organisation.name || this.organisation.name === '') {
+      this.organisation.name = this.searchText;
+    }
     if (!this.organisation._id) {
       const modifyDetails = { type: 'insert', field: 'organisations', value: { name: this.organisation.name, jobTitle: this.organisation.jobTitle, emails: this.organisation.emails } };
       this.modifyOrganisation({ modifyDetails, stateChange });

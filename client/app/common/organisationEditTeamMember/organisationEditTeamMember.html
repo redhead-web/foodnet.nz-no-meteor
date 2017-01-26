@@ -1,6 +1,5 @@
 <md-card flex layout="column" style="outline:none;" align="left">
   <md-card-content>
-
     <md-autocomplete
       md-selected-item="$ctrl.teamMemberFound"
       md-search-text="$ctrl.searchText"
@@ -31,7 +30,7 @@
       <input ng-model="$ctrl.teamMember.email" type="email">
     </md-input-container>
 
-    <md-select class="md-block" ng-model="$ctrl.teamMember.permission" placeholder="Permissions">
+    <md-select class="md-block" ng-model="$ctrl.teamMember.permissions" placeholder="Permissions">
       <md-option ng-value="'full'">Full Access</md-option>
       <md-option ng-value="'none'">No Access</md-option>
     </md-select>

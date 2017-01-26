@@ -61,19 +61,20 @@ router.get('/one/:organisationId', (req, res, next) => {
   const _id = req.params.organisationId;
   const session = driver.session();
   const getOrganisation = 'MATCH (n:Organisation { _id: {_id} }) ' +
-  'RETURN properties(n) AS organisation';
+                          'RETURN properties(n) AS organisation';
 
   const getLocations = 'MATCH (l:Location)<-[:OCCUPIES]-(:Organisation { _id: {_id} }) ' +
-  'RETURN l.address AS address, l._id AS _id';
+                       'RETURN l.address AS address, l._id AS _id';
 
   const getInputs = 'MATCH (i:Resource)-[:INPUTS]->(:Organisation { _id: {_id} }) ' +
-  'RETURN i.name AS name, i._id AS _id';
+                    'RETURN i.name AS name, i._id AS _id';
 
   const getOutputs = 'MATCH (o:Resource)<-[:OUTPUTS]-(:Organisation { _id: {_id} }) ' +
-  'RETURN o.name AS name, o._id AS _id';
+                     'RETURN o.name AS name, o._id AS _id';
 
-  const getTeam = 'MATCH (p:Person)-[t:TEAM_OF]->(:Organisation { _id: {_id} }) ' +
-  'RETURN p._id as _id, p.name as name, t.jobTitle as jobTitle';
+  const getTeam = 'MATCH (p:Person)-[t:TEAM_OF]->(o:Organisation { _id: {_id} }) ' +
+                  'OPTIONAL MATCH (p)-[r:PERMISSIONS]-(o) ' +
+                  'RETURN p._id as _id, p.name as name, p.email as email, t.jobTitle as jobTitle, r.auth as permissions';
   Promise.all([
     session.run(getOrganisation, { _id }),
     session.run(getLocations, { _id }),
@@ -104,15 +105,20 @@ router.post('/create', (req, res, next) => {
   const data = req.body;
   data._id = faker.random.uuid();
   data.created = new Date().getTime();
+  const userId = req.user._id;
 
   const session = driver.session();
-  const query = 'MERGE (organisation:Organisation {_id: {data}._id}) ' +
-                'ON CREATE SET organisation = {data} ';
+  const query = 'MATCH (person:Person {_id: {userId}}) ' +
+                'MERGE (organisation:Organisation {_id: {data}._id}) ' +
+                'ON CREATE SET organisation = {data} ' +
+                'MERGE (organisation)<-[:PERMISSIONS {auth: "Full"}]-(person) ' +
+                'MERGE (organisation)<-[:TEAM_OF {jobTitle: "Owner"}]-(person) ';
 
-  session.run(query, { data }).then(() => {
+  session.run(query, { data, userId }).then(() => {
     res.json(data);
     session.close();
   }, (error) => {
+    console.log(error);
     next(error);
     session.close();
   });
@@ -129,6 +135,7 @@ router.post('/view/:organisationId', (req, res, next) => {
     res.json({});
   }, (error) => {
     console.log(error);
+    session.close();
     next(error);
   });
 });
@@ -144,10 +151,17 @@ router.post('/update', (req, res, next) => {
     if (data.operation === 'insert') {
       if (data.listName === 'team') {
         if (!data.update._id) { data.update._id = faker.random.uuid(); }
+        if (data.update.permissions) { data.permissions = data.update.permissions; delete data.update.permissions; }
+        if (data.update.jobTitle) { data.jobTitle = data.update.jobTitle; delete data.update.jobTitle; }
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (person:Person { _id: {data}.update._id } ) ' +
                 'ON CREATE SET person = {data}.update ' +
-                'MERGE ((organisation)<-[:TEAM_OF {jobTitle: {data}.update.jobTitle}]-(person)) ';
+                'MERGE (organisation)<-[permissions:PERMISSIONS]-(person) ' +
+                'ON CREATE SET permissions.auth = {data}.permissions ' +
+                'ON MATCH SET permissions.auth = {data}.permissions ' +
+                'MERGE ((organisation)<-[team:TEAM_OF]-(person)) ' +
+                'ON CREATE SET team.jobTitle = {data}.jobTitle ' +
+                'ON MATCH SET team.jobTitle = {data}.jobTitle ';
       } else if (data.listName === 'locations') {
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (location:Location { _id: {data}.update.placeId } ) ' +
@@ -180,10 +194,17 @@ router.post('/update', (req, res, next) => {
       }
     } else if (data.operation === 'update') {
       if (data.listName === 'team') {
+        if (data.update.permissions) { data.permissions = data.update.permissions; delete data.update.permissions; }
+        if (data.update.jobTitle) { data.jobTitle = data.update.jobTitle; delete data.update.jobTitle; }
         query = 'MATCH (organisation:Organisation { _id: {data}._id } ) ' +
                 'MERGE (person:Person { _id: {data}.update._id } ) ' +
                 'ON MATCH SET person = {data}.update ' +
-                'MERGE ((organisation)<-[:TEAM_OF {jobTitle: {data}.update.jobTitle}]-(person)) ';
+                'MERGE (organisation)<-[permissions:PERMISSIONS]-(person) ' +
+                'ON CREATE SET permissions.auth = {data}.permissions ' +
+                'ON MATCH SET permissions.auth = {data}.permissions ' +
+                'MERGE ((organisation)<-[team:TEAM_OF]-(person)) ' +
+                'ON CREATE SET team.jobTitle = {data}.jobTitle ' +
+                'ON MATCH SET team.jobTitle = {data}.jobTitle ';
       } else if (data.listName === 'locations') {
         if (data.update._id !== data.update.placeId) {
           query = 'MATCH (:Organisation { _id: {data}._id } )-[oldr:OCCUPIES]->(:Location { _id: {data}.update._id } ) ' +
@@ -209,6 +230,7 @@ router.post('/update', (req, res, next) => {
     res.json({});
   }, (error) => {
     console.log(error);
+    session.close();
     next(error);
   });
 });

@@ -4,9 +4,6 @@ const utils = require('../db/utils');
 function getAutocomplete(req, res, next) {
   const session = driver.session();
   const { query: q, label, organisationId } = req.query;
-  console.log('----------------');
-  console.log(req.query);
-  console.log(organisationId);
 
   let query = '';
   if (label === 'Organisation') {

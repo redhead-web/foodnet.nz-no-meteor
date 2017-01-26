@@ -29,8 +29,7 @@ router.get('/:profileId', (req, res, next) => {
   'MATCH (n)<-[:TRAINED_IN]-(q:Qualification)' +
   'RETURN q._id as _id, q.name as name, q.institute as institute';
 
-  // TODO personalise this query once users are attached to organisations
-  const getOrganisations = 'MATCH (o:Organisation)--(n:Person {_id: {_id}}) ' +
+  const getOrganisations = 'MATCH (o:Organisation)-[:TEAM_OF]-(n:Person {_id: {_id}}) ' +
   'RETURN o._id as _id, o.name as name, o.tagLine as tagLine, o.avatar as avatar ';
 
   Promise.all([
@@ -67,10 +66,17 @@ router.post('/update', (req, res, next) => {
     if (data.operation === 'insert') {
       if (data.listName === 'organisations') {
         if (!data.update._id) { data.update._id = faker.random.uuid(); }
+        if (data.update.permissions) { data.permissions = data.update.permissions; delete data.update.permissions; }
+        if (data.update.jobTitle) { data.jobTitle = data.update.jobTitle; delete data.update.jobTitle; }
         query = 'MATCH (person:Person { _id: {data}._id } ) ' +
                 'MERGE (organisation:Organisation { _id: {data}.update._id } ) ' +
                 'ON CREATE SET organisation = {data}.update ' +
-                'MERGE ((organisation)<-[:TEAM_OF {jobTitle: {data}.update.jobTitle}]-(person)) ';
+                'MERGE (organisation)<-[permissions:PERMISSIONS]-(person) ' +
+                'ON CREATE SET permissions.auth = {data}.permissions ' +
+                'ON MATCH SET permissions.auth = {data}.permissions ' +
+                'MERGE ((organisation)<-[team:TEAM_OF]-(person)) ' +
+                'ON CREATE SET team.jobTitle = {data}.jobTitle ' +
+                'ON MATCH SET team.jobTitle = {data}.jobTitle ';
       } else if (data.listName === 'skills') {
         query = 'MATCH (person:Person { _id: {data}._id } ) ' +
                 'MERGE (skill:Skill { name: lower({data}.update.name) } ) ' +

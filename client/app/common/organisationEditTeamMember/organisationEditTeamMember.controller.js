@@ -24,14 +24,14 @@ class OrganisationEditTeamMemberController {
       this.teamMember.email = newInfo.email;
     }
     if (newInfo.permission) {
-      this.teamMember.permission = newInfo.permission;
+      this.teamMember.permissions = newInfo.permissions;
     }
   }
 
   modify(value) {
     const stateChange = 'team';
     if (!this.teamMember._id) {
-      const modifyDetails = { type: 'insert', field: 'team', value: { name: this.teamMember.name, jobTitle: this.teamMember.jobTitle, email: this.teamMember.email } };
+      const modifyDetails = { type: 'insert', field: 'team', value: { name: this.teamMember.name, jobTitle: this.teamMember.jobTitle, permissions: this.teamMember.permissions, email: this.teamMember.email } };
       this.modifyTeamMember({ modifyDetails, stateChange });
     } else {
       const modifyDetails = { type: 'update', field: 'team', index: this.index, value };
