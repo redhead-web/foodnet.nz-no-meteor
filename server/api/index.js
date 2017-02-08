@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const RedisStore = require('connect-redis')(session);
 const passport = require('passport');
 const app = express();
+const fixtures = require('./db/fixtures');
 require('./neo4j');
 
 app.use(bodyParser.json());
@@ -19,7 +20,7 @@ if (isProd) {
   const options = {}; // TODO add redis options;
   app.use(session({
     store: new RedisStore(options),
-    secret: 'keyboard cat',
+    secret: 'optimisationisgolden',
     resave: true,
     saveUninitialized: true,
   }));
@@ -41,6 +42,8 @@ app.use('/profiles', require('./profiles').router);
 app.use('/search', require('./search').router);
 app.use('/skills', require('./skills').router);
 
-require('./db/fixtures');
+if (!isProd) {
+  fixtures.init();
+}
 
 module.exports = app;
